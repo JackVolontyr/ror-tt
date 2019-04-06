@@ -18,7 +18,48 @@ h1, h2, h3, h4, p {
 
 .tt {
   &-container {
-    padding: 40px;
+    //padding: 40px;
     margin: 0 auto;
   }
+}
+
+.section__half {
+  position: relative;
+}
+
+.section__half > a {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: aquamarine;
+  text-align: center;
+}
+
+.section--table {
+  display: grid;
+  grid-gap: 20px;
+  grid-template: "trains trains" "routes stations" auto / 1fr 1fr;
+}
+
+.section__half > a,
+.section--table h1,
+.section--table table { width: 100%; }
+
+.section--table td { border: 1px solid #ccc; }
+
+.section__half--trains { grid-area: trains; }
+.section__half--routes { grid-area: routes; }
+.section__half--stations { grid-area: stations; }
+
+.footer-warning {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  background-color: black;
+  color: red;
+  font-size: 20px;
 }

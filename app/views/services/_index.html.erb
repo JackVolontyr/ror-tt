@@ -1,0 +1,17 @@
+<%= render 'helpers/cell_table',
+           item_table_name: 'Сервисы',
+           item_name: 'Название',
+           item_table_colspan: 4,
+           item_new_path_text: 'Добавить Сервис',
+           item_new_path: new_service_path do %>
+
+  <% @services.each do |service| %>
+    <tr>
+      <td><%= service.name %></td>
+      <%= render 'helpers/tool_bar',
+                 item: service,
+                 item_edit: edit_service_path(service) %>
+    </tr>
+  <% end %>
+
+<% end %>

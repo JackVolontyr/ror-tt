@@ -1,6 +1,28 @@
-<h1>Editing route</h1>
-
+<h1>Настроить Путь</h1>
 <%= render 'form' %>
 
-<%= link_to 'Show', @route %> |
-<%= link_to 'Back', routes_path %>
+<%= form_with(model: @route, local: true) do |form| %>
+
+  <%= render 'helpers/error_block', item: @route %>
+
+  <br/>
+  <%= content_tag(:strong, 'Все Станции:') %>
+  <div class="field">
+    <% Station.all.each do |station| %>
+
+      <% unless @route.stations.include? station %>
+        <div class="actions">
+          <%= form.text_field :stations,
+                              # station.id,
+                              value: station.name,
+                              readonly: true %>
+          <%= form.submit "Добавить Станцию '#{station.name}'" %>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Назад к Путям', routes_path %>

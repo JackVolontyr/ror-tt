@@ -1,6 +1,17 @@
-<h1>Editing Train</h1>
+<h1>Настроить Поезд</h1>
+<%= render 'form' %>
+<%= form_with(model: @train, local: true) do |form| %>
+  <%= render 'helpers/error_block', item: @train %>
 
-<%= render 'form', train: @train %>
+  <div class="field">
+    <%= form.label :route_id %>
+    <%= form.select :route_id, Route.all.collect { |route| [ route.name, route.id ] } %>
+    <%#= form.collection_select :x, Route.all, route.id , route.name %>
+  </div>
 
-<%= link_to 'Show', @train %> |
-<%= link_to 'Back', trains_path %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'К Поездам', trains_path %>

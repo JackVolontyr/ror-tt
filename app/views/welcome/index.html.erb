@@ -1,18 +1,18 @@
 <main class="tt-container tt-welcome">
-  <h1>Hi! <%= Time.now.strftime("%d/%m/%Y %H:%M") %></h1>
+<!--  <h1><%#= Time.now.strftime("%d/%m/%Y %H:%M") %></h1>-->
 
-  <p>Find me in app/views/welcome/index.html.erb</p>
-
-  <%= link_to 'К станциям', railway_stations_path %>
-  <%= link_to 'К поездам', trains_path %>
-  <%= link_to 'К путям', routes_path %>
+  <div class="section--table">
+    <div class="section__half section__half--trains">
+      <%= render 'trains/index' %>
+    </div>
+    <div class="section__half section__half--routes">
+      <%= render 'routes/index' %>
+    </div>
+    <div class="section__half section__half--stations">
+      <%= render 'stations/index' %>
+    </div>
+<!--    <div class="section__half">-->
+      <%#= render 'services/index' %>
+<!--    </div>-->
+  </div>
 </main>
-
-<!--
-- Создать ресурс Маршруты (Routes),
-для которого возможны все CRUD-операции.
-- Маршрут имеет название,
-требуется валидация на наличие этого атрибута.
-Создать ресурс нужно вручную, без ипользования скаффолдинга и других генераторов
-(генератор можно использовать только для создания миграции).
--->

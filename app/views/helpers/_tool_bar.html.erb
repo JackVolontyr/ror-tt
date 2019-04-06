@@ -1,0 +1,4 @@
+<td><%= link_to '🔍', item %></td>
+<td><%= link_to '✎', item_edit %></td>
+<td><%= link_to '✖', item, method: :delete, data: { confirm: 'Точно?' } %></td>
+<%= yield %>

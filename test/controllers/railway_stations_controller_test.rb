@@ -16,11 +16,11 @@ class RailwayStationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create railway_station" do
-    assert_difference('RailwayStation.count') do
+    assert_difference('Station.count') do
       post railway_stations_url, params: { railway_station: { title: @railway_station.title } }
     end
 
-    assert_redirected_to railway_station_url(RailwayStation.last)
+    assert_redirected_to railway_station_url(Station.last)
   end
 
   test "should show railway_station" do
@@ -39,7 +39,7 @@ class RailwayStationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy railway_station" do
-    assert_difference('RailwayStation.count', -1) do
+    assert_difference('Station.count', -1) do
       delete railway_station_url(@railway_station)
     end
 

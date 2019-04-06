@@ -1,12 +1,16 @@
-<p id="notice"><%= notice %></p>
+<%= render 'helpers/show_item',
+           item_name_text: 'Номер:',
+           item_name: @train.number,
+           item: @train,
+           item_edit: edit_train_path(@train),
+           item_path_name: 'К Поездам',
+           item_path: trains_path,
+           item_path_new_text: 'Добавить Поезд',
+           item_path_new: new_train_path do %>
 
-<p>
-  <strong>Number:</strong>
-  <%= @train.number %>
-</p>
+  <% if @train.route %>
+    <strong>Путь:</strong>
+    <%= @train.route.name %>
+  <% end %>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
-
-<hr />
-<%= link_to 'На главную', welcome_index_path %>
+<% end %>
