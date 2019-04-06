@@ -38,7 +38,7 @@ h1, h2, h3, h4, p {
 .section--table {
   display: grid;
   grid-gap: 20px;
-  grid-template: "trains trains" "routes stations" auto / 1fr 1fr;
+  grid-template: "trains trains" "routes stations" "carriages carriages" auto / 1fr 1fr;
 }
 
 .section__half > a,
@@ -50,6 +50,7 @@ h1, h2, h3, h4, p {
 .section__half--trains { grid-area: trains; }
 .section__half--routes { grid-area: routes; }
 .section__half--stations { grid-area: stations; }
+.section__half--carriages { grid-area: carriages; }
 
 .footer-warning {
   position: fixed;

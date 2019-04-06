@@ -1,0 +1,27 @@
+<%= render 'helpers/cell_table',
+           item_table_name: 'Вагоны',
+           item_name: 'Номер',
+           item_table_colspan: 5,
+           item_new_path_text: 'Добавить Вагон',
+           item_new_path: new_carriage_path do %>
+
+  <% @carriages.each do |carriage| %>
+    <tr>
+      <td><%= carriage.number %></td>
+      <td><%= carriage.carriage_type || '------' %></td>
+      <td>
+        <% if carriage.seats %>
+          <%= carriage.seats %>
+          <%#= hidden_field(carriage, carriage.seats) %>
+          <%#= render "seats_script" %>
+        <% else %>
+          ------
+        <% end %>
+      </td>
+      <td><%= Train.all.find_by(id: carriage.train).number || '------' %></td>
+
+      <%= render 'helpers/tool_bar', item: carriage, item_edit: edit_carriage_path(carriage) %>
+    </tr>
+  <% end %>
+
+<% end %>

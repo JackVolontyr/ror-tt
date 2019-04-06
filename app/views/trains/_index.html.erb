@@ -1,7 +1,7 @@
 <%= render 'helpers/cell_table',
            item_table_name: 'Поезда',
            item_name: 'Номер',
-           item_table_colspan: 5,
+           item_table_colspan: 6,
            item_new_path_text: 'Добавить Поезд',
            item_new_path: new_train_path do %>
 
@@ -20,6 +20,18 @@
             Билет №<%= ticket.id %>:
             "<%= Station.find_by(id: ticket.station_first.to_i).name if Station.find_by(id: ticket.station_first.to_i) %>" -
             "<%= Station.find_by(id: ticket.station_last.to_i).name if Station.find_by(id: ticket.station_last.to_i) %>"
+            <br/>
+          <% end %>
+
+        <% else %>
+          ------
+        <% end %>
+      </td>
+
+      <td>
+        <% if train.carriages.any? %>
+          <% train.carriages.each do |carriage| %>
+            Вагон №<%= carriage.number %>
             <br/>
           <% end %>
 

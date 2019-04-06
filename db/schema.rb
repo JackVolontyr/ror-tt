@@ -14,8 +14,10 @@ ActiveRecord::Schema.define(version: 2019_04_03_163154) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer "number"
-    t.string "type"
-    t.string "seats", default: "{\n        \"1\": true,\n        \"2\": true,\n        \"3\": true,\n        \"4\": true,\n        \"5\": true,\n        \"6\": true,\n        \"7\": true,\n        \"8\": true,\n        \"9\": true\n      }"
+    t.string "carriage_type"
+    t.string "seats", default: "{\n        \"1\": true,\n        \"2\": true,\n        \"3\": true,\n        \"4\": true,\n        \"5\": true,\n        \"6\": true,\n        \"7\": true,\n        \"8\": true\n      }"
+    t.integer "train_id"
+    t.index ["train_id"], name: "index_carriages_on_train_id"
   end
 
   create_table "routes", force: :cascade do |t|

@@ -6,7 +6,6 @@
   <div class="field">
     <%= form.label :route_id %>
     <%= form.select :route_id, Route.all.collect { |route| [ route.name, route.id ] } %>
-    <%#= form.collection_select :x, Route.all, route.id , route.name %>
   </div>
 
   <div class="actions">

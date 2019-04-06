@@ -13,4 +13,9 @@
     <%= @train.route.name %>
   <% end %>
 
+  <% if @train.carriages %>
+    <strong>Вагоны:</strong>
+    <%= @train.carriages.number %>
+  <% end %>
+
 <% end %>

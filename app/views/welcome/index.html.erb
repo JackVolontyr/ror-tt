@@ -1,5 +1,28 @@
 <main class="tt-container tt-welcome">
-<!--  <h1><%#= Time.now.strftime("%d/%m/%Y %H:%M") %></h1>-->
+  <p>
+    Приветствую!
+    Наше маленькое приложение
+    ничем вам не поможет, но здесь вы
+    можете оформить билет на несуществующий поезд!
+    <%= Time.now.strftime("%d/%m/%Y %H:%M") %>
+  </p>
+
+  <p>
+    Для начала выберите станцию отправления,
+    а следом выберите станцию назначения.
+  </p>
+
+  <p>
+    После выбора поезда, вагона, места, введите свой Ник, Анти-Спам Код и комментарий по желанию.
+  </p>
+
+  <p>
+    И произойдет Магия! Вы займете место в нашем несуществующем поезде.
+    Более того, в любой момент вы сможете посмотреть
+    свои билеты и отменить тот или иной билет, освободив тем самым место для других!
+  </p>
+
+
 
   <div class="section--table">
     <div class="section__half section__half--trains">
@@ -11,8 +34,8 @@
     <div class="section__half section__half--stations">
       <%= render 'stations/index' %>
     </div>
-<!--    <div class="section__half">-->
-      <%#= render 'services/index' %>
-<!--    </div>-->
+    <div class="section__half section__half--carriages">
+      <%= render 'carriages/index' %>
+    </div>
   </div>
 </main>
