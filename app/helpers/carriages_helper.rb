@@ -1,4 +1,4 @@
-module CarriageHelper
+module CarriagesHelper
   def to_hash(string)
     string.remove! '{'
     string.remove! '}'

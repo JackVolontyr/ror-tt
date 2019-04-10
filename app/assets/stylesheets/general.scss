@@ -1,9 +1,13 @@
 html, body {
-  padding: 0;
+  height: 100%;
+  padding: .1px;
   margin: 0;
+
   text-align: center;
-  // background-color: #404;
-  // color: #fff;
+
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
 }
 
 h1, h2, h3, h4, p {
@@ -16,51 +20,159 @@ h1, h2, h3, h4, p {
   }
 }
 
-.tt {
-  &-container {
-    //padding: 40px;
-    margin: 0 auto;
+/* ----------------- */
+$color-warning: #ff002f;
+$color-main: #ffd942;
+$color-second: #cc331f;
+$color-black: black;
+$color-grey: #ccc;
+$color-white: #fff;
+
+$table-border: 1px solid $color-grey;
+$time: .3s;
+
+@mixin input_theme {
+  box-sizing: border-box;
+  min-width: 50px;
+  min-height: 30px;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+@mixin hover {
+  color: $color-black !important;
+  background-color: $color-main;
+  transition: background-color $time, color $time;
+
+  &:hover {
+    background-color: $color-second;
+    color: $color-white !important;
   }
 }
 
-.section__half {
-  position: relative;
+.tutu {
+
+  &-container {
+    max-width: 980px;
+    margin: 20px auto;
+  }
+
+  &-grid {
+    display: table;
+    //grid-gap: 20px;
+    //grid-template: "a b c" / 1fr 1fr 1fr;
+
+    &__cell {
+    }
+  }
+
+  &-table {
+    display: table;
+    width: 100%;
+    text-align: left;
+
+    &__row {
+      display: table-row;
+
+      &--caption {
+        background-color: $color-grey;
+      }
+
+      &:last-of-type .tutu-table__cell {
+        border-bottom: $table-border;
+      }
+
+      .tutu-table__cell {
+        border-bottom: 0;
+      }
+    }
+
+    &__cell {
+      display: table-cell;
+      padding: 2px;
+      border: $table-border;
+
+      &:not(:last-of-type) {
+        border-right: 0;
+      }
+
+      a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: $color-grey !important;
+
+        &:hover {
+          background: none;
+          color: $color-black !important;
+        }
+      }
+    }
+  }
+
+  &-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &--left {
+      justify-content: left;
+    }
+  }
+
+  &-field {
+    @include input_theme;
+    border: $table-border;
+  }
+
+  &-button {
+    @include input_theme;
+    @include hover;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    background-color: $color-black;
+    color: $color-second;
+    font-size: 20px;
+
+    a {
+      color: $color-main !important;
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
+
+  &-info {
+    padding: 20px 0;
+    font-size: 20px;
+  }
 }
 
-.section__half > a {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background: aquamarine;
-  text-align: center;
-}
+#error_explanation {
+  display: flex;
+  justify-content: start;
+  align-items: baseline;
+  margin: 20px 0;
+  padding: 20px;
+  border: 3px dashed $color-warning;
 
-.section--table {
-  display: grid;
-  grid-gap: 20px;
-  grid-template: "trains trains" "routes stations" "carriages carriages" auto / 1fr 1fr;
-}
-
-.section__half > a,
-.section--table h1,
-.section--table table { width: 100%; }
-
-.section--table td { border: 1px solid #ccc; }
-
-.section__half--trains { grid-area: trains; }
-.section__half--routes { grid-area: routes; }
-.section__half--stations { grid-area: stations; }
-.section__half--carriages { grid-area: carriages; }
-
-.footer-warning {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 5px;
-  background-color: black;
-  color: red;
-  font-size: 20px;
+  h2, ul {
+    font-size: 16px;
+  }
 }

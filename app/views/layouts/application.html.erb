@@ -7,14 +7,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+    <%= content_tag :div, class: "tutu-container" do %>
+      <%= yield %>
+    <% end %>
 
-  <footer class="footer-warning">
-    Это не настоящие расписания поездов!
-    This is not a real train schedule!
-  </footer>
+    <%= content_tag :div, class: "" do %>
+      <%= link_to 'На главную', welcome_index_path, class: "tutu-button" %>
+    <% end %>
+
+    <footer class="tutu-footer">
+      <div>
+        Это не настоящие расписания поездов!
+        This is not a real train schedule!
+      </div>
+    </footer>
+  </body>
 </html>

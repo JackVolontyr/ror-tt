@@ -1,11 +1,30 @@
-<%= render 'helpers/form_table', item: @route, item_name: :name do %>
+<h1><%= form_name %></h1>
 
-  <div class="field">
-    <% if @route.stations %>
-      <% @route.stations.each do |station| %>
-        <%= station.name %><br/>
+<%= form_with model: model, local: true do |f| %>
+  <%= render 'helpers/error_block', item: model %>
+
+  <%= render 'components/table',
+             caption: ["Имя", "Поезд", "Станции"] do %>
+    <div class="tutu-table__row tutu-table__row--body">
+      <%= table_cell f.text_field(:name) %>
+      <%= table_cell_with do %>
+        <% f.collection_check_boxes :train_ids, Train.all, :id, :number do |b| %>
+          <%= b.label class: "tutu-label tutu-label--left" do %>
+            <%= b.check_box %><%= b.object.number %>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+      <%= table_cell_with do %>
+        <% f.collection_check_boxes :station_ids, Station.all, :id, :name do |b| %>
+          <%= b.label class: "tutu-label tutu-label--left" do %>
+            <%= b.check_box %><%= b.object.name %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 
+  <%= content_tag :div, class: "" do %>
+    <%= f.submit form_button, class: "tutu-button" %>
+  <% end %>
 <% end %>

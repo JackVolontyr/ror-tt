@@ -1,6 +1,6 @@
-<h1>Добавить Путь</h1>
-<%= render 'form' %>
+<%= render "form",
+           form_name: "Добавить Путь",
+           model: @route,
+           form_button: "Добавить!" %>
 
-<%= link_to 'К Путям', routes_path %>
-<hr/>
-<%= link_to 'На главную', welcome_index_path %>
+<%= render "footer" %>

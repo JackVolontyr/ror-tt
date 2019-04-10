@@ -1,0 +1,9 @@
+<div class="tutu-table">
+  <div class="tutu-table__row tutu-table__row--caption">
+    <% caption.each do |cell_text| %>
+      <%= table_cell cell_text %>
+    <% end %>
+  </div>
+
+  <%= yield %>
+</div>

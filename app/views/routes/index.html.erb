@@ -1,3 +1,19 @@
-<%= render 'index' %>
-<hr/>
-<%= link_to 'На главную', welcome_index_path %>
+<%= render "search" %>
+
+<% if @routes.present? %>
+  <%= render "index",
+             notice: notice,
+             title: "Пути",
+             caption:  ["№", "Имя", "Поезд", "Станции", "", "", ""] do %>
+    <% @routes.each_with_index do |route, index| %>
+      <%= render "route_cell", route: route do %>
+        <%= table_cell index + 1 %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+<% else %>
+  <%= content_tag :div, "Не найдено Путей.", class: "tutu-info" %>
+<% end %>
+
+<%= render "footer" %>

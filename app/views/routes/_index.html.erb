@@ -1,40 +1,6 @@
-<%= render 'helpers/cell_table',
-           item_table_name: 'Пути',
-           item_name: 'Имя',
-           item_table_colspan: 5,
-           item_new_path_text: 'Добавить Путь',
-           item_new_path: new_route_path do %>
+<p id="notice"><%= notice %></p>
+<h1><%= title %></h1>
 
-  <% @routes.each do |route| %>
-    <tr>
-      <td><%= route.name %></td>
-
-      <td>
-        <% if route.trains.any? %>
-          <% route.trains.each do |train| %>
-            <%= train.number %><br/>
-          <% end %>
-
-        <% else %>
-          ------
-        <% end %>
-      </td>
-
-      <td>
-        <% if route.stations.any? %>
-          <% route.stations.each do |station| %>
-            <%= station.name %><br/>
-          <% end %>
-
-        <% else %>
-          ------
-        <% end %>
-      </td>
-
-      <%= render 'helpers/tool_bar',
-                 item: route,
-                 item_edit: edit_route_path(route) %>
-    </tr>
-  <% end %>
-
+<%= render 'components/table', caption: caption do %>
+  <%= yield %>
 <% end %>
