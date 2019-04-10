@@ -1,0 +1,5 @@
+<%= table_cell route.name %>
+<%= table_cell trains_on route %>
+<%= table_cell stations_on route %>
+<%= render 'components/table_options', item: route,
+           edit_item_path: edit_route_path(route) %>

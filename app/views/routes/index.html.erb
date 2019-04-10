@@ -6,7 +6,7 @@
              title: "Пути",
              caption:  ["№", "Имя", "Поезд", "Станции", "", "", ""] do %>
     <% @routes.each_with_index do |route, index| %>
-      <%= render "route_cell", route: route do %>
+      <%= render "route_row", route: route do %>
         <%= table_cell index + 1 %>
       <% end %>
     <% end %>
