@@ -1,7 +1,7 @@
 <h1><%= form_name %></h1>
 
 <%= form_with model: model, local: true do |f| %>
-  <%= render 'helpers/error_block', item: model %>
+  <%= render 'components/error_block', item: model %>
 
   <%= render 'components/table',
              caption: ["Имя", "Поезд", "Станции"] do %>

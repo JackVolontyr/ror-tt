@@ -1,1 +1,32 @@
-<%= render 'helpers/form_table', item: @train, item_name: :number %>
+<h1><%= form_name %></h1>
+
+<%= form_with model: model, local: true do |f| %>
+  <%= render 'components/error_block', item: model %>
+
+  <%= render 'components/table',
+             caption: ["Номер", "Путь", "Вагоны"] do %>
+    <div class="tutu-table__row tutu-table__row--body">
+      <%= table_cell f.text_field(:number) %>
+
+      <%= table_cell_with do %>
+        <% f.collection_radio_buttons :route_id, Route.all, :id, :name do |b| %>
+          <%= b.label class: "tutu-label tutu-label--left" do %>
+            <%= b.radio_button %><%= b.object.name %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <%= table_cell_with do %>
+        <% f.collection_check_boxes :carriage_ids, Carriage.all, :id, :number do |b| %>
+          <%= b.label class: "tutu-label tutu-label--left" do %>
+            <%= b.check_box %><%= b.object.number %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= content_tag :div, class: "" do %>
+    <%= f.submit form_button, class: "tutu-button" %>
+  <% end %>
+<% end %>

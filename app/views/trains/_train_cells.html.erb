@@ -1,0 +1,24 @@
+<%= table_cell train.number %>
+
+<div class="tutu-table__cell">
+  <% if train.route.present? %>
+    <%= link_to train.route, class: "" do %>
+      <%= train.route.name %>
+    <% end %>
+  <% else %>
+    ------
+  <% end %>
+</div>
+
+<div class="tutu-table__cell">
+  <% if train.carriages.present? %>
+    <% train.carriages.each do |c| %>
+      <%= c.number %>
+    <% end %>
+  <% else %>
+    ------
+  <% end %>
+</div>
+
+<%= render 'components/table_options', item: train,
+           edit_item_path: edit_train_path(train) %>

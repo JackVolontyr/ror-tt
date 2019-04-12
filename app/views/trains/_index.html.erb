@@ -1,47 +1,6 @@
-<%= render 'helpers/cell_table',
-           item_table_name: 'Поезда',
-           item_name: 'Номер',
-           item_table_colspan: 6,
-           item_new_path_text: 'Добавить Поезд',
-           item_new_path: new_train_path do %>
-
-  <% @trains.each do |train| %>
-    <tr>
-      <td><%= train.number %></td>
-
-      <td>
-        <% current_route = Route.find_by(id: train.route_id.to_i) %>
-        <%= current_route ? current_route.name : '------' %>
-      </td>
-
-      <td>
-        <% if train.tickets.any? %>
-          <% train.tickets.each do |ticket| %>
-            Билет №<%= ticket.id %>:
-            "<%= Station.find_by(id: ticket.station_first.to_i).name if Station.find_by(id: ticket.station_first.to_i) %>" -
-            "<%= Station.find_by(id: ticket.station_last.to_i).name if Station.find_by(id: ticket.station_last.to_i) %>"
-            <br/>
-          <% end %>
-
-        <% else %>
-          ------
-        <% end %>
-      </td>
-
-      <td>
-        <% if train.carriages.any? %>
-          <% train.carriages.each do |carriage| %>
-            Вагон №<%= carriage.number %>
-            <br/>
-          <% end %>
-
-        <% else %>
-          ------
-        <% end %>
-      </td>
-
-      <%= render 'helpers/tool_bar', item: train, item_edit: edit_train_path(train) %>
-    </tr>
-  <% end %>
-
+<%= render 'components/main',
+           notice: notice,
+           caption: caption,
+           title: title do %>
+  <%= yield %>
 <% end %>

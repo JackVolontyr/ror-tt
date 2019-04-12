@@ -1,21 +1,10 @@
-<%= render 'helpers/show_item',
-           item_name_text: 'Номер:',
-           item_name: @train.number,
-           item: @train,
-           item_edit: edit_train_path(@train),
-           item_path_name: 'К Поездам',
-           item_path: trains_path,
-           item_path_new_text: 'Добавить Поезд',
-           item_path_new: new_train_path do %>
-
-  <% if @train.route %>
-    <strong>Путь:</strong>
-    <%= @train.route.name %>
-  <% end %>
-
-  <% if @train.carriages %>
-    <strong>Вагоны:</strong>
-    <%= @train.carriages.number %>
-  <% end %>
-
+<%= render "index",
+           notice: notice,
+           title: "Поезд",
+           caption:  ["Номер", "Путь", "Вагоны", "", "", ""] do %>
+  <%= render "train_row", train: @train %>
 <% end %>
+
+<%= render "components/footer",
+           index_text: "К Поездам", index_path: trains_path,
+           add_text: "Добавить Поезд", add_path: new_train_path %>

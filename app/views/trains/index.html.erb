@@ -1,3 +1,14 @@
-<%= render 'index' %>
-<hr />
-<%= link_to 'На главную', welcome_index_path %>
+<%= render "index",
+           notice: notice,
+           title: "Поезда",
+           caption:  ["№", "Номер", "Путь", "Вагоны", "", "", ""] do %>
+  <% @trains.each_with_index do |train, index| %>
+    <%= render "train_row", train: train do %>
+      <%= table_cell index + 1 %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render "components/footer",
+           index_text: "К Поездам", index_path: trains_path,
+           add_text: "Добавить Поезд", add_path: new_train_path %>

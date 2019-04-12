@@ -22,9 +22,10 @@ h1, h2, h3, h4, p {
 
 /* ----------------- */
 $color-warning: #ff002f;
+$color-notice: #52cc37;
 $color-main: #ffd942;
 $color-second: #cc331f;
-$color-black: black;
+$color-black: #000;
 $color-grey: #ccc;
 $color-white: #fff;
 
@@ -175,4 +176,9 @@ $time: .3s;
   h2, ul {
     font-size: 16px;
   }
+}
+
+#notice {
+  font-size: 16px;
+  color: $color-notice;
 }

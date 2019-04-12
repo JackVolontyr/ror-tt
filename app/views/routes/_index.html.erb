@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
-<h1><%= title %></h1>
-
-<%= render 'components/table', caption: caption do %>
+<%= render 'components/main',
+           notice: notice,
+           title: "Путь",
+           caption: caption do %>
   <%= yield %>
 <% end %>

@@ -1,6 +1,8 @@
-<h1>Добавить Поезд</h1>
-<%= render 'form' %>
+<%= render "form",
+           form_name: "Добавить Поезд",
+           model: @train,
+           form_button: "Добавить!" %>
 
-<%= link_to 'К Поездам', trains_path %>
-<hr />
-<%= link_to 'На главную', welcome_index_path %>
+<%= render "components/footer",
+           index_text: "К Поездам", index_path: trains_path,
+           add_text: "Добавить Поезд", add_path: new_train_path %>

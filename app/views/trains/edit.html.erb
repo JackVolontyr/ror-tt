@@ -1,16 +1,8 @@
-<h1>Настроить Поезд</h1>
-<%= render 'form' %>
-<%= form_with(model: @train, local: true) do |form| %>
-  <%= render 'helpers/error_block', item: @train %>
+<%= render "form",
+           form_name: "Настроить Поезд",
+           model: @train,
+           form_button: "Готово!" %>
 
-  <div class="field">
-    <%= form.label :route_id %>
-    <%= form.select :route_id, Route.all.collect { |route| [ route.name, route.id ] } %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<%= link_to 'К Поездам', trains_path %>
+<%= render "components/footer",
+           index_text: "К Поездам", index_path: trains_path,
+           add_text: "Добавить Поезд", add_path: new_train_path %>

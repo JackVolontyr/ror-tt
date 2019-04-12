@@ -1,5 +1,33 @@
 <%= table_cell route.name %>
-<%= table_cell trains_on route %>
-<%= table_cell stations_on route %>
+
+<div class="tutu-table__cell">
+  <% if route.trains.present? %>
+    <% route.trains.each do |train| %>
+      <%= link_to train, class: "" do %>
+        <%= train.number %> -
+        <%- if train.carriages.present? %>
+          <% train.carriages.each do |carriage| %>
+          <%= carriage.number %>
+          <% end %>
+        <% else %>
+          ------
+        <% end %>
+      <% end %>
+    <% end %>
+  <% else %>
+    ------
+  <% end %>
+</div>
+
+<div class="tutu-table__cell">
+  <% if route.stations.present? %>
+    <% route.stations.each do |st| %>
+      <%= st.name %>
+    <% end %>
+  <% else %>
+    ------
+  <% end %>
+</div>
+
 <%= render 'components/table_options', item: route,
            edit_item_path: edit_route_path(route) %>
