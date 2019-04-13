@@ -16,13 +16,13 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-# alert fix
-gem "railties", ">= 5.2.3"
-gem "actionview", ">= 5.2.3"
-gem "nokogiri", ">= 1.10.2"
-gem "rack", ">= 2.0.7"
-gem "loofah", ">= 2.2.3"
-gem "rubyzip", ">= 1.2.2"
+# alert fixes
+gem 'railties', '>= 5.2.3'
+gem 'actionview', '>= 5.2.3'
+gem 'nokogiri', '>= 1.10.2'
+gem 'rack', '>= 2.0.7'
+gem 'loofah', '>= 2.2.3'
+gem 'rubyzip', '>= 1.2.2'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
