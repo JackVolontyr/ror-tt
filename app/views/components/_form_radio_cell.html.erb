@@ -1,0 +1,7 @@
+<%= table_cell_with do %>
+  <% form.collection_radio_buttons main_method, collection, value_method, text_method do |b| %>
+    <%= b.label class: "tutu-label tutu-label--left" do %>
+      <%= b.radio_button %><%= b.object[text_method] %>
+    <% end %>
+  <% end %>
+<% end %>
