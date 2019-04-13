@@ -2,7 +2,9 @@
            notice: notice,
            title: "Путь",
            caption:  ["Имя", "Поезд", "Станции", "", "", ""] do %>
-  <%= render "route_row", route: @route %>
+  <%= render "components/table_row" do %>
+    <%= render "route_cells", route: @route %>
+  <% end %>
 <% end %>
 
 <%= render "components/footer",

@@ -3,8 +3,9 @@
            title: "Поезда",
            caption:  ["№", "Номер", "Путь", "Вагоны", "", "", ""] do %>
   <% @trains.each_with_index do |train, index| %>
-    <%= render "train_row", train: train do %>
+    <%= render "components/table_row" do %>
       <%= table_cell index + 1 %>
+      <%= render "train_cells", train: train %>
     <% end %>
   <% end %>
 <% end %>
