@@ -3,5 +3,4 @@
 <%= table_cell Station.find_by(id: ticket.station_first).name %>
 <%= table_cell Station.find_by(id: ticket.station_last).name %>
 
-<%= render 'components/table_options', item: ticket,
-           edit_item_path: edit_ticket_path(ticket) %>
+<%= render 'components/table_options', item: ticket, edit_item_path: edit_ticket_path(ticket) %>

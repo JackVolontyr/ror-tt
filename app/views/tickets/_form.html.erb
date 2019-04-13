@@ -1,48 +1,19 @@
 <h1><%= form_name %></h1>
 
 <%= form_with model: model, local: true do |f| %>
-  <%= render 'components/error_block', item: model %>
+  <%= render "components/error_block", item: model %>
 
-  <%= render 'components/table',
+  <%= render "components/table",
              caption: ["Поезда", "Пассажиры", "Станция Отбытия", "Станция Прибытия"] do %>
     <div class="tutu-table__row tutu-table__row--body">
-
-      <!--TODO: refactor with loop-->
-      <%= table_cell_with do %>
-        <% f.collection_radio_buttons :train_id, Train.all, :id, :number do |b| %>
-          <%= b.label class: "tutu-label tutu-label--left" do %>
-            <%= b.radio_button %><%= b.object.number %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-      <%= table_cell_with do %>
-        <% f.collection_radio_buttons :user_id, User.all, :id, :name do |b| %>
-          <%= b.label class: "tutu-label tutu-label--left" do %>
-            <%= b.radio_button %><%= b.object.name %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-      <%= table_cell_with do %>
-        <% f.collection_radio_buttons :station_first, Station.all, :id, :name do |b| %>
-          <%= b.label class: "tutu-label tutu-label--left" do %>
-            <%= b.radio_button %><%= b.object.name %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-      <%= table_cell_with do %>
-        <% f.collection_radio_buttons :station_last, Station.all, :id, :name do |b| %>
-          <%= b.label class: "tutu-label tutu-label--left" do %>
-            <%= b.radio_button %><%= b.object.name %>
-          <% end %>
-        <% end %>
-      <% end %>
+      <%= render "components/form_radio_cell", form: f, main_method: :train_id,      collection: Train.all,    value_method: :id, text_method: :number %>
+      <%= render "components/form_radio_cell", form: f, main_method: :user_id,       collection: User.all,     value_method: :id, text_method: :name %>
+      <%= render "components/form_radio_cell", form: f, main_method: :station_first, collection: Station.all,  value_method: :id, text_method: :name %>
+      <%= render "components/form_radio_cell", form: f, main_method: :station_last,  collection: Station.all,  value_method: :id, text_method: :name %>
     </div>
   <% end %>
 
-  <%= content_tag :div, class: "" do %>
+  <%= content_tag :div do %>
     <%= f.submit form_button, class: "tutu-button" %>
   <% end %>
 <% end %>
