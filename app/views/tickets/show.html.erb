@@ -1,0 +1,12 @@
+<%= render "index",
+           notice: notice,
+           title: "Билет",
+           caption:  ["Поезда", "Пассажиры", "Станция Отбытия", "Станция Прибытия", "", "", ""] do %>
+  <%= render "components/table_row" do %>
+    <%= render "ticket_cells", ticket: @ticket %>
+  <% end %>
+<% end %>
+
+<%= render "components/footer",
+           index_text: "К Билетам", index_path: tickets_path,
+           add_text: "Добавить Билет", add_path: new_ticket_path %>
