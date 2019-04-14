@@ -50,6 +50,9 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:train_id, :user_id, :station_first, :station_last)
+    params.require(:ticket).permit(
+        :train_id, :user_id, :station_first, :station_last,
+        :name, :user_name
+    )
   end
 end
