@@ -7,26 +7,12 @@
              caption: ["Номер", "Путь", "Вагоны"] do %>
     <div class="tutu-table__row tutu-table__row--body">
       <%= table_cell f.text_field(:number) %>
-
-      <%= table_cell_with do %>
-        <% f.collection_radio_buttons :route_id, Route.all, :id, :name do |b| %>
-          <%= b.label class: "tutu-label tutu-label--left" do %>
-            <%= b.radio_button %><%= b.object.name %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-      <%= table_cell_with do %>
-        <% f.collection_check_boxes :carriage_ids, Carriage.all, :id, :number do |b| %>
-          <%= b.label class: "tutu-label tutu-label--left" do %>
-            <%= b.check_box %><%= b.object.number %>
-          <% end %>
-        <% end %>
-      <% end %>
+      <%= render "components/form_radio_cell", form: f, main_method: :route_id, collection: Route.all, value_method: :id, text_method: :name %>
+      <%= render "components/form_checkbox_cell", form: f, main_method: :carriage_ids, collection: Carriage.all, value_method: :id, text_method: :number %>
     </div>
   <% end %>
 
-  <%= content_tag :div, class: "" do %>
+  <%= content_tag :div do %>
     <%= f.submit form_button, class: "tutu-button" %>
   <% end %>
 <% end %>
