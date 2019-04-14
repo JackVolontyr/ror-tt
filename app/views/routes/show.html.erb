@@ -1,6 +1,4 @@
-<%= render "index",
-           notice: notice,
-           title: "Путь",
+<%= render "index", notice: notice, title: "Путь",
            caption:  ["Имя", "Поезд", "Станции", "", "", ""] do %>
   <%= render "components/table_row" do %>
     <%= render "route_cells", route: @route %>

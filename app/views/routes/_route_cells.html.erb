@@ -1,33 +1,26 @@
 <%= table_cell route.name %>
 
-<div class="tutu-table__cell">
-  <% if route.trains.present? %>
-    <% route.trains.each do |train| %>
-      <%= link_to train, class: "" do %>
-        <%= train.number %> -
-        <%- if train.carriages.present? %>
-          <% train.carriages.each do |carriage| %>
+<%= render "components/table_cell", value: route.trains do %>
+  <% route.trains.each do |train| %>
+
+    <%= link_to train do %>
+      <%= train.number %> -
+      <%- if train.carriages.present? %>
+        <% train.carriages.each do |carriage| %>
           <%= carriage.number %>
-          <% end %>
-        <% else %>
-          ------
         <% end %>
+      <% else %>
+        ------
       <% end %>
     <% end %>
-  <% else %>
-    ------
-  <% end %>
-</div>
 
-<div class="tutu-table__cell">
-  <% if route.stations.present? %>
-    <% route.stations.each do |st| %>
-      <%= st.name %>
-    <% end %>
-  <% else %>
-    ------
   <% end %>
-</div>
+<% end %>
 
-<%= render 'components/table_options', item: route,
-           edit_item_path: edit_route_path(route) %>
+<%= render "components/table_cell", value: route.stations do %>
+  <% route.stations.each do |st| %>
+    <%= st.name %>
+  <% end %>
+<% end %>
+
+<%= render 'components/table_options', item: route, edit_item_path: edit_route_path(route) %>
