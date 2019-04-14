@@ -1,3 +1,5 @@
+<%= table_cell ticket.name %>
+<%= table_cell ticket.user_name %>
 <%= table_cell ticket.train.number %>
 <%= table_cell ticket.user.name %>
 <%= table_cell Station.find_by(id: ticket.station_first).name %>

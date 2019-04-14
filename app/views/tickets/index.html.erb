@@ -1,7 +1,5 @@
-<%= render "index",
-           notice: notice,
-           title: "Билеты",
-           caption:  ["№", "Поезда", "Пассажиры", "Станция Отбытия", "Станция Прибытия", "", "", ""] do %>
+<%= render "index", notice: notice, title: "Билеты",
+           caption: ["№", "Билет", "ФИО", "Поезд", "Пользователь", "Станция Отбытия", "Станция Прибытия", "", "", ""] do %>
   <% @tickets.each_with_index do |ticket, index| %>
     <%= render "components/table_row" do %>
       <%= table_cell index + 1 %>
