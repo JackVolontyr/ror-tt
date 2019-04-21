@@ -1,7 +1,11 @@
 <%= table_cell_with do %>
-  <% form.collection_check_boxes :carriage_ids, Carriage.all, :id, :number do |b| %>
+  <% form.collection_check_boxes main_method,
+                                 collection,
+                                 value_method,
+                                 text_method do |b| %>
     <%= b.label class: "tutu-label tutu-label--left" do %>
-      <%= b.check_box %><%= b.object.number %>
+      <%= b.check_box %><%= b.object[text_method] %>
+      <%= yield %>
     <% end %>
   <% end %>
 <% end %>

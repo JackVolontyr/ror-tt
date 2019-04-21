@@ -126,6 +126,10 @@ $time: .3s;
   &-field {
     @include input_theme;
     border: $table-border;
+
+    &--number {
+      width: 60px;
+    }
   }
 
   &-button {
