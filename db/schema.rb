@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_14_105931) do
+ActiveRecord::Schema.define(version: 2019_04_18_095110) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer "number"
@@ -20,15 +20,15 @@ ActiveRecord::Schema.define(version: 2019_04_14_105931) do
     t.index ["train_id"], name: "index_carriages_on_train_id"
   end
 
-  create_table "routes", force: :cascade do |t|
-    t.string "name"
+  create_table "orders", id: false, force: :cascade do |t|
+    t.integer "station_id"
+    t.integer "ticket_id"
+    t.index ["station_id"], name: "index_orders_on_station_id"
+    t.index ["ticket_id"], name: "index_orders_on_ticket_id"
   end
 
-  create_table "routes_stations", id: false, force: :cascade do |t|
-    t.integer "route_id"
-    t.integer "station_id"
-    t.index ["route_id"], name: "index_routes_stations_on_route_id"
-    t.index ["station_id"], name: "index_routes_stations_on_station_id"
+  create_table "routes", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "services", force: :cascade do |t|
@@ -37,13 +37,6 @@ ActiveRecord::Schema.define(version: 2019_04_14_105931) do
 
   create_table "stations", force: :cascade do |t|
     t.string "name"
-  end
-
-  create_table "stations_tickets", id: false, force: :cascade do |t|
-    t.integer "station_id"
-    t.integer "ticket_id"
-    t.index ["station_id"], name: "index_stations_tickets_on_station_id"
-    t.index ["ticket_id"], name: "index_stations_tickets_on_ticket_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -67,6 +60,14 @@ ActiveRecord::Schema.define(version: 2019_04_14_105931) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "ways", force: :cascade do |t|
+    t.integer "station_id"
+    t.integer "route_id"
+    t.integer "position", default: 1, null: false
+    t.index ["route_id"], name: "index_ways_on_route_id"
+    t.index ["station_id"], name: "index_ways_on_station_id"
   end
 
 end

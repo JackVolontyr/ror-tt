@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :update_position ]
 
   def index
     @stations = Station.all
@@ -18,35 +18,30 @@ class StationsController < ApplicationController
   def create
     @station = Station.new(station_params)
 
-    respond_to do |format|
-      if @station.save
-        format.html { redirect_to @station, notice: 'Station was successfully created.' }
-        format.json { render :show, status: :created, location: @station }
-      else
-        format.html { render :new }
-        format.json { render json: @station.errors, status: :unprocessable_entity }
-      end
+    if @station.save
+      redirect_to @station
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @station.update(station_params)
-        format.html { redirect_to @station, notice: 'Station was successfully updated.' }
-        format.json { render :show, status: :ok, location: @station }
-      else
-        format.html { render :edit }
-        format.json { render json: @station.errors, status: :unprocessable_entity }
-      end
+    if @station.update(station_params)
+      redirect_to @station
+    else
+      render :edit
     end
   end
 
   def destroy
     @station.destroy
-    respond_to do |format|
-      format.html { redirect_to stations_url, notice: 'Station was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to stations_url
+  end
+
+  def update_position
+    @route = Route.find(params[:route_id])
+    @station.update_position(@route, params[:position])
+    redirect_to @route
   end
 
   private

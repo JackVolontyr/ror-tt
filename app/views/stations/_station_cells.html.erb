@@ -1,0 +1,15 @@
+<%= table_cell station.name %>
+
+<%= render "components/table_cell", value: station.routes do %>
+  <% station.routes.each do |route| %>
+    <%= link_to route.name, route %>
+  <% end %>
+<% end %>
+
+<%#= render "components/table_cell", value: station.tickets do %>
+  <%# station.tickets.each do |ticket| %>
+    <%#= ticket.name %>
+  <%# end %>
+<%# end %>
+
+<%= render 'components/table_options', item: station, edit_item_path: edit_station_path(station) %>

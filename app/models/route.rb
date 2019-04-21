@@ -1,5 +1,9 @@
 class Route < ApplicationRecord
   validates :name, presence: true
+
   has_many :trains
-  has_and_belongs_to_many :stations
+  has_many :ways
+  has_many :stations, through: :ways
+
+  # accepts_nested_attributes_for :ways
 end
