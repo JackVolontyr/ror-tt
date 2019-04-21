@@ -1,9 +1,10 @@
-<%= render 'helpers/show_item',
-           item_name_text: 'Станция:',
-           item_name: @station.name,
-           item: @station,
-           item_edit: edit_station_path(@station),
-           item_path_name: 'Список Станций',
-           item_path: stations_path,
-           item_path_new_text: 'Добавить Станцию',
-           item_path_new: new_station_path %>
+<%= render "index", notice: notice, title: "Путь",
+           caption:  ["Имя", "Пути", "", "", ""] do %>
+  <%= render "components/table_row" do %>
+    <%= render "station_cells", station: @station %>
+  <% end %>
+<% end %>
+
+<%= render "components/footer",
+           index_text: "К Путям", index_path: routes_path,
+           add_text: "Добавить Путь", add_path: new_route_path %>

@@ -1,6 +1,8 @@
-<h1>Добавить Станцию</h1>
-<%= render 'form' %>
+<%= render "form",
+           form_name: "Добавить Станцию",
+           model: @station,
+           form_button: "Добавить!" %>
 
-<%= link_to 'Список Станций', stations_path %>
-<hr/>
-<%= link_to 'На главную', welcome_index_path %>
+<%= render "components/footer",
+           index_text: "К Станциям", index_path: stations_path,
+           add_text: "Добавить Станцию", add_path: new_station_path %>
