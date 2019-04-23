@@ -3,16 +3,23 @@
 <%= form_with model: model, local: true do |f| %>
   <%= render 'components/error_block', item: model %>
 
-  <%= render 'components/table',
-             caption: ["Имя", "Пути"] do %>
+  <%= render 'components/table', caption: get_caption("form") do %>
     <div class="tutu-table__row tutu-table__row--body">
       <%= table_cell f.text_field(:name, class: "tutu-field") %>
+
       <%= render "components/form_checkbox_cell",
                  form: f,
                  main_method: :route_ids,
                  collection: Route.all,
                  value_method: :id,
                  text_method: :name %>
+
+      <%= render "components/form_checkbox_cell",
+                 form: f,
+                 main_method: :ticket_ids,
+                 collection: Ticket.all,
+                 value_method: :id,
+                 text_method: :number %>
     </div>
   <% end %>
 
