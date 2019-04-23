@@ -3,7 +3,8 @@ class Station < ApplicationRecord
 
   has_many :ways
   has_many :routes, through: :ways
-  has_and_belongs_to_many :tickets
+  has_many :orders
+  has_many :tickets, through: :orders
 
   scope :ordered, -> { joins(:ways).order("ways.position").uniq }
 
