@@ -1,4 +1,6 @@
-<h1>Настроить Вагон</h1>
-<%= render 'form' %>
+<%= render "form",
+           form_name: "Настроить Вагон",
+           model: @carriage,
+           form_button: "Готово!" %>
 
-<%= link_to 'К Вагонам', carriages_path %>
+<%= render "footer" %>

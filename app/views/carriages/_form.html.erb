@@ -1,34 +1,34 @@
-<%= form_with(model: @carriage, local: true) do |form| %>
-  <%= render 'helpers/error_block', item: @carriage %>
+<h1><%= form_name %></h1>
 
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
-  </div>
+<%= form_with model: model, local: true do |f| %>
+  <%= render 'components/error_block', item: model %>
 
-  <div class="field">
-    <%= form.label :carriage_type %>
-    <%= form.select :carriage_type, {"плац": "плац", "куп": "куп"} %>
-  </div>
+  <%= render 'components/table', caption: get_caption("form") do %>
+    <div class="tutu-table__row tutu-table__row--body">
+      <%= table_cell f.text_field(:number, class: "tutu-field") %>
 
-  <div class="field">
-    <%= form.label :seats %>
-    <%= form.text_field :seats, style: 'width: 510px;' %>
+      <%= table_cell f.select(
+          :type,
+          get_carriage_types,
+          { selected: model.type },
+          { class: "tutu-field" } ) %>
 
-    <%= render "seats_script" %>
+      <%= table_cell f.text_field(:bottom_seats, class: "tutu-field tutu-field--number") %>
+      <%= table_cell f.text_field(:top_seats, class: "tutu-field tutu-field--number") %>
+      <%= table_cell f.text_field(:side_bottom_seats, class: "tutu-field tutu-field--number") %>
+      <%= table_cell f.text_field(:side_top_seats, class: "tutu-field tutu-field--number") %>
+      <%= table_cell f.text_field(:seats, class: "tutu-field") %>
 
-    <%# (to_hash @carriage.seats).each do |seat, boolean| %>
-      <%#= seat %>
-      <%#= check_box seat, boolean, {checked: true, value: boolean}, true, false %>
-    <%# end %>
-  </div>
+      <%= render "components/form_radio_cell",
+                 form: f,
+                 main_method: :train_id,
+                 collection: Train.all,
+                 value_method: :id,
+                 text_method: :number %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :train_id %>
-    <%= form.select :train_id, Train.all.collect { |train| [ train.number, train.id ] } %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= content_tag :div do %>
+    <%= f.submit form_button, class: "tutu-button" %>
+  <% end %>
 <% end %>
