@@ -1,15 +1,25 @@
 module CarriagesHelper
-  def to_hash(string)
-    string.remove! '{'
-    string.remove! '}'
-    array = string.split(',')
-    hash = {}
+  def get_caption(type)
+    base = ["Номер", "Тип Вагона", "Н Места", "В Места", "НБ Места", "ВБ Места", "Места", "Поезда"]
 
-    array.each do |e|
-      key_value = e.split('=>')
-      hash[key_value[0]] = key_value[1]
+    case type
+    when "index"
+      ["№"] + base + ["", "", ""]
+    when "show"
+      base + ["", "", ""]
+    when "form"
+      base
+    else
+      []
     end
+  end
 
-    hash
+  def get_carriage_types
+    {
+      "купе": "CarriageCoupe",
+      "плацкарт": "CarriageEconom",
+      "сидячие": "CarriageSeat",
+      "св": "CarriageLuxury"
+    }
   end
 end
