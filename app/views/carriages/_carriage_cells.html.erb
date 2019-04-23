@@ -1,0 +1,13 @@
+<%= table_cell carriage.number %>
+<%= table_cell carriage.type %>
+<%= table_cell carriage.bottom_seats %>
+<%= table_cell carriage.top_seats %>
+<%= table_cell carriage.side_bottom_seats %>
+<%= table_cell carriage.side_top_seats %>
+<%= table_cell carriage.seats %>
+
+<%= render "components/table_cell", value: carriage.train do %>
+  <%= link_to carriage.train.number, carriage.train %>
+<% end %>
+
+<%= render 'components/table_options', item: carriage, edit_item_path: edit_carriage_path(carriage) %>

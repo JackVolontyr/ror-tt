@@ -1,10 +1,7 @@
-<%= render "index", notice: notice, title: "Путь",
-           caption:  ["Имя", "Пути", "", "", ""] do %>
+<%= render "index", notice: notice, title: "Путь", caption: get_caption("show") do %>
   <%= render "components/table_row" do %>
     <%= render "station_cells", station: @station %>
   <% end %>
 <% end %>
 
-<%= render "components/footer",
-           index_text: "К Путям", index_path: routes_path,
-           add_text: "Добавить Путь", add_path: new_route_path %>
+<%= render "footer" %>
