@@ -1,0 +1,2 @@
+class CarriageLuxury < Carriage
+end
