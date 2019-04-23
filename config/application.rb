@@ -1,3 +1,5 @@
+# config.autoload_paths += %W(#{config.root}/app/models/sports)
+
 require_relative 'boot'
 
 require 'rails/all'
