@@ -1,0 +1,8 @@
+<% model.stations.ordered.each do |station| %>
+  <%= form_tag update_position_station_path(station), method: :patch do %>
+    <%= station.name %>
+    <%= number_field_tag :position, station.position_in(@route), class: "tutu-field tutu-field--number" %>
+    <%= hidden_field_tag :route_id, @route.id %>
+    <%= submit_tag "Изменить", class: "tutu-button" %>
+  <% end %>
+<% end %>
