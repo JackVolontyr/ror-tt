@@ -5,8 +5,18 @@
 <% end %>
 
 <%= render "components/table_cell", value: train.carriages do %>
-  <% train.carriages.each do |c| %>
-    <%= c.number %>
+
+  <!--TODO: make it from js-->
+  <% carriages_order_flag = "head" %>
+  <% carriages_array = train.carriages %>
+  <% if carriages_order_flag == "head" %>
+    <% carriages_array = train.carriages.ordered_by_head %>
+  <% elsif carriages_order_flag == "tail" %>
+    <% carriages_array = train.carriages.ordered_by_tail %>
+  <% end %>
+
+  <% carriages_array.each do |c| %>
+    <%= c.position %> <%= link_to c.number, c, class: "tutu-link--inline" %>
   <% end %>
 <% end %>
 
