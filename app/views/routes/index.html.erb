@@ -1,7 +1,7 @@
 <%= render "search" %>
 
 <% if @routes.present? %>
-  <%= render "index", notice: notice, title: "Пути", caption: get_caption("index") do %>
+  <%= render "index", notice: notice, title: "Пути", caption: get_caption("routes", "index") do %>
     <% @routes.each_with_index do |route, index| %>
       <%= render "components/table_row" do %>
         <%= table_cell index + 1 %>

@@ -167,6 +167,12 @@ $time: .3s;
     padding: 20px 0;
     font-size: 20px;
   }
+
+  &-link {
+    &--inline {
+      display: inline-block !important;
+    }
+  }
 }
 
 #error_explanation {

@@ -1,4 +1,4 @@
-<%= render "index", notice: notice, title: "Путь", caption: get_caption("show") do %>
+<%= render "index", notice: notice, title: "Путь", caption: get_caption("stations", "show") do %>
   <%= render "components/table_row" do %>
     <%= render "station_cells", station: @station %>
   <% end %>
