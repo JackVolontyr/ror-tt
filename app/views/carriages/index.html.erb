@@ -1,4 +1,4 @@
-<%= render "index", notice: notice, title: "Вагоны", caption: get_caption("index") do %>
+<%= render "index", notice: notice, title: "Вагоны", caption: get_caption("carriages", "index") do %>
   <% @carriages.each_with_index do |carriage, index| %>
     <%= render "components/table_row" do %>
       <%= table_cell index + 1 %>
