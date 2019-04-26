@@ -7,6 +7,10 @@ module ApplicationHelper
     content_tag :div, yield, class: "tutu-table__cell"
   end
 
+  def inline_info(text)
+    content_tag :span, text, class: "tutu-text--info"
+  end
+
   def get_caption(for_item, type)
     case for_item
     when "carriages"
@@ -29,5 +33,23 @@ module ApplicationHelper
     else
       []
     end
+  end
+
+  def get_carriage_types
+    {
+      "купе": "CarriageCoupe",
+      "плацкарт": "CarriageEconom",
+      "сидячие": "CarriageSeat",
+      "св": "CarriageLuxury"
+    }
+  end
+
+  def get_seat_types
+    {
+      "нижние": "bottom_seats",
+      "верхние": "top_seats",
+      "нижние боковые": "side_bottom_seats",
+      "верхние боковые": "side_top_seats"
+    }
   end
 end
