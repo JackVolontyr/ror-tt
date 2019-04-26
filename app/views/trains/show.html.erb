@@ -1,3 +1,5 @@
+<%= render "search" %>
+
 <%= render "index", notice: notice, title: "Поезд",
            caption:  ["Номер", "Путь", "Вагоны", "", "", ""] do %>
   <%= render "components/table_row", train: @train do %>
