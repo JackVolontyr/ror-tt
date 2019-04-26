@@ -23,6 +23,7 @@ h1, h2, h3, h4, p {
 /* ----------------- */
 $color-warning: #ff002f;
 $color-notice: #52cc37;
+$color-info: #1f43ff;
 $color-main: #ffd942;
 $color-second: #cc331f;
 $color-black: #000;
@@ -171,6 +172,17 @@ $time: .3s;
   &-link {
     &--inline {
       display: inline-block !important;
+    }
+  }
+
+  &-text {
+
+    &--warning {
+      color: $color-warning;
+    }
+
+    &--info {
+      color: $color-info;
     }
   }
 }

@@ -1,4 +1,5 @@
 class TrainsController < ApplicationController
+  include ApplicationHelper
   before_action :set_train, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -6,6 +7,24 @@ class TrainsController < ApplicationController
   end
 
   def show
+    carriages_type = params[:carriages_type]
+    seats_type = params[:seats_type]
+
+    if carriages_type.present? && seats_type.present?
+      seats_count = @train.seats_count_by_type(carriages_type, seats_type)
+
+      flash[:seats_count] = {
+        carriages_type: get_carriage_types.key(carriages_type),
+        seats_count: seats_count,
+        seats_type: get_seat_types.key(seats_type),
+        carriages_type_selected: carriages_type,
+        seats_type_selected: seats_type
+      }
+
+      respond_to do |format|
+        format.html { redirect_to @train }
+      end
+    end
   end
 
   def new
@@ -30,7 +49,7 @@ class TrainsController < ApplicationController
   def update
     respond_to do |format|
       if @train.update(train_params)
-        format.html { redirect_to @train, notice: 'Train was successfully updated.' }
+        format.html { redirect_to @train, notice: 'Поезд успешно обновлен.' }
       else
         format.html { render :edit }
       end
@@ -40,7 +59,7 @@ class TrainsController < ApplicationController
   def destroy
     @train.destroy
     respond_to do |format|
-      format.html { redirect_to trains_url, notice: 'Train was successfully destroyed.' }
+      format.html { redirect_to trains_url, notice: 'Поезд успешно удален.' }
     end
   end
 

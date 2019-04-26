@@ -1,5 +1,7 @@
 <%= form_tag routes_path, method: "get" do %>
+  <%= label_tag "Станция отбытия:" %>
   <%= text_field_tag :station_first, params[:station_first], class: "tutu-field" %>
+  <%= label_tag "Станция конечная:" %>
   <%= text_field_tag :station_last, params[:station_last], class: "tutu-field" %>
   <%= submit_tag "Поиск", class: "tutu-button", name: nil %>
 <% end %>
