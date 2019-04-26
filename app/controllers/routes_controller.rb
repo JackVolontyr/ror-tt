@@ -2,6 +2,7 @@ class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   def index
+    # TODO: ARQI
     stations = Route.includes(:stations)
     station_first = params[:station_first]
     station_last = params[:station_last]
