@@ -1,1 +1,16 @@
-<%= render 'helpers/form_table', item: @service, item_name: :name %>
+<h1><%= form_name %></h1>
+
+<%= form_with model: model, local: true do |f| %>
+  <%= render "components/error_block", item: model %>
+
+  <%= render "components/table",
+             caption: get_caption("services", "form") do %>
+    <div class="tutu-table__row tutu-table__row--body">
+      <%= table_cell f.text_field(:name) %>
+    </div>
+  <% end %>
+
+  <%= content_tag :div do %>
+    <%= f.submit form_button, class: "tutu-button" %>
+  <% end %>
+<% end %>
