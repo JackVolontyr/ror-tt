@@ -5,5 +5,7 @@ class WelcomeController < ApplicationController
     @trains = Train.all
     @stations = Station.all
     @carriages = Carriage.all
+    @tickets = Ticket.all
+    @services = Service.all
   end
 end
