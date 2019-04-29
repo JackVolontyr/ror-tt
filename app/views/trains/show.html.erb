@@ -1,10 +1,3 @@
 <%= render "search" %>
-
-<%= render "index", notice: notice, title: "Поезд",
-           caption:  ["Номер", "Путь", "Вагоны", "", "", ""] do %>
-  <%= render "components/table_row", train: @train do %>
-    <%= render "train_cells", train: @train %>
-  <% end %>
-<% end %>
-
+<%= render "components/show_layout", item_string: "train", notice: notice, title: "Поезд", item: @train %>
 <%= render "footer" %>
