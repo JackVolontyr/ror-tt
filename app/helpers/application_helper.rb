@@ -19,6 +19,12 @@ module ApplicationHelper
       for_item = ["Имя", "Поезд", "Станции"]
     when "stations"
       for_item = ["Имя", "Пути", "Билеты"]
+    when "trains"
+      for_item = ["Номер", "Путь", "Вагоны"]
+    when "tickets"
+      for_item = ["Билет", "ФИО", "Поезд", "Пользователь", "Станция Отбытия", "Станция Прибытия"]
+    when "services"
+      for_item = ["Название Сервиса"]
     else
       for_item = []
     end
