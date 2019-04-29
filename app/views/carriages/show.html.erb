@@ -1,7 +1,2 @@
-<%= render "index", notice: notice, title: "Вагон", caption: get_caption("carriages", "show")  do %>
-  <%= render "components/table_row" do %>
-    <%= render "carriage_cells", carriage: @carriage %>
-  <% end %>
-<% end %>
-
+<%= render "components/show_layout", item_string: "carriage", notice: notice, title: "Вагон", item: @carriage %>
 <%= render "footer" %>
