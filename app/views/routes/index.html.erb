@@ -1,15 +1,7 @@
 <%= render "search" %>
 
 <% if @routes.present? %>
-  <%= render "index", notice: notice, title: "Пути", caption: get_caption("routes", "index") do %>
-    <% @routes.each_with_index do |route, index| %>
-      <%= render "components/table_row" do %>
-        <%= table_cell index + 1 %>
-        <%= render "route_cells", route: route %>
-      <% end %>
-    <% end %>
-  <% end %>
-
+  <%= render "components/index_layout", item_string: "route", notice: notice, title: "Пути", items: @routes %>
 <% else %>
   <%= content_tag :div, "Не найдено Путей.", class: "tutu-info" %>
 <% end %>
