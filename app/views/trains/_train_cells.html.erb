@@ -1,4 +1,4 @@
-<!--TODO: maybe first string is redundant, but I use it for understanding and clear -->
+<%# TODO: maybe first string is redundant, but I use it for understanding and clear %>
 <% train = item %>
 
 <%= table_cell train.number %>
@@ -9,7 +9,7 @@
 
 <%= render "components/table_cell", value: train.carriages do %>
 
-  <!--TODO: make it from js-->
+  <%# TODO: make it from js %>
   <% carriages_order_flag = "head" %>
   <% carriages_array = train.carriages %>
   <% if carriages_order_flag == "head" %>
