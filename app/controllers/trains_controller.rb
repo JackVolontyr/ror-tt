@@ -1,6 +1,6 @@
 class TrainsController < ApplicationController
   include ApplicationHelper
-  include ChooseRedirect
+  include ChooseRedirectType
 
   before_action :set_train, only: [:show, :edit, :update, :destroy]
 
@@ -38,11 +38,11 @@ class TrainsController < ApplicationController
 
   def create
     @train = Train.new(train_params)
-    @train.save ? choose_redirect_for_train : render(:new)
+    @train.save ? choose_redirect : render(:new)
   end
 
   def update
-    @train.update(train_params) ? choose_redirect_for_train : render(:edit)
+    @train.update(train_params) ? choose_redirect : render(:edit)
   end
 
   def destroy
@@ -60,7 +60,8 @@ class TrainsController < ApplicationController
     params.require(:train).permit(:number, :route_id, {carriage_ids: []})
   end
 
-  def choose_redirect_for_train
-    choose_redirect @train, edit_train_path(@train)
+  def choose_redirect
+    redirect_to @train if end_changes?
+    redirect_to edit_train_path(@train) if continue_changes?
   end
 end

@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  include ChooseRedirect
+  include ChooseRedirectType
 
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
@@ -19,11 +19,11 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
-    @ticket.save ? choose_redirect_for_ticket : render(:new)
+    @ticket.save ? choose_redirect : render(:new)
   end
 
   def update
-    @ticket.update(ticket_params) ? choose_redirect_for_ticket : render(:edit)
+    @ticket.update(ticket_params) ? choose_redirect : render(:edit)
   end
 
   def destroy
@@ -43,7 +43,8 @@ class TicketsController < ApplicationController
     )
   end
 
-  def choose_redirect_for_ticket
-    choose_redirect @ticket, edit_ticket_path(@ticket)
+  def choose_redirect
+    redirect_to @ticket if end_changes?
+    redirect_to edit_ticket_path(@ticket) if continue_changes?
   end
 end

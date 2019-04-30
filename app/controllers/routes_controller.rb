@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-  include ChooseRedirect
+  include ChooseRedirectType
 
   before_action :set_route, only: [:show, :edit, :update, :destroy]
 
@@ -35,11 +35,11 @@ class RoutesController < ApplicationController
 
   def create
     @route = Route.new(route_params)
-    @route.save ? choose_redirect_for_route : render(:new)
+    @route.save ? choose_redirect : render(:new)
   end
 
   def update
-    @route.update(route_params) ? choose_redirect_for_route : render(:edit)
+    @route.update(route_params) ? choose_redirect : render(:edit)
   end
 
   def destroy
@@ -57,7 +57,8 @@ class RoutesController < ApplicationController
     params.require(:route).permit(:name, {train_ids: []}, {station_ids: []})
   end
 
-  def choose_redirect_for_route
-    choose_redirect @route, edit_route_path(@route)
+  def choose_redirect
+    redirect_to @route if end_changes?
+    redirect_to edit_route_path(@route) if continue_changes?
   end
 end

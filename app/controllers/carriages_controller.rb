@@ -1,5 +1,5 @@
 class CarriagesController < ApplicationController
-  include ChooseRedirect
+  include ChooseRedirectType
 
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
 
@@ -19,11 +19,11 @@ class CarriagesController < ApplicationController
 
   def create
     @carriage = Carriage.new(carriage_params)
-    @carriage.save ? choose_redirect_for_carriage : render(:new)
+    @carriage.save ? choose_redirect : render(:new)
   end
 
   def update
-    @carriage.update(carriage_params) ? choose_redirect_for_carriage : render(:edit)
+    @carriage.update(carriage_params) ? choose_redirect : render(:edit)
   end
 
   def destroy
@@ -45,7 +45,8 @@ class CarriagesController < ApplicationController
     )
   end
 
-  def choose_redirect_for_carriage
-    choose_redirect @carriage, edit_carriage_path(@carriage)
+  def choose_redirect
+    redirect_to @carriage if end_changes?
+    redirect_to edit_carriage_path(@carriage) if continue_changes?
   end
 end

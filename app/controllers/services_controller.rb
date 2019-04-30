@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  include ChooseRedirect
+  include ChooseRedirectType
 
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
@@ -19,11 +19,11 @@ class ServicesController < ApplicationController
 
   def create
     @service = Service.new(service_params)
-    @service.save ? choose_redirect_for_service : render(:new)
+    @service.save ? choose_redirect : render(:new)
   end
 
   def update
-    @service.update(service_params) ? choose_redirect_for_service : render(:edit)
+    @service.update(service_params) ? choose_redirect : render(:edit)
   end
 
   def destroy
@@ -41,7 +41,8 @@ class ServicesController < ApplicationController
     params.require(:service).permit(:name)
   end
 
-  def choose_redirect_for_service
-    choose_redirect @service, edit_service_path(@service)
+  def choose_redirect
+    redirect_to @service if end_changes?
+    redirect_to edit_service_path(@service) if continue_changes?
   end
 end
