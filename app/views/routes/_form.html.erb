@@ -1,11 +1,11 @@
 <h1><%= form_name %></h1>
 
-<%= render 'routes/stations_position', model: model %>
+<%= render "routes/stations_position", model: model %>
 
 <%= form_with model: model, local: true do |f| %>
-  <%= render 'components/error_block', item: model %>
+  <%= render "components/error_block", item: model %>
 
-  <%= render 'components/table', caption: get_caption("routes", "form") do %>
+  <%= render "components/table", caption: get_caption("routes", "form") do %>
     <div class="tutu-table__row tutu-table__row--body">
       <%= table_cell f.text_field(:name, class: "tutu-field") %>
       <%= render "components/form_checkbox_cell",
@@ -23,5 +23,5 @@
     </div>
   <% end %>
 
-  <%= render 'components/error_block', f: f, form_button: form_button %>
+  <%= render "components/buttons", f: f, form_button: form_button %>
 <% end %>
