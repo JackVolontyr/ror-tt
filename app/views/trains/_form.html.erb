@@ -3,8 +3,7 @@
 <%= form_with model: model, local: true do |f| %>
   <%= render 'components/error_block', item: model %>
 
-  <%= render 'components/table',
-             caption: ["Номер", "Путь", "Вагоны"] do %>
+  <%= render 'components/table', caption: ["Номер", "Путь", "Вагоны"] do %>
     <div class="tutu-table__row tutu-table__row--body">
       <%= table_cell f.text_field(:number, class: "tutu-field") %>
       <%= render "components/form_radio_cell",
@@ -22,7 +21,5 @@
     </div>
   <% end %>
 
-  <%= content_tag :div do %>
-    <%= f.submit form_button, class: "tutu-button" %>
-  <% end %>
+  <%= render 'components/error_block', f: f, form_button: form_button %>
 <% end %>

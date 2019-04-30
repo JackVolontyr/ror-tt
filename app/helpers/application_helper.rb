@@ -58,4 +58,14 @@ module ApplicationHelper
       "верхние боковые": "side_top_seats"
     }
   end
+
+  def get_all_stations(ordered = false)
+    @stations = Station.all
+    # @stations.ordered not work
+    ordered ? @stations.ordered : @stations
+  end
+
+  def get_all_trains
+    @trains = Train.all
+  end
 end
