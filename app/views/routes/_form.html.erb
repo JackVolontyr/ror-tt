@@ -5,7 +5,7 @@
 <%= form_with model: model, local: true do |f| %>
   <%= render 'components/error_block', item: model %>
 
-  <%= render 'components/table', caption: get_caption("routes", "index") do %>
+  <%= render 'components/table', caption: get_caption("routes", "form") do %>
     <div class="tutu-table__row tutu-table__row--body">
       <%= table_cell f.text_field(:name, class: "tutu-field") %>
 
