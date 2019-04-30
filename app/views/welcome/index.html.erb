@@ -33,13 +33,4 @@
     <%= render "components/index_layout", item_string: "ticket", notice: "", title: "Билеты", items: @tickets %>
     <%= render "components/index_layout", item_string: "service", notice: "", title: "Сервисы", items: @services %>
   </div>
-
-  <div class="tutu-menu tutu-menu--fixed">
-    <%= link_to "К Вагонам", carriages_path, class: "tutu-button" %>
-    <%= link_to "К Путям", routes_path, class: "tutu-button" %>
-    <%= link_to "К Сервисам", services_path, class: "tutu-button" %>
-    <%= link_to "К Станциям", stations_path, class: "tutu-button" %>
-    <%= link_to "К Поездам", trains_path, class: "tutu-button" %>
-    <%= link_to "К Билетам", tickets_path, class: "tutu-button" %>
-  </div>
 </main>

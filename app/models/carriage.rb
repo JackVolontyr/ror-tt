@@ -20,14 +20,14 @@ class Carriage < ApplicationRecord
   def filter_uniq
     (carriages_count + 1).times do |i|
       if position_uniq?(i + 1)
-        self.position = i + 1
+        self[:position] = i + 1
         break
       end
     end
   end
 
   def unset_position
-    self.position = nil
+    self[:position] = nil
   end
 
   def position_uniq?(new_position)

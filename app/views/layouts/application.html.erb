@@ -15,9 +15,15 @@
       <%= yield %>
     <% end %>
 
-    <%= content_tag :div do %>
-      <%= link_to 'На главную', welcome_index_path, class: "tutu-button" %>
-    <% end %>
+    <div class="tutu-menu tutu-menu--fixed">
+      <%= link_to "На главную", welcome_index_path, class: "tutu-button" %>
+      <%= link_to "К Вагонам", carriages_path, class: "tutu-button" %>
+      <%= link_to "К Путям", routes_path, class: "tutu-button" %>
+      <%= link_to "К Сервисам", services_path, class: "tutu-button" %>
+      <%= link_to "К Станциям", stations_path, class: "tutu-button" %>
+      <%= link_to "К Поездам", trains_path, class: "tutu-button" %>
+      <%= link_to "К Билетам", tickets_path, class: "tutu-button" %>
+    </div>
 
     <footer class="tutu-footer">
       <div>
