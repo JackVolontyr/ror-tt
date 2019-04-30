@@ -1,4 +1,6 @@
 class TicketsController < ApplicationController
+  include ChooseRedirectType
+
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -17,31 +19,16 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
-
-    respond_to do |format|
-      if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+    @ticket.save ? choose_redirect : render(:new)
   end
 
   def update
-    respond_to do |format|
-      if @ticket.update(ticket_params)
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
-    end
+    @ticket.update(ticket_params) ? choose_redirect : render(:edit)
   end
 
   def destroy
     @ticket.destroy
-    respond_to do |format|
-      format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
-    end
+    redirect_to tickets_url
   end
 
   private
@@ -54,5 +41,10 @@ class TicketsController < ApplicationController
         :train_id, :user_id, :station_first, :station_last,
         :name, :user_name
     )
+  end
+
+  def choose_redirect
+    redirect_to @ticket if end_changes?
+    redirect_to edit_ticket_path(@ticket) if continue_changes?
   end
 end

@@ -1,4 +1,6 @@
 class StationsController < ApplicationController
+  include ChooseRedirectType
+
   before_action :set_station, only: [:show, :edit, :update, :destroy, :update_position ]
 
   def index
@@ -17,20 +19,11 @@ class StationsController < ApplicationController
 
   def create
     @station = Station.new(station_params)
-
-    if @station.save
-      redirect_to @station
-    else
-      render :new
-    end
+    @station.save ? choose_redirect : render(:new)
   end
 
   def update
-    if @station.update(station_params)
-      redirect_to @station
-    else
-      render :edit
-    end
+    @station.update(station_params) ? choose_redirect : render(:edit)
   end
 
   def destroy
@@ -41,7 +34,7 @@ class StationsController < ApplicationController
   def update_position
     @route = Route.find(params[:route_id])
     @station.update_position(@route, params[:position])
-    redirect_to @route
+    redirect_to edit_route_path(@route)
   end
 
   private
@@ -52,5 +45,10 @@ class StationsController < ApplicationController
 
   def station_params
     params.require(:station).permit(:name)
+  end
+
+  def choose_redirect
+    redirect_to @station if end_changes?
+    redirect_to edit_station_path(@station) if continue_changes?
   end
 end

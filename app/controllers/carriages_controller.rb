@@ -1,4 +1,6 @@
 class CarriagesController < ApplicationController
+  include ChooseRedirectType
+
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -17,20 +19,11 @@ class CarriagesController < ApplicationController
 
   def create
     @carriage = Carriage.new(carriage_params)
-
-    if @carriage.save
-      redirect_to @carriage
-    else
-      render :new
-    end
+    @carriage.save ? choose_redirect : render(:new)
   end
 
   def update
-    if @carriage.update(carriage_params)
-      redirect_to @carriage
-    else
-      render :edit
-    end
+    @carriage.update(carriage_params) ? choose_redirect : render(:edit)
   end
 
   def destroy
@@ -50,5 +43,10 @@ class CarriagesController < ApplicationController
         :type, :bottom_seats, :top_seats, :side_bottom_seats, :side_top_seats,
         :train_id, :position
     )
+  end
+
+  def choose_redirect
+    redirect_to @carriage if end_changes?
+    redirect_to edit_carriage_path(@carriage) if continue_changes?
   end
 end

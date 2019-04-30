@@ -19,6 +19,12 @@ module ApplicationHelper
       for_item = ["Имя", "Поезд", "Станции"]
     when "stations"
       for_item = ["Имя", "Пути", "Билеты"]
+    when "trains"
+      for_item = ["Номер", "Путь", "Вагоны"]
+    when "tickets"
+      for_item = ["Билет", "ФИО", "Поезд", "Пользователь", "Станция Отбытия", "Станция Прибытия"]
+    when "services"
+      for_item = ["Название Сервиса"]
     else
       for_item = []
     end
@@ -51,5 +57,15 @@ module ApplicationHelper
       "нижние боковые": "side_bottom_seats",
       "верхние боковые": "side_top_seats"
     }
+  end
+
+  def get_all_stations(ordered = false)
+    @stations = Station.all
+    # @stations.ordered not work
+    ordered ? @stations.ordered : @stations
+  end
+
+  def get_all_trains
+    @trains = Train.all
   end
 end

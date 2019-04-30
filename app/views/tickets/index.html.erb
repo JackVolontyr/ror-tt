@@ -1,13 +1,2 @@
-<%= render "index", notice: notice, title: "Билеты",
-           caption: ["№", "Билет", "ФИО", "Поезд", "Пользователь", "Станция Отбытия", "Станция Прибытия", "", "", ""] do %>
-  <% @tickets.each_with_index do |ticket, index| %>
-    <%= render "components/table_row" do %>
-      <%= table_cell index + 1 %>
-      <%= render "ticket_cells", ticket: ticket %>
-    <% end %>
-  <% end %>
-<% end %>
-
-<%= render "components/footer",
-           index_text: "К Билетам", index_path: tickets_path,
-           add_text: "Добавить Билет", add_path: new_ticket_path %>
+<%= render "components/index_layout", item_string: "ticket", notice: notice, title: "Билеты", items: @tickets %>
+<%= render "footer" %>

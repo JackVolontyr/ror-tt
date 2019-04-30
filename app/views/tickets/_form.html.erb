@@ -3,8 +3,7 @@
 <%= form_with model: model, local: true do |f| %>
   <%= render "components/error_block", item: model %>
 
-  <%= render "components/table",
-             caption: ["Билет", "ФИО", "Поезд", "Пользователь", "Станция Отбытия", "Станция Прибытия", "", "", ""] do %>
+  <%= render "components/table", caption: get_caption("tickets", "form") do %>
     <div class="tutu-table__row tutu-table__row--body">
       <%= table_cell f.text_field(:name) %>
       <%= table_cell f.text_field(:user_name) %>
@@ -15,7 +14,5 @@
     </div>
   <% end %>
 
-  <%= content_tag :div do %>
-    <%= f.submit form_button, class: "tutu-button" %>
-  <% end %>
+  <%= render "components/buttons", f: f, form_button: form_button %>
 <% end %>

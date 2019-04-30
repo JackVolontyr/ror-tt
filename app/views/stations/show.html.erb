@@ -1,7 +1,2 @@
-<%= render "index", notice: notice, title: "Путь", caption: get_caption("stations", "show") do %>
-  <%= render "components/table_row" do %>
-    <%= render "station_cells", station: @station %>
-  <% end %>
-<% end %>
-
+<%= render "components/show_layout", item_string: "station", notice: notice, title: "Станция", item: @station %>
 <%= render "footer" %>

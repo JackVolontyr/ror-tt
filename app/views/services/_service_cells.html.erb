@@ -1,0 +1,5 @@
+<%# TODO: maybe first string is redundant, but I use it for understanding and clear %>
+<% service = item %>
+
+<%= table_cell service.name %>
+<%= render 'components/table_options', item: service, edit_item_path: edit_service_path(service) %>

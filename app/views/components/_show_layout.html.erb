@@ -1,0 +1,5 @@
+<%= render "components/main", notice: notice, title: title, caption: get_caption("#{item_string}s", "show") do %>
+  <%= render "components/table_row" do %>
+    <%= render "#{item_string}_cells", item: item %>
+  <% end %>
+<% end %>

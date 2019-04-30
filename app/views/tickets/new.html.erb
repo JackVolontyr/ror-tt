@@ -1,8 +1,2 @@
-<%= render "form",
-           form_name: "Добавить Билет",
-           model: @ticket,
-           form_button: "Добавить!" %>
-
-<%= render "components/footer",
-           index_text: "К Билетам", index_path: tickets_path,
-           add_text: "Добавить Билет", add_path: new_ticket_path %>
+<%= render "form", form_name: "Добавить Билет", model: @ticket, form_button: "Добавить!" %>
+<%= render "footer" %>

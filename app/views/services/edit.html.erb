@@ -1,3 +1,2 @@
-<h1>Настроить Сервис</h1>
-<%= render 'form' %>
-<%= link_to 'Назад к Сервисам', services_path %>
+<%= render "form", form_name: "Настроить Сервис", model: @service, form_button: "Готово!" %>
+<%= render "footer" %>

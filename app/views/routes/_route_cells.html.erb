@@ -1,3 +1,6 @@
+<%# TODO: maybe first string is redundant, but I use it for understanding and clear %>
+<% route = item %>
+
 <%= table_cell route.name %>
 
 <%= render "components/table_cell", value: route.trains do %>
@@ -18,7 +21,7 @@
 <% end %>
 
 <%= render "components/table_cell", value: route.stations do %>
-  <% route.stations.each do |st| %>
+  <% route.stations.ordered.each do |st| %>
     <%= st.name %>
   <% end %>
 <% end %>

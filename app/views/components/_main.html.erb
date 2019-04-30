@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %></p>
-<h1><%= title %></h1>
+<section class="tutu-section tutu-grid__cell">
+  <p id="notice"><%= notice %></p>
+  <h1><%= title %></h1>
 
-<%= render 'components/table', caption: caption do %>
-  <%= yield %>
-<% end %>
+  <%= render 'components/table', caption: caption do %>
+    <%= yield %>
+  <% end %>
+</section>

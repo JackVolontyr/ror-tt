@@ -1,5 +1,7 @@
 class TrainsController < ApplicationController
   include ApplicationHelper
+  include ChooseRedirectType
+
   before_action :set_train, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -36,39 +38,30 @@ class TrainsController < ApplicationController
 
   def create
     @train = Train.new(train_params)
-
-    respond_to do |format|
-      if @train.save
-        format.html { redirect_to @train, notice: 'Train was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+    @train.save ? choose_redirect : render(:new)
   end
 
   def update
-    respond_to do |format|
-      if @train.update(train_params)
-        format.html { redirect_to @train, notice: 'Поезд успешно обновлен.' }
-      else
-        format.html { render :edit }
-      end
-    end
+    @train.update(train_params) ? choose_redirect : render(:edit)
   end
 
   def destroy
     @train.destroy
-    respond_to do |format|
-      format.html { redirect_to trains_url, notice: 'Поезд успешно удален.' }
-    end
+    redirect_to trains_url
   end
 
   private
+
   def set_train
     @train = Train.find(params[:id])
   end
 
   def train_params
     params.require(:train).permit(:number, :route_id, {carriage_ids: []})
+  end
+
+  def choose_redirect
+    redirect_to @train if end_changes?
+    redirect_to edit_train_path(@train) if continue_changes?
   end
 end

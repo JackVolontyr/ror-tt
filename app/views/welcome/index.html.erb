@@ -1,11 +1,12 @@
 <main>
+  <!--
   <p>
     Приветствую!
     Наше маленькое приложение
     ничем вам не поможет, но здесь вы
     можете оформить билет на несуществующий поезд!
     <br/>
-    <%= Time.now.strftime("%d/%m/%Y %H:%M") %>
+    <%#= Time.now.strftime("%d/%m/%Y %H:%M") %>
   </p>
 
   <p>
@@ -22,11 +23,14 @@
     Более того, в любой момент вы сможете посмотреть
     свои билеты и отменить тот или иной билет, освободив тем самым место для других!
   </p>
+  -->
 
-  <%= link_to "К Вагонам", carriages_path, class: "tutu-button" %>
-  <%= link_to "К Путям", routes_path, class: "tutu-button" %>
-  <%= link_to "К Сервисам", services_path, class: "tutu-button" %>
-  <%= link_to "К Станциям", stations_path, class: "tutu-button" %>
-  <%= link_to "К Поездам", trains_path, class: "tutu-button" %>
-  <%= link_to "К Билетам", tickets_path, class: "tutu-button" %>
+  <div class="tutu-grid">
+    <%= render "components/index_layout", item_string: "carriage", notice: "", title: "Вагоны", items: @carriages %>
+    <%= render "components/index_layout", item_string: "route", notice: "", title: "Пути", items: @routes %>
+    <%= render "components/index_layout", item_string: "station", notice: "", title: "Станции", items: @stations %>
+    <%= render "components/index_layout", item_string: "train", notice: "", title: "Поезда", items: @trains %>
+    <%= render "components/index_layout", item_string: "ticket", notice: "", title: "Билеты", items: @tickets %>
+    <%= render "components/index_layout", item_string: "service", notice: "", title: "Сервисы", items: @services %>
+  </div>
 </main>

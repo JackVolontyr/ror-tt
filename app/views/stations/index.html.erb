@@ -1,10 +1,2 @@
-<%= render "index", notice: notice, title: "Пути", caption: get_caption("stations", "index") do %>
-  <% @stations.each_with_index do |station, index| %>
-    <%= render "components/table_row" do %>
-      <%= table_cell index + 1 %>
-      <%= render "station_cells", station: station %>
-    <% end %>
-  <% end %>
-<% end %>
-
+<%= render "components/index_layout", item_string: "station", notice: notice, title: "Станции", items: @stations %>
 <%= render "footer" %>

@@ -1,3 +1,2 @@
-<%= render 'index' %>
-<hr />
-<%= link_to 'На главную', welcome_index_path %>
+<%= render "components/index_layout", item_string: "service", notice: notice, title: "Сервисы", items: @services %>
+<%= render "footer" %>
