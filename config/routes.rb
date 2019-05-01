@@ -1,19 +1,14 @@
 Rails.application.routes.draw do
-  resources :trains
+  resources :trains do
+    resources :carriages
+  end
 
   resources :stations do
     patch :update_position, on: :member
   end
 
-  resources :routes
+  resources :routes, :services, :seats, :tickets
 
-  resources :services
-
-  resources :carriages
-
-  resources :seats
-
-  resources :tickets
   get 'welcome/index'
 
   root 'welcome#index'
