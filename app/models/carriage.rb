@@ -6,6 +6,7 @@ class Carriage < ApplicationRecord
   validates_presence_of :top_seats, unless: :luxury_or_seat?
   validates_uniqueness_of :number
 
+  before_create :set_position
   before_update :set_position
 
   scope :ordered_by_head, -> { group(:position).order("position") }
