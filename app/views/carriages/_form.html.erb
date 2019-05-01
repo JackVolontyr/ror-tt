@@ -1,6 +1,6 @@
 <h1><%= form_name %></h1>
 
-<%= form_with model: model, local: true do |f| %>
+<%= form_with model: form_model || model, local: true do |f| %>
   <%= render "components/error_block", item: model %>
 
   <%= render "components/table", caption: get_caption("carriages", "form") do %>
@@ -12,14 +12,11 @@
       <%= table_cell f.text_field(:side_bottom_seats, class: "tutu-field tutu-field--number") %>
       <%= table_cell f.text_field(:side_top_seats, class: "tutu-field tutu-field--number") %>
       <%= table_cell f.text_field(:seats, class: "tutu-field") %>
-      <%= render "components/form_radio_cell",
-                 form: f,
-                 main_method: :train_id,
-                 collection: get_all_trains,
-                 value_method: :id,
-                 text_method: :number %>
+      <%= table_cell "Вагон создается с автоматическим присваиванием к поезду" %>
     </div>
   <% end %>
 
-  <%= render "components/buttons", f: f, form_button: form_button %>
+  <%= content_tag :div do %>
+    <%= f.submit form_button, class: "tutu-button" %>
+  <% end %>
 <% end %>

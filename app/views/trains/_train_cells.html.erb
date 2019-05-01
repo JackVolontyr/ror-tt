@@ -19,7 +19,7 @@
   <% end %>
 
   <% carriages_array.each do |c| %>
-    <%= c.position %> <%= link_to c.number, c, class: "tutu-link--inline" %>
+    <%= c[:position] %>) <%= link_to c.number, [train, c], class: "tutu-link--inline" %>;
   <% end %>
 <% end %>
 

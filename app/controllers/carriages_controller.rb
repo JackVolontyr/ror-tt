@@ -2,6 +2,7 @@ class CarriagesController < ApplicationController
   include ChooseRedirectType
 
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
+  before_action :set_train
 
   def index
     @carriages = Carriage.all
@@ -18,7 +19,7 @@ class CarriagesController < ApplicationController
   end
 
   def create
-    @carriage = Carriage.new(carriage_params)
+    @carriage = @train.carriages.new(carriage_params)
     @carriage.save ? choose_redirect : render(:new)
   end
 
@@ -28,13 +29,17 @@ class CarriagesController < ApplicationController
 
   def destroy
     @carriage.destroy
-    redirect_to carriages_url
+    choose_redirect
   end
 
   private
 
   def set_carriage
     @carriage = Carriage.find(params[:id])
+  end
+
+  def set_train
+    @train = Train.find(params[:train_id])
   end
 
   def carriage_params
@@ -46,7 +51,7 @@ class CarriagesController < ApplicationController
   end
 
   def choose_redirect
-    redirect_to @carriage if end_changes?
-    redirect_to edit_carriage_path(@carriage) if continue_changes?
+    # TODO: maybe it's not best solution
+    redirect_to train_carriages_url
   end
 end

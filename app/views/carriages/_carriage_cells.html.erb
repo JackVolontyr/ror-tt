@@ -14,4 +14,4 @@
   (позиция: <%= carriage.position %>)
 <% end %>
 
-<%= render 'components/table_options', item: carriage, edit_item_path: edit_carriage_path(carriage) %>
+<%= render 'components/table_options', item: [carriage.train, carriage], edit_item_path: [:edit, carriage.train, carriage] %>
