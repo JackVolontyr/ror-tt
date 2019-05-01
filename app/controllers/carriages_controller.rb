@@ -51,6 +51,7 @@ class CarriagesController < ApplicationController
   end
 
   def choose_redirect
+    # TODO: maybe it's not best solution
     redirect_to train_carriages_url
   end
 end
