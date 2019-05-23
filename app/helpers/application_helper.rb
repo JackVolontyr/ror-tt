@@ -3,10 +3,6 @@ module ApplicationHelper
     content_tag :div, content, class: "tutu-table__cell"
   end
 
-  def table_cell_with
-    content_tag :div, yield, class: "tutu-table__cell"
-  end
-
   def inline_info(text)
     content_tag :span, text, class: "tutu-text--info"
   end

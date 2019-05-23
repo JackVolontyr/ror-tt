@@ -1,5 +1,5 @@
-<%= table_cell_with do %>
-  <% form.collection_radio_buttons main_method,
+<div class="tutu-table__cell">
+  <%= form.collection_radio_buttons main_method,
                                    collection,
                                    value_method,
                                    text_method do |b| %>
@@ -8,4 +8,4 @@
       <%= yield %>
     <% end %>
   <% end %>
-<% end %>
+</div>
