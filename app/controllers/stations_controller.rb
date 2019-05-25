@@ -1,7 +1,7 @@
 class StationsController < ApplicationController
   include ChooseRedirectType
 
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :update_position ]
+  before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   def index
     @stations = Station.all
@@ -31,10 +31,22 @@ class StationsController < ApplicationController
     redirect_to stations_url
   end
 
-  def update_position
+  def update_value(value)
     @route = Route.find(params[:route_id])
-    @station.update_position(@route, params[:position])
+    set_station.update_value(@route, value, params[value])
     redirect_to edit_route_path(@route)
+  end
+
+  def update_position
+    update_value "position"
+  end
+
+  def update_arrival
+    update_value "arrival"
+  end
+
+  def update_departure
+    update_value "departure"
   end
 
   private

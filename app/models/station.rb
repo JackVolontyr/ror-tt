@@ -8,13 +8,13 @@ class Station < ApplicationRecord
 
   scope :ordered, -> { joins(:ways).order("ways.position").uniq }
 
-  def update_position(route, position)
+  def update_value(route, value, params_value)
     way = way(route)
-    way.update(position: position) if way
+    way.update(value => params_value) if way
   end
 
-  def position_in(route)
-    way(route).try(:position)
+  def value_in_route(value, route)
+    way(route).try(value)
   end
 
   protected

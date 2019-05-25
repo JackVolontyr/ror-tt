@@ -8,6 +8,6 @@ module ChooseRedirectType
   end
 
   def end_changes?
-    params[:commit] == "Готово!"
+    params[:commit] == "Сохранить и выйти"
   end
 end
