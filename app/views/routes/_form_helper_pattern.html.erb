@@ -1,0 +1,6 @@
+<%= form_tag form_method, method: :patch do %>
+  <%= render "components/error_block", item: model %>
+  <%= yield %>
+  <%= hidden_field_tag :route_id, @route.id %>
+  <%= submit_tag "Изменить", class: "tutu-button" %>
+<% end %>
