@@ -1,12 +1,11 @@
 <%# TODO: maybe first string is redundant, but I use it for understanding and clear %>
 <% ticket = item %>
 
-<%= table_cell ticket.name %>
-<%= table_cell ticket.user_name %>
-<%= table_cell ticket.train.number %>
-<%= table_cell ticket.user.present? ? ticket.user.name : "Пользователь не найден" %>
-<!--TODO: replace to controller -->
-<%= table_cell Station.find_by(id: ticket.station_first).name %>
-<%= table_cell Station.find_by(id: ticket.station_last).name %>
+<%= table_cell present_or_string(ticket.name, "Билет не назван") %>
+<%= table_cell present_or_string(ticket.user_name, "Имя пассажира не указано, а должно!") %>
+<%= table_cell present_or_string(ticket.train, :number, "Поезд не назначен") %>
+<%= table_cell present_or_string(ticket.user, :name, "Пользователь не найден") %>
+<%= table_cell station_name_by_id(ticket.station_first_id) if ticket.station_first_id %>
+<%= table_cell station_name_by_id(ticket.station_last_id) if ticket.station_last_id %>
 
 <%= render 'components/table_options', item: ticket, edit_item_path: edit_ticket_path(ticket) %>
