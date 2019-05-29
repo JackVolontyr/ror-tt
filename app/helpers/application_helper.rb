@@ -1,4 +1,23 @@
 module ApplicationHelper
+
+  def station_name_by_id(id_from)
+    Station.find_by(id: id_from).name
+  end
+
+  def station_id_by_name(name_from)
+    Station.find_by(name: name_from).name
+  end
+
+  def present_or_string(item, item_output = nil, info)
+    if item.present? && item_output.nil?
+      item
+    elsif item.present?
+      item[item_output]
+    else
+      info
+    end
+  end
+
   def table_cell(content)
     content_tag :div, content, class: "tutu-table__cell"
   end
@@ -12,7 +31,9 @@ module ApplicationHelper
     when "carriages"
       for_item = ["Номер", "Тип Вагона", "Н Места", "В Места", "НБ Места", "ВБ Места", "Места", "Поезда"]
     when "routes"
-      for_item = ["Имя", "Поезд", "Станции"]
+      for_item = ["Маршрут", "Поезда", "Станции"]
+    when "search_routes"
+      for_item = ["Маршрут", "Станции"]
     when "stations"
       for_item = ["Имя", "Пути", "Билеты"]
     when "trains"
