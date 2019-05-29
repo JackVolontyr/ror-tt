@@ -1,5 +1,3 @@
-<%= render "search" %>
-
 <% if @routes.present? %>
   <%= render "components/index_layout", item_string: "route", notice: notice, title: "Пути", items: @routes %>
 <% else %>
