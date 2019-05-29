@@ -1,0 +1,6 @@
+<% stations.each do |s| %>
+  <%= s.value_in_route(:arrival, route) %>
+  <b><%= s.name %></b>
+  <%= s.value_in_route(:departure, route) %>
+  <br/>
+<% end %>
