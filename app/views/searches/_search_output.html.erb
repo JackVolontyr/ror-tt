@@ -6,24 +6,19 @@
 
     <%= render 'stations', stations: stations, route: route %>
 
-    <%# TODO: form %>
-    <%= form_for :ticket, url: 'ticket/create', method: :post do |f| %>
-      <%= render 'trains', f: f, route: route %>
-
-      Пользователь сайта:
-      <%= select_tag :user_id,
-                     options_from_collection_for_select(User.all, "id", "name"),
-                     class: "tutu-field" %>
-      <br/>
+    <%= form_for :ticket, url: "/tickets", html: { id: "new_ticket" } do |f| %>
+      <%= render "trains", f: f, trains: route.trains %>
+      <%= render "user", f: f %>
 
       Имя пассажира:
       <%= f.text_field :user_name, required: true, class: "tutu-field" %>
+
       Комментарии:
       <%= f.text_field :comments, class: "tutu-field" %>
 
+      <%= f.hidden_field :name, value: "#{stations.first.name} - #{stations.last.name}" %>
       <%= f.hidden_field :station_first_id, value: stations.first.id %>
       <%= f.hidden_field :station_last_id, value: stations.last.id %>
-      <%= f.hidden_field :train_id, value: route.trains.first %>
       <%= f.hidden_field :route_id, value: route.id %>
 
       <%= submit_tag "Купить Билет", class: "tutu-button" %>
