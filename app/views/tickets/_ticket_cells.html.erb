@@ -5,6 +5,8 @@
 <%= table_cell present_or_string(ticket.user_name, "Имя пассажира не указано, а должно!") %>
 <%= table_cell present_or_string(ticket.train, :number, "Поезд не назначен") %>
 <%= table_cell present_or_string(ticket.user, :name, "Пользователь не найден") %>
+<%= table_cell present_or_string(ticket.route, :name, "Нет пути") %>
+<%= table_cell present_or_string(ticket.comments, "Нет комментария") %>
 <%= table_cell station_name_by_id(ticket.station_first_id) if ticket.station_first_id %>
 <%= table_cell station_name_by_id(ticket.station_last_id) if ticket.station_last_id %>
 
