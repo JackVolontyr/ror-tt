@@ -1,10 +1,29 @@
 class Ticket < ApplicationRecord
+  include ApplicationHelper
+
   belongs_to :user, :optional => true
   belongs_to :train, :optional => true
   belongs_to :route, :optional => true
   has_many :orders
   has_many :stations, through: :orders
 
-  validates :user, presence: true
-  validates :user_name, presence: true
+  validates_presence_of :name, :user, :user_name
+
+  before_validation :auto_naming
+
+  def auto_naming
+    self[:name] = "#{get_train_number} #{get_first_station_name} -> #{get_last_station_name}"
+  end
+
+  def get_first_station_name
+    station_name_by_id(self[:station_first_id])
+  end
+
+  def get_last_station_name
+    station_name_by_id(self[:station_last_id])
+  end
+
+  def get_train_number
+    train_number_by_id(self[:train_id])
+  end
 end
