@@ -8,6 +8,10 @@ module ApplicationHelper
     Station.find_by(name: name_from).name
   end
 
+  def train_number_by_id(id_from)
+    Train.find_by(id: id_from).number
+  end
+
   def present_or_string(item, item_output = nil, info)
     if item.present? && item_output.nil?
       item
@@ -39,7 +43,7 @@ module ApplicationHelper
     when "trains"
       for_item = ["Номер", "Путь", "Вагоны"]
     when "tickets"
-      for_item = ["Билет", "ФИО", "Поезд", "Пользователь", "Станция Отбытия", "Станция Прибытия"]
+      for_item = ["Билет", "ФИО", "Поезд", "Пользователь", "Путь", "Комментарий", "Станция Отбытия", "Станция Прибытия"]
     when "services"
       for_item = ["Название Сервиса"]
     else
