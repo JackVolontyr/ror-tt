@@ -1,0 +1,3 @@
+Пользователь сайта:
+<%= f.select( :user_id, User.all.collect { |u| [ u.name, u.id ] }, {}, { class: "tutu-field" } ) %>
+<br/>

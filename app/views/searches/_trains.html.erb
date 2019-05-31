@@ -1,9 +1,4 @@
-<% if route.trains.present? %>
+<% if trains.present? %>
   Поезда:
-  <%= f.collection_radio_buttons :train_id, route.trains, :id, :number do |b| %>
-    <%= b.label class: "tutu-label tutu-label--left" do %>
-      <%= b.radio_button %><%= b.object[:number] %>
-    <% end %>
-  <% end %>
-  <br/>
+  <%= f.select( :train_id, trains.collect { |r_t| [ r_t.number, r_t.id ] }, {}, { class: "tutu-field" } ) %>
 <% end %>
