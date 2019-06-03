@@ -2,9 +2,15 @@ class TicketsController < ApplicationController
   include ChooseRedirectType
 
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   def index
-    @tickets = Ticket.all
+    # TODO:
+    # if params[:user_id]
+      # @tickets = User.find(params[:user_id]).includes(:users).tickets
+    # else
+      @tickets = Ticket.all
+    # end
   end
 
   def show
@@ -18,7 +24,7 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = @user.tickets.new(ticket_params)
     @ticket.save ? choose_redirect : render(:new)
   end
 
@@ -28,12 +34,16 @@ class TicketsController < ApplicationController
 
   def destroy
     @ticket.destroy
-    redirect_to tickets_url
+    choose_redirect
   end
 
   private
   def set_ticket
     @ticket = Ticket.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
   def ticket_params
@@ -45,7 +55,7 @@ class TicketsController < ApplicationController
   end
 
   def choose_redirect
-    redirect_to @ticket if end_changes?
-    redirect_to edit_ticket_path(@ticket) if continue_changes?
+    # TODO: maybe it's not best solution
+    redirect_to user_tickets_url
   end
 end
