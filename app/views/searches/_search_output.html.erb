@@ -6,7 +6,8 @@
 
     <%= render 'stations', stations: stations, route: route %>
 
-    <%= form_for :ticket, url: "/tickets", html: { id: "new_ticket" } do |f| %>
+    <%# TODO: current_user %>
+    <%= form_for :ticket, url: "/users/#{User.first.id}/tickets", html: { id: "new_users_ticket" } do |f| %>
       <%= render "trains", f: f, trains: route.trains %>
       <%= render "user", f: f %>
 
