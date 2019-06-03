@@ -1,5 +1,4 @@
 class Carriage < ApplicationRecord
-  serialize :seats, JSON
   belongs_to :train, optional: true
 
   validates :number, :bottom_seats, presence: true

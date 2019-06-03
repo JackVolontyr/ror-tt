@@ -2,6 +2,7 @@ class Route < ApplicationRecord
   validates :name, presence: true
 
   has_many :trains
+  has_many :tickets
   has_many :ways
   has_many :stations, through: :ways
 

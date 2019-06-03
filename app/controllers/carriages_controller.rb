@@ -5,7 +5,12 @@ class CarriagesController < ApplicationController
   before_action :set_train
 
   def index
-    @carriages = Carriage.all
+    # TODO:
+    # if params[:train_id]
+      # @carriages = Train.find(params[:train_id]).includes(:trains).carriages
+    # else
+      @carriages = Carriage.all
+    # end
   end
 
   def show
