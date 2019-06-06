@@ -5,7 +5,7 @@
 
 <%= render "components/table_cell", value: station.routes do %>
   <% station.routes.each do |route| %>
-    <%= link_to route.name, route %>
+    <%= link_to route.name, [:admin, route] %>
   <% end %>
 <% end %>
 
@@ -15,4 +15,4 @@
   <% end %>
 <% end %>
 
-<%= render 'components/table_options', item: station, edit_item_path: edit_station_path(station) %>
+<%= render 'components/table_options', item: [:admin, station], edit_item_path: edit_admin_station_path(station) %>

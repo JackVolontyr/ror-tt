@@ -28,7 +28,7 @@ class Admin::StationsController < Admin::BaseController
 
   def destroy
     @station.destroy
-    redirect_to stations_url
+    redirect_to admin_stations_url
   end
 
   def update_value(value)
@@ -56,11 +56,11 @@ class Admin::StationsController < Admin::BaseController
   end
 
   def station_params
-    params.require(:station).permit(:name)
+    params.require(:station).permit(:name, {route_ids: []}, {ticket_ids: []})
   end
 
   def choose_redirect
-    redirect_to @station if end_changes?
-    redirect_to edit_station_path(@station) if continue_changes?
+    redirect_to [:admin, @station] if end_changes?
+    redirect_to edit_admin_station_path(@station) if continue_changes?
   end
 end
