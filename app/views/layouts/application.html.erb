@@ -19,19 +19,21 @@
     <% end %>
 
     <div class="tutu-menu tutu-menu--fixed">
-      <%#= link_to "На главную", welcome_index_path, class: "tutu-button" %>
-      <%= link_to "Поиск", search_path, class: "tutu-button" %>
-      <%#= link_to "К Путям", routes_path, class: "tutu-button" %>
-      <%#= link_to "К Сервисам", services_path, class: "tutu-button" %>
-      <%#= link_to "К Станциям", stations_path, class: "tutu-button" %>
-      <%#= link_to "К Поездам", trains_path, class: "tutu-button" %>
       <% if user_signed_in? %>
-        <%= link_to "К Билетам", "/users/#{current_user.id}/tickets", class: "tutu-button" %>
-      <% end %>
+        <%= link_to "Поиск", search_path, class: "tutu-button" %>
 
-      <% if user_signed_in? %>
+        <%= link_to "К Билетам", "/users/#{current_user.id}/tickets", class: "tutu-button" %>
+
+        <% if current_user.admin? %>
+          <%= link_to "К Путям", admin_routes_path, class: "tutu-button" %>
+          <%= link_to "К Сервисам", admin_services_path, class: "tutu-button" %>
+          <%= link_to "К Станциям", admin_stations_path, class: "tutu-button" %>
+          <%= link_to "К Поездам", admin_trains_path, class: "tutu-button" %>
+        <% end %>
+
         Аккаунт: <%= current_user.email %>
-      <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: "tutu-button" %>
+        <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: "tutu-button" %>
+
       <% else %>
         <%= link_to "Войти", new_user_session_path, class: "tutu-button" %>
       <% end %>
