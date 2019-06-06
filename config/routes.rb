@@ -18,7 +18,6 @@ Rails.application.routes.draw do
 
   resource :search, only: %i[new show edit]
 
-  get 'welcome/index'
-
-  root 'welcome#index'
+  get 'searches/show'
+  root 'searches#show'
 end
