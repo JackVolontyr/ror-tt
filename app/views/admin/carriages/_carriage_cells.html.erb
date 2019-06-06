@@ -10,8 +10,9 @@
 <%= table_cell carriage.seats %>
 
 <%= render "components/table_cell", value: carriage.train do %>
-  <%= link_to carriage.train.number, carriage.train, class: "tutu-link--inline" %>
+  <%= link_to carriage.train.number, [:admin, carriage.train], class: "tutu-link--inline" %>
   (позиция: <%= carriage.position %>)
 <% end %>
 
-<%= render 'components/table_options', item: [carriage.train, carriage], edit_item_path: [:edit, carriage.train, carriage] %>
+<%= render 'components/table_options', item: admin_train_carriage_path(carriage.train, carriage),
+           edit_item_path: edit_admin_train_carriage_path(carriage.train, carriage) %>

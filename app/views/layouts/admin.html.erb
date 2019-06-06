@@ -25,6 +25,7 @@
         <%= link_to "К Билетам", "/users/#{current_user.id}/tickets", class: "tutu-button" %>
 
         <% if current_user.admin? %>
+          <%= link_to "К Вагонам", admin_train_carriages_path(Train.first), class: "tutu-button" %>
           <%= link_to "К Путям", admin_routes_path, class: "tutu-button" %>
           <%= link_to "К Станциям", admin_stations_path, class: "tutu-button" %>
           <%= link_to "К Поездам", admin_trains_path, class: "tutu-button" %>
