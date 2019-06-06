@@ -26,11 +26,21 @@
   </p>
   -->
 
-<!--  <div class="tutu-grid">-->
-    <%#= render "components/index_layout", item_string: "carriage", notice: "", title: "Вагоны", items: @carriages %>
-    <%#= render "components/index_layout", item_string: "route", notice: "", title: "Пути", items: @routes %>
-    <%#= render "components/index_layout", item_string: "station", notice: "", title: "Станции", items: @stations %>
-    <%#= render "components/index_layout", item_string: "train", notice: "", title: "Поезда", items: @trains %>
-    <%#= render "components/index_layout", item_string: "ticket", notice: "", title: "Билеты", items: @tickets %>
-<!--  </div>-->
+  <% if user_signed_in? && current_user.admin? %>
+    <div class="tutu-grid">
+      <%= render "components/index_layout", item_string: "carriage", notice: "", title: "Вагоны", items: @carriages %>
+      <%= render "components/index_layout", item_string: "route", notice: "", title: "Пути", items: @routes %>
+      <%= render "components/index_layout", item_string: "station", notice: "", title: "Станции", items: @stations %>
+      <%= render "components/index_layout", item_string: "train", notice: "", title: "Поезда", items: @trains %>
+
+      <%= render "components/main", notice: notice, title: "Билеты", caption: get_caption("tickets", "index") do %>
+        <% @tickets.each_with_index do |item, index| %>
+          <%= render "components/table_row" do %>
+            <%= table_cell index + 1 %>
+            <%= render "tickets/ticket_cells", item: item %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 </main>

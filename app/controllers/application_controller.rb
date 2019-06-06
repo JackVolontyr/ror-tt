@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    searches_show_path
+    current_user.admin? ? welcome_index_path : searches_show_path
   end
 
   def after_sign_out_path_for(resource)
