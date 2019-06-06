@@ -7,7 +7,7 @@
   <% seats_type_selected = message["seats_type_selected"] %>
 <% end %>
 
-<%= form_tag train_path, method: :get do %>
+<%= form_tag admin_train_path, method: :get do %>
   <%= label_tag :carriages_type, "Тип вагона:" %>
   <%= select_tag :carriages_type,
                  options_for_select(get_carriage_types, carriages_type_selected || nil),

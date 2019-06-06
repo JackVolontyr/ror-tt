@@ -4,7 +4,7 @@
 <%= table_cell train.number %>
 
 <%= render "components/table_cell", value: train.route do %>
-  <%= link_to train.route.name, train.route %>
+  <%= link_to train.route.name, [:admin, train.route] %>
 <% end %>
 
 <%= render "components/table_cell", value: train.carriages do %>
@@ -19,8 +19,8 @@
   <% end %>
 
   <% carriages_array.each do |c| %>
-    <%= c[:position] %>) <%= link_to c.number, [train, c], class: "tutu-link--inline" %>;
+    <%= c[:position] %>) <%= link_to c.number, admin_train_carriage_path(train, c), class: "tutu-link--inline" %>;
   <% end %>
 <% end %>
 
-<%= render 'components/table_options', item: train, edit_item_path: edit_train_path(train) %>
+<%= render 'components/table_options', item: [:admin, train], edit_item_path: edit_admin_train_path(train) %>
