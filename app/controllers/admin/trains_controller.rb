@@ -23,9 +23,7 @@ class Admin::TrainsController < ApplicationController
         seats_type_selected: seats_type
       }
 
-      respond_to do |format|
-        format.html { redirect_to @train }
-      end
+      redirect_to [:admin, @train]
     end
   end
 
@@ -47,7 +45,7 @@ class Admin::TrainsController < ApplicationController
 
   def destroy
     @train.destroy
-    redirect_to trains_url
+    redirect_to admin_trains_url
   end
 
   private
@@ -61,7 +59,7 @@ class Admin::TrainsController < ApplicationController
   end
 
   def choose_redirect
-    redirect_to @train if end_changes?
-    redirect_to edit_train_path(@train) if continue_changes?
+    redirect_to [:admin, @train] if end_changes?
+    redirect_to edit_admin_train_path(@train) if continue_changes?
   end
 end
