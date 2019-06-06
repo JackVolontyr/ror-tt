@@ -1,15 +1,18 @@
 module ApplicationHelper
 
   def station_name_by_id(id_from)
-    Station.find_by(id: id_from).name
+    station = Station.find_by(id: id_from)
+    station ? station.name : "Станции не существует"
   end
 
   def station_id_by_name(name_from)
-    Station.find_by(name: name_from).name
+    station = Station.find_by(name: name_from)
+    station ? station.name : "Станции не существует"
   end
 
   def train_number_by_id(id_from)
-    Train.find_by(id: id_from).number
+    train = Train.find_by(id: id_from)
+    train ? train.number : "Поезда не существует"
   end
 
   def present_or_string(item, item_output = nil, info)
