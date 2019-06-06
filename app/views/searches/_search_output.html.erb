@@ -6,13 +6,11 @@
 
     <%= render 'stations', stations: stations, route: route %>
 
-    <%# TODO: current_user %>
-    <%= form_for :ticket, url: "/users/#{User.first.id}/tickets", html: { id: "new_users_ticket" } do |f| %>
+    <%= form_for :ticket, url: "/users/#{current_user.id}/tickets", html: { id: "new_users_ticket" } do |f| %>
       <%= render "trains", f: f, trains: route.trains %>
-      <%= render "user", f: f %>
 
       Имя пассажира:
-      <%= f.text_field :user_name, required: true, class: "tutu-field" %>
+      <%= f.text_field :user_name, required: true, value: current_user.name, class: "tutu-field" %>
 
       Комментарии:
       <%= f.text_field :comments, class: "tutu-field" %>

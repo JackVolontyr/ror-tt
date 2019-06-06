@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <p id="notice" class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= content_tag :div, class: "tutu-container" do %>
       <%= yield %>
     <% end %>
@@ -22,6 +25,13 @@
       <%= link_to "К Сервисам", services_path, class: "tutu-button" %>
       <%= link_to "К Станциям", stations_path, class: "tutu-button" %>
       <%= link_to "К Поездам", trains_path, class: "tutu-button" %>
+
+      <% if user_signed_in? %>
+        Аккаунт: <%= current_user.email %>
+      <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: "tutu-button" %>
+      <% else %>
+        <%= link_to "Войти", new_user_session_path, class: "tutu-button" %>
+      <% end %>
     </div>
 
     <footer class="tutu-footer">

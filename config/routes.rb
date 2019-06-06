@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :carriages
   end
 
+  devise_for :users
   resources :users do
     resources :tickets
   end
