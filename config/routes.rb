@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     patch :update_departure, on: :member
   end
 
-  resources :routes, :services, :seats
+  resources :routes, :services, :seats, :welcome
 
   resource :search, only: %i[new show edit]
 
