@@ -24,8 +24,8 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = @user.tickets.new(ticket_params)
-    @ticket.save ? choose_redirect : render(:new)
+    @ticket = current_user.tickets.new(ticket_params)
+    @ticket.save ? choose_redirect : search_path
   end
 
   def update
@@ -43,7 +43,7 @@ class TicketsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
   end
 
   def ticket_params

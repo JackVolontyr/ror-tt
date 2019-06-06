@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :carriages
   end
 
+  devise_for :users
   resources :users do
     resources :tickets
   end
@@ -13,11 +14,10 @@ Rails.application.routes.draw do
     patch :update_departure, on: :member
   end
 
-  resources :routes, :services, :seats
+  resources :routes, :services, :seats, :welcome
 
   resource :search, only: %i[new show edit]
 
-  get 'welcome/index'
-
-  root 'welcome#index'
+  get 'searches/show'
+  root 'searches#show'
 end

@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     stations = Route.joins(:stations)
     station_first = params[:station_first]

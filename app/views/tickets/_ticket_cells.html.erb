@@ -10,4 +10,4 @@
 <%= table_cell station_name_by_id(ticket.station_first_id) if ticket.station_first_id %>
 <%= table_cell station_name_by_id(ticket.station_last_id) if ticket.station_last_id %>
 
-<%= render 'components/table_options', item: [ticket.user, ticket], edit_item_path: [:edit, ticket.user, ticket] %>
+<%#= render 'components/table_options', item: [current_user, ticket], edit_item_path: [:edit, current_user, ticket] %>
