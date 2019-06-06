@@ -6,7 +6,7 @@
 <%= render "components/table_cell", value: route.trains do %>
   <% route.trains.each do |train| %>
 
-    <%= link_to train do %>
+    <%= link_to [:admin, train] do %>
       <%= train.number %> -
       <%- if train.carriages.present? %>
         <% train.carriages.each do |carriage| %>
@@ -26,4 +26,4 @@
   <% end %>
 <% end %>
 
-<%= render 'components/table_options', item: route, edit_item_path: edit_route_path(route) %>
+<%= render 'components/table_options', item: [:admin, route], edit_item_path: edit_admin_route_path(route) %>

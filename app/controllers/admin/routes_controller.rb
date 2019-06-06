@@ -28,7 +28,7 @@ class Admin::RoutesController < Admin::BaseController
 
   def destroy
     @route.destroy
-    redirect_to routes_url
+    redirect_to admin_routes_url
   end
 
   private
@@ -42,7 +42,7 @@ class Admin::RoutesController < Admin::BaseController
   end
 
   def choose_redirect
-    redirect_to @route if end_changes?
-    redirect_to edit_route_path(@route) if continue_changes?
+    redirect_to [:admin, @route] if end_changes?
+    redirect_to edit_admin_route_path(@route) if continue_changes?
   end
 end

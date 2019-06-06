@@ -1,15 +1,15 @@
 <% model.stations.ordered.each do |station| %>
-  <%= render "form_helper_pattern", form_method: update_position_station_path(station), model: model do %>
+  <%= render "form_helper_pattern", form_method: update_position_admin_station_path(station), model: model do %>
     Имя: <%= station.name %>
     <%= number_field_tag :position, station.value_in_route(:position, @route), class: "tutu-field tutu-field--number" %>
   <% end %>
 
-  <%= render "form_helper_pattern", form_method: update_arrival_station_path(station), model: model do %>
+  <%= render "form_helper_pattern", form_method: update_arrival_admin_station_path(station), model: model do %>
     Прибытие: <%= station.name %>
     <%= text_field_tag :arrival, station.value_in_route(:arrival, @route), class: "tutu-field" %>
   <% end %>
 
-  <%= render "form_helper_pattern", form_method: update_departure_station_path(station), model: model do %>
+  <%= render "form_helper_pattern", form_method: update_departure_admin_station_path(station), model: model do %>
     Отбытие: <%= station.name %>
     <%= text_field_tag :departure, station.value_in_route(:departure, @route), class: "tutu-field" %>
   <% end %>

@@ -34,7 +34,7 @@ class Admin::StationsController < Admin::BaseController
   def update_value(value)
     @route = Route.find(params[:route_id])
     set_station.update_value(@route, value, params[value])
-    redirect_to edit_route_path(@route)
+    redirect_to edit_admin_route_path(@route)
   end
 
   def update_position
