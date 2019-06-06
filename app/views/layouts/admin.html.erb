@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tutu</title>
+    <title>Tutu - Администратор</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -23,6 +23,12 @@
         <%= link_to "Поиск", search_path, class: "tutu-button" %>
 
         <%= link_to "К Билетам", "/users/#{current_user.id}/tickets", class: "tutu-button" %>
+
+        <% if current_user.admin? %>
+          <%= link_to "К Путям", admin_routes_path, class: "tutu-button" %>
+          <%= link_to "К Станциям", admin_stations_path, class: "tutu-button" %>
+          <%= link_to "К Поездам", admin_trains_path, class: "tutu-button" %>
+        <% end %>
 
         Аккаунт: <%= current_user.email %>
         <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: "tutu-button" %>
