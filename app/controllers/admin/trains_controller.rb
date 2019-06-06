@@ -1,4 +1,4 @@
-class Admin::TrainsController < ApplicationController
+class Admin::TrainsController < Admin::BaseController
   include ApplicationHelper
   include ChooseRedirectType
 

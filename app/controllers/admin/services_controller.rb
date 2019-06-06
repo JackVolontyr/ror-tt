@@ -1,4 +1,4 @@
-class Admin::ServicesController < ApplicationController
+class Admin::ServicesController < Admin::BaseController
   include ChooseRedirectType
 
   before_action :set_service, only: [:show, :edit, :update, :destroy]

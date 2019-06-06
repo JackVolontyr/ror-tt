@@ -1,4 +1,4 @@
-class Admin::CarriagesController < ApplicationController
+class Admin::CarriagesController < Admin::BaseController
   include ChooseRedirectType
 
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]

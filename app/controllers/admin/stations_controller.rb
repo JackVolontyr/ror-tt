@@ -1,7 +1,6 @@
-class Admin::StationsController < ApplicationController
+class Admin::StationsController < Admin::BaseController
   include ChooseRedirectType
 
-  before_action :authenticate_user!
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   def index
