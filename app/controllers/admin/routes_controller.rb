@@ -1,4 +1,4 @@
-class RoutesController < ApplicationController
+class Admin::RoutesController < ApplicationController
   include ChooseRedirectType
 
   before_action :set_route, only: [:show, :edit, :update, :destroy]

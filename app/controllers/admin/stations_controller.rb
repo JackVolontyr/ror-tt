@@ -1,4 +1,4 @@
-class StationsController < ApplicationController
+class Admin::StationsController < ApplicationController
   include ChooseRedirectType
 
   before_action :authenticate_user!
