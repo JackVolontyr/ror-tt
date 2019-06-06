@@ -57,6 +57,8 @@ module ApplicationHelper
       for_item + ["", "", ""]
     when "form"
       for_item
+    when "user"
+      ["№"] + for_item
     else
       []
     end
