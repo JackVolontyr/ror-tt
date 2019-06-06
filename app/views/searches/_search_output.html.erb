@@ -1,10 +1,11 @@
 <div class="tutu-table__row tutu-table__row--body">
-  <%= table_cell link_to(route.name, route) %>
+  <%#= table_cell link_to(route.name, route) %>
+  <%= table_cell route.name %>
 
   <%= render "components/table_cell", value: route.stations do %>
     <% stations = route.stations.ordered %>
 
-    <%= render 'stations', stations: stations, route: route %>
+    <%= render "stations", stations: stations, route: route %>
 
     <%= form_for :ticket, url: "/users/#{current_user.id}/tickets", html: { id: "new_users_ticket" } do |f| %>
       <%= render "trains", f: f, trains: route.trains %>
