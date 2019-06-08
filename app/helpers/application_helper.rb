@@ -2,17 +2,17 @@ module ApplicationHelper
 
   def station_name_by_id(id_from)
     station = Station.find_by(id: id_from)
-    station ? station.name : "Станции не существует"
+    station ? station.name : t("h.no_station")
   end
 
   def station_id_by_name(name_from)
     station = Station.find_by(name: name_from)
-    station ? station.name : "Станции не существует"
+    station ? station.name : t("h.no_station")
   end
 
   def train_number_by_id(id_from)
     train = Train.find_by(id: id_from)
-    train ? train.number : "Поезда не существует"
+    train ? train.number : t("h.no_train")
   end
 
   def present_or_string(item, item_output = nil, info)
@@ -36,17 +36,35 @@ module ApplicationHelper
   def get_caption(for_item, type)
     case for_item
     when "carriages"
-      for_item = ["Номер", "Тип Вагона", "Н Места", "В Места", "НБ Места", "ВБ Места", "Места", "Поезда"]
+      for_item = [
+        t("h.number"),
+        t("h.m.carriages.type"),
+        t("h.m.carriages.bottom_seats"),
+        t("h.m.carriages.top_seats"),
+        t("h.m.carriages.side_bottom_seats"),
+        t("h.m.carriages.side_top_seats"),
+        t("h.m.carriages.seats"),
+        t("h.trains")
+      ]
     when "routes"
-      for_item = ["Маршрут", "Поезда", "Станции"]
+      for_item = [t("h.route"), t("h.trains"), t("h.stations")]
     when "search_routes"
-      for_item = ["Маршрут", "Станции"]
+      for_item = [t("h.route"), t("h.stations")]
     when "stations"
-      for_item = ["Имя", "Пути", "Билеты"]
+      for_item = [t("h.name"), t("h.routes"), t("h.tickets")]
     when "trains"
-      for_item = ["Номер", "Путь", "Вагоны"]
+      for_item = [t("h.number"), t("h.route"), t("h.carriages")]
     when "tickets"
-      for_item = ["Билет", "ФИО", "Поезд", "Пользователь", "Путь", "Комментарий", "Станция Отбытия", "Станция Прибытия"]
+      for_item = [
+        t("h.ticket"),
+        t("h.m.tickets.user_name"),
+        t("h.train"),
+        t("h.user"),
+        t("h.route"),
+        t("h.m.tickets.comments"),
+        t("h.m.tickets.first_station"),
+        t("h.m.tickets.last_station"),
+      ]
     else
       for_item = []
     end
