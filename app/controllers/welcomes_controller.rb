@@ -1,4 +1,4 @@
-class WelcomeController < ApplicationController
+class WelcomesController < ApplicationController
 
   def index
     @routes = Route.all

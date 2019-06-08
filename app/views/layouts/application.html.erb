@@ -20,6 +20,7 @@
 
     <div class="tutu-menu tutu-menu--fixed">
       <% if user_signed_in? %>
+        <%= link_to "На Стартовую", welcomes_path, class: "tutu-button" %>
         <%= link_to "Поиск", search_path, class: "tutu-button" %>
 
         <%= link_to "К Билетам", "/users/#{current_user.id}/tickets", class: "tutu-button" %>
