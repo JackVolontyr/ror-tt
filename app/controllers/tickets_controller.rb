@@ -25,7 +25,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = current_user.tickets.new(ticket_params)
-    @ticket.save ? choose_redirect : search_path
+    @ticket.save ? choose_redirect : render('new')
   end
 
   def update
@@ -56,6 +56,6 @@ class TicketsController < ApplicationController
 
   def choose_redirect
     # TODO: maybe it's not best solution
-    redirect_to user_tickets_url
+    redirect_to render 'index'
   end
 end
