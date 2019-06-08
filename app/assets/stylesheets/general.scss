@@ -29,6 +29,7 @@ $color-warning: #ff002f;
 $color-notice: #52cc37;
 $color-info: #1f43ff;
 $color-main: #ffd942;
+$color-main-disabled: #feff70;
 $color-second: #cc331f;
 $color-black: #000;
 $color-grey: #ccc;
@@ -55,6 +56,11 @@ $time: .3s;
     background-color: $color-second;
     color: $color-white !important;
   }
+}
+
+@mixin hover_disabled {
+  color: $color-black !important;
+  background-color: $color-main-disabled;
 }
 
 .tutu {
@@ -153,6 +159,10 @@ $time: .3s;
     text-decoration: none;
     border: 0;
     cursor: pointer;
+
+    &:disabled {
+      @include hover_disabled
+    }
   }
 
   &-footer {
