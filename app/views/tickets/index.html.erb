@@ -1,7 +1,14 @@
-<%= render "components/main", notice: notice, title: "Билеты", caption: get_caption("tickets", "user") do %>
+<%= render "components/main", notice: notice, title: "Билеты",
+           caption: (current_user.admin? ? get_caption("tickets", "index") : get_caption("tickets", "user")) do %>
+
   <% @tickets.each_with_index do |item, index| %>
 
     <% if item.user == current_user %>
+      <%= render "components/table_row" do %>
+        <%= table_cell index + 1 %>
+        <%= render "tickets/ticket_cells", item: item %>
+      <% end %>
+    <% elsif current_user.admin? %>
       <%= render "components/table_row" do %>
         <%= table_cell index + 1 %>
         <%= render "tickets/ticket_cells", item: item %>

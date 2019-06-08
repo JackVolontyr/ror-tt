@@ -1,0 +1,29 @@
+<%# TODO: maybe first string is redundant, but I use it for understanding and clear %>
+<% route = item %>
+
+<%= table_cell route.name %>
+
+<%= render "components/table_cell", value: route.trains do %>
+  <% route.trains.each do |train| %>
+
+    <%= link_to [:admin, train] do %>
+      <%= train.number %> -
+      <%- if train.carriages.present? %>
+        <% train.carriages.each do |carriage| %>
+          <%= carriage.number %>
+        <% end %>
+      <% else %>
+        ------
+      <% end %>
+    <% end %>
+
+  <% end %>
+<% end %>
+
+<%= render "components/table_cell", value: route.stations do %>
+  <% route.stations.ordered.each do |st| %>
+    <%= st.name %>
+  <% end %>
+<% end %>
+
+<%= render 'components/table_options', item: [:admin, route], edit_item_path: edit_admin_route_path(route) %>
