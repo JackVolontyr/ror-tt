@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       patch :update_departure, on: :member
     end
 
-    resources :routes, :seats, :tickets
+    resources :routes, :seats
   end
 
   get 'searches/show'
