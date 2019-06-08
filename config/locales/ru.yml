@@ -1,0 +1,89 @@
+ru:
+  hello: "Привет, мир!"
+
+  h: # helper
+    no_station: "Станции не существует"
+    no_train: "Поезда не существует"
+
+    name: "Имя"
+    number: "Номер"
+
+    route: "Путь"
+    routes: "Пути"
+    train: "Поезд"
+    trains: "Поезда"
+    station: "Станция"
+    stations: "Станции"
+    ticket: "Билет"
+    tickets: "Билеты"
+    carriage: "Вагон"
+    carriages: "Вагоны"
+    user: "Пользователь"
+    users: "Пользователи"
+
+    m: # model
+      carriages:
+        type: "Тип Вагона"
+        bottom_seats: "Н Места"
+        top_seats: "В Места"
+        side_bottom_seats: "НБ Места"
+        side_top_seats: "ВБ Места"
+        seats: "Места"
+        trains: "Поезда"
+
+      tickets:
+        user_name: "ФИО"
+        comments: "Комментарии"
+        first_station: "Станция Отбытия"
+        last_station: "Станция Прибытия"
+
+  common:
+    error: "ошибка"
+    error_message_form: "При выполнении формы возникли ошибка(и)"
+    back: "Назад"
+    create: "Создать"
+    edit: "Настроить"
+
+  components:
+    buttons:
+      submit: "Сохранить и остаться"
+
+  welcomes:
+    index:
+      title: "Это главная."
+
+  admin:
+    stations:
+      footer:
+        to_index: "К Станциям"
+        to_new: "Добавить Станцию"
+      form:
+        submit: "%{action} Станцию"
+      edit:
+        form_name: "Настроить Станцию"
+      index:
+        title: "Станции"
+      new:
+        form_name: "Добавить Станцию"
+      show:
+        title: "Станция"
+
+  tickets:
+    footer:
+      to_index: "К Билетам"
+      to_new: "Добавить Билет"
+
+    ticket_cells:
+      no_name: "Билет не назван"
+      no_user_name: "ФИО не указано, а должно!"
+      no_train: "Поезд не назначен"
+      no_user: "Пользователь не найден"
+      no_route: "Без Пути"
+      no_comments: "Без Комментария"
+      no_station: "Без Станции"
+
+    edit:
+      form_name: "Настроить Билет"
+
+    form:
+      submit: "%{action} Билет"

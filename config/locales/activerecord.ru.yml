@@ -1,0 +1,38 @@
+ru:
+  activerecord:
+
+    models:
+      station: "Станция"
+
+      train: "Поезд"
+
+#    attributes:
+#      stations:
+#        title: "Названия Станций"
+#        name: "Имя"
+
+#      trains:
+#        number: "Номер"
+
+#      tickets:
+#        user_name: "ФИО"
+
+#      carriages:
+#        type: "Тип Вагона"
+#        bottom_seats: "Н Места"
+#        top_seats: "В Места"
+#        side_bottom_seats: "НБ Места"
+#        side_top_seats: "ВБ Места"
+#        seats: "Места"
+#        trains: "Поезда"
+
+    errors:
+      messages:
+        blank: "не может быть пустым"
+
+      models:
+        station:
+          attributes:
+            blank: "должно быть указано"
+            title:
+              blank: "должно быть указано"
