@@ -12,14 +12,14 @@ class Ticket < ApplicationRecord
   before_validation :auto_naming
 
   def auto_naming
-    self[:name] = "#{get_train_number} #{get_first_station_name} -> #{get_last_station_name}"
+    self[:name] = "#{get_train_number} #{get_station_first_name} -> #{get_station_last_name}"
   end
 
-  def get_first_station_name
+  def get_station_first_name
     station_name_by_id(self[:station_first_id])
   end
 
-  def get_last_station_name
+  def get_station_last_name
     station_name_by_id(self[:station_last_id])
   end
 
