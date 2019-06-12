@@ -1,22 +1,29 @@
-<h1><%= form_name %></h1>
+<h1><%= form_naming("admin.carriages.form.title", @carriage) %></h1>
 
-<%= form_with model: form_model || model, local: true do |f| %>
-  <%= render "components/error_block", item: model %>
+<%= form_with model: [:admin, @train, @carriage], local: true do |f| %>
+  <%= render "components/error_block", item: @carriage %>
 
   <%= render "components/table", caption: get_caption("carriages", "form") do %>
     <div class="tutu-table__row tutu-table__row--body">
       <%= table_cell f.text_field(:number, class: "tutu-field") %>
-      <%= table_cell f.select( :type, get_carriage_types, { selected: model.type }, { class: "tutu-field" } ) %>
-      <%= table_cell f.text_field(:bottom_seats, class: "tutu-field tutu-field--number") %>
-      <%= table_cell f.text_field(:top_seats, class: "tutu-field tutu-field--number") %>
-      <%= table_cell f.text_field(:side_bottom_seats, class: "tutu-field tutu-field--number") %>
-      <%= table_cell f.text_field(:side_top_seats, class: "tutu-field tutu-field--number") %>
+      <%= table_cell f.select(:type, get_carriage_types,
+                              { selected: @carriage.type },
+                              { class: "tutu-field" } ) %>
+      <%= table_cell f.text_field(:bottom_seats,
+                                  class: "tutu-field tutu-field--number") %>
+      <%= table_cell f.text_field(:top_seats,
+                                  class: "tutu-field tutu-field--number") %>
+      <%= table_cell f.text_field(:side_bottom_seats,
+                                  class: "tutu-field tutu-field--number") %>
+      <%= table_cell f.text_field(:side_top_seats,
+                                  class: "tutu-field tutu-field--number") %>
       <%= table_cell f.text_field(:seats, class: "tutu-field") %>
       <%= table_cell "Вагон создается с автоматическим присваиванием к поезду" %>
     </div>
   <% end %>
 
   <%= content_tag :div do %>
-    <%= f.submit form_button, class: "tutu-button" %>
+    <%= f.submit form_naming("admin.carriages.form.submit", @carriage),
+                 class: "tutu-button" %>
   <% end %>
 <% end %>
