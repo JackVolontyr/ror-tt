@@ -1,0 +1,64 @@
+ru:
+  activerecord:
+
+    models:
+      station: "Станция"
+
+      train: "Поезд"
+
+    attributes:
+      station:
+        name: "Имя"
+
+      route:
+        name: "Имя"
+
+      train:
+        number: "Номер"
+        route: "Путь"
+
+      ticket:
+        train: "Поезд"
+        user: "Пользователь"
+        station_first: "Станция Отбытия"
+        station_last: "Станция Прибытия"
+        name: "Имя"
+        user_name: "ФИО"
+        comments: "Комментарии"
+        route: "Путь"
+
+      carriage:
+        number: "Номер"
+        carriage_type: "Тип Вагона"
+        type: "Тип Вагона"
+        seats: "Места"
+        train: "Поезд"
+        top_seats: "В Места"
+        bottom_seats: "Н Места"
+        side_top_seats: "ВБ Места"
+        side_bottom_seats: "НБ Места"
+        position: "Порядковый Номер"
+
+      user:
+        name: "Имя"
+        email: "Почта"
+
+      way:
+        station: "Станция"
+        route: "Путь"
+        position: "Позиция"
+        arrival: "Прибытие"
+        departure: "Отправление"
+
+    errors:
+      messages:
+        blank: "не может быть пустым"
+
+      models:
+        station:
+          attributes:
+            blank: "должно быть указано"
+            title:
+              blank: "должно быть указано"
+            name:
+              blank: "должно быть указано"

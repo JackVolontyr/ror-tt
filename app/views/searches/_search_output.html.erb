@@ -1,27 +1,40 @@
 <div class="tutu-table__row tutu-table__row--body">
-  <%#= table_cell link_to(route.name, route) %>
-  <%= table_cell route.name %>
+  <%= table_cell current_user.admin? ?
+                     link_to(route.name, [:admin, route]) :
+                     route.name %>
 
   <%= render "components/table_cell", value: route.stations do %>
     <% stations = route.stations.ordered %>
 
     <%= render "stations", stations: stations, route: route %>
 
-    <%= form_for :ticket, url: "/users/#{current_user.id}/tickets", html: { id: "new_users_ticket" } do |f| %>
-      <%= render "trains", f: f, trains: route.trains %>
+    <%= form_for :ticket,
+                 url: "/users/#{current_user.id}/tickets",
+                 html: { id: "new_users_ticket" } do |f| %>
 
-      Имя пассажира:
-      <%= f.text_field :user_name, required: true, value: current_user.name, class: "tutu-field" %>
+      <%= render "trains",
+                 f: f,
+                 trains: route.trains %>
 
-      Комментарии:
+      <%= t("searches.show.passenger_name") %>:
+      <%= f.text_field :user_name,
+                       required: true,
+                       value: current_user.name,
+                       class: "tutu-field" %>
+
+      <%= t("searches.show.comments") %>:
       <%= f.text_field :comments, class: "tutu-field" %>
 
-      <%= f.hidden_field :name, value: "#{stations.first.name} - #{stations.last.name}" %>
+      <%= f.hidden_field :name,
+                         value: "#{stations.first.name} - #{stations.last.name}" %>
+
       <%= f.hidden_field :station_first_id, value: stations.first.id %>
+
       <%= f.hidden_field :station_last_id, value: stations.last.id %>
+
       <%= f.hidden_field :route_id, value: route.id %>
 
-      <%= submit_tag "Купить Билет", class: "tutu-button" %>
+      <%= submit_tag t("searches.show.buy"), class: "tutu-button" %>
     <% end %>
   <% end %>
 </div>

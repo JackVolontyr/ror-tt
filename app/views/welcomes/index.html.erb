@@ -1,46 +1,29 @@
 <main>
-  <p>Это главная</p>
-  <!--
-  <p>
-    Приветствую!
-    Наше маленькое приложение
-    ничем вам не поможет, но здесь вы
-    можете оформить билет на несуществующий поезд!
-    <br/>
-    <%#= Time.now.strftime("%d/%m/%Y %H:%M") %>
-  </p>
-
-  <p>
-    Для начала выберите станцию отправления,
-    а следом выберите станцию назначения.
-  </p>
-
-  <p>
-    После выбора поезда, вагона, места, введите свой Ник, Анти-Спам Код и комментарий по желанию.
-  </p>
-
-  <p>
-    И произойдет Магия! Вы займете место в нашем несуществующем поезде.
-    Более того, в любой момент вы сможете посмотреть
-    свои билеты и отменить тот или иной билет, освободив тем самым место для других!
-  </p>
-  -->
+  <p><%= t(".title") %></p>
 
   <% if user_signed_in? && current_user.admin? %>
     <div class="tutu-grid">
-      <%= render "components/index_layout", item_string: "carriage", notice: "", title: "Вагоны", items: @carriages %>
-      <%= render "components/index_layout", item_string: "route", notice: "", title: "Пути", items: @routes %>
-      <%= render "components/index_layout", item_string: "station", notice: "", title: "Станции", items: @stations %>
-      <%= render "components/index_layout", item_string: "train", notice: "", title: "Поезда", items: @trains %>
-
-      <%= render "components/main", notice: notice, title: "Билеты", caption: get_caption("tickets", "index") do %>
-        <% @tickets.each_with_index do |item, index| %>
-          <%= render "components/table_row" do %>
-            <%= table_cell index + 1 %>
-            <%= render "tickets/ticket_cells", item: item %>
-          <% end %>
-        <% end %>
-      <% end %>
+      <%= render "components/index_layout",
+                 item_string: "carriage",
+                 title: t("h.carriages"),
+                 items: @carriages %>
+      <%= render "components/index_layout",
+                 item_string: "route",
+                 title: t("h.routes"),
+                 items: @routes %>
+      <%= render "components/index_layout",
+                 item_string: "station",
+                 title: t("h.stations"),
+                 items: @stations %>
+      <%= render "components/index_layout",
+                 item_string: "train",
+                 title: t("h.trains"),
+                 items: @trains %>
+      <%= render "components/index_layout",
+                 item_string: "ticket",
+                 title: t("h.tickets"),
+                 items: @tickets,
+                 no_admin: true %>
     </div>
   <% end %>
 </main>

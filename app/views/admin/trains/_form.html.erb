@@ -1,17 +1,16 @@
-<h1><%= form_name %></h1>
+<h1><%= form_naming("admin.trains.form.title", @train) %></h1>
 
-<%= form_with model: [:admin, model], local: true do |f| %>
-  <%= render "components/error_block", item: model %>
+<%= form_with model: [:admin, @train], local: true do |f| %>
+  <%= render "components/error_block", item: @train %>
 
-  <%= render "components/table", caption: ["Номер", "Путь", "Вагоны"] do %>
+  <%= render "components/table", caption: get_caption("trains", "form") do %>
     <div class="tutu-table__row tutu-table__row--body">
       <%= table_cell f.text_field(:number, class: "tutu-field") %>
-      <%= render "components/form_radio_cell",
+      <%= render "components/form_select",
                  form: f,
-                 main_method: :route_id,
-                 collection: Route.all,
-                 value_method: :id,
-                 text_method: :name %>
+                 attribute: :route_id,
+                 model: Route,
+                 value: :name %>
       <%= render "components/form_checkbox_cell",
                  form: f,
                  main_method: :carriage_ids,
@@ -21,5 +20,7 @@
     </div>
   <% end %>
 
-  <%= render "components/buttons", f: f, form_button: form_button %>
+  <%= render "components/buttons",
+             f: f,
+             form_button: form_naming("admin.trains.form.submit", @train) %>
 <% end %>

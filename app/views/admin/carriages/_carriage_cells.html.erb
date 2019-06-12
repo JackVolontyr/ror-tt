@@ -1,4 +1,4 @@
-<%# TODO: maybe first string is redundant, but I use it for understanding and clear %>
+<%# TODO: (show_layout needs it) maybe first string is redundant, but I use it for understanding and clear %>
 <% carriage = item %>
 
 <%= table_cell carriage.number %>
@@ -10,9 +10,19 @@
 <%= table_cell carriage.seats %>
 
 <%= render "components/table_cell", value: carriage.train do %>
-  <%= link_to carriage.train.number, [:admin, carriage.train], class: "tutu-link--inline" %>
-  (позиция: <%= carriage.position %>)
+  <%= link_to carriage.train.number,
+              [:admin, carriage.train],
+              class: "tutu-link--inline" %>
+  (<%= t "h.position" %>: <%= carriage.position %>)
 <% end %>
 
-<%= render 'components/table_options', item: admin_train_carriage_path(carriage.train, carriage),
-           edit_item_path: edit_admin_train_carriage_path(carriage.train, carriage) %>
+<%# TODO: %>
+<% if action_name == "show" %>
+  <%= render 'components/table_options',
+             item: [:admin, carriage.train, carriage],
+             edit_item_path: [:edit, :admin, carriage.train, carriage] %>
+<% else %>
+  <%= table_cell "" %>
+  <%= table_cell "" %>
+  <%= table_cell "" %>
+<% end %>

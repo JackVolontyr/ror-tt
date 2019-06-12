@@ -1,4 +1,7 @@
 <% if trains.present? %>
-  Поезда:
-  <%= f.select( :train_id, trains.collect { |r_t| [ r_t.number, r_t.id ] }, {}, { class: "tutu-field" } ) %>
+  <%= t("h.trains") %>:
+  <%= f.select(:train_id,
+               trains.collect { |r_t| [ r_t.number, r_t.id ] },
+               {},
+               { class: "tutu-field" }) %>
 <% end %>

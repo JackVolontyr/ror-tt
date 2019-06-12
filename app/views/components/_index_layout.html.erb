@@ -1,8 +1,14 @@
-<%= render "components/main", notice: notice, title: title, caption: get_caption("#{item_string}s", "index") do %>
+<% no_admin = no_admin || false %>
+<% notice = notice || "" %>
+
+<%= render "components/main",
+           notice: notice,
+           title: title,
+           caption: get_caption("#{item_string}s", "index") do %>
   <% items.each_with_index do |item, index| %>
     <%= render "components/table_row" do %>
       <%= table_cell index + 1 %>
-      <%= render "admin/#{item_string}s/#{item_string}_cells", item: item %>
+      <%= render "#{"admin" unless no_admin}/#{item_string}s/#{item_string}_cells", item: item %>
     <% end %>
   <% end %>
 <% end %>

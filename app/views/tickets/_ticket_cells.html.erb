@@ -1,15 +1,21 @@
-<%# TODO: maybe first string is redundant, but I use it for understanding and clear %>
+<%# TODO: (show_layout needs it) maybe first string is redundant, but I use it for understanding and clear %>
 <% ticket = item %>
 
-<%= table_cell present_or_string(ticket.name, "Билет не назван") %>
-<%= table_cell present_or_string(ticket.user_name, "Имя пассажира не указано, а должно!") %>
-<%= table_cell present_or_string(ticket.train, :number, "Поезд не назначен") %>
-<%= table_cell present_or_string(ticket.user, :name, "Пользователь не найден") %>
-<%= table_cell present_or_string(ticket.route, :name, "Нет пути") %>
-<%= table_cell present_or_string(ticket.comments, "Нет комментария") %>
-<%= table_cell station_name_by_id(ticket.station_first_id) if ticket.station_first_id %>
-<%= table_cell station_name_by_id(ticket.station_last_id) if ticket.station_last_id %>
+<%= table_cell present_or_string(ticket.name, nothing) %>
+<%= table_cell present_or_string(ticket.user_name, nothing) %>
+<%= table_cell present_or_string(ticket.train, :number, nothing) %>
+<%= table_cell present_or_string(ticket.user, :name, nothing) %>
+<%= table_cell present_or_string(ticket.route, :name, nothing) %>
+<%= table_cell present_or_string(ticket.comments, nothing) %>
+<%= table_cell ticket.station_first_id ?
+                   station_name_by_id(ticket.station_first_id) :
+                   nothing %>
+<%= table_cell ticket.station_last_id ?
+                   station_name_by_id(ticket.station_last_id) :
+                   nothing %>
 
 <% if current_user.admin? %>
-  <%= render 'components/table_options', item: [current_user, ticket], edit_item_path: [:edit, current_user, ticket] %>
+  <%= render 'components/table_options',
+             item: [current_user, ticket],
+             edit_item_path: [:edit, current_user, ticket] %>
 <% end %>

@@ -1,22 +1,42 @@
-<h1><%= form_name %></h1>
+<h1><%= form_naming("tickets.form.title", @ticket) %></h1>
 
-<%= form_with model: form_model || model, local: true do |f| %>
-  <%= render "components/error_block", item: model %>
+<%= form_with model: [@user, @ticket], local: true do |f| %>
+  <%= render "components/error_block", item: @ticket %>
 
   <%= render "components/table", caption: get_caption("tickets", "form") do %>
     <div class="tutu-table__row tutu-table__row--body">
       <%= table_cell f.text_field(:name, class: "tutu-field") %>
       <%= table_cell f.text_field(:user_name, class: "tutu-field") %>
-      <%= render "components/form_radio_cell", form: f, main_method: :train_id, collection: Train.all, value_method: :id, text_method: :number %>
-      <%= render "components/form_radio_cell", form: f, main_method: :user_id, collection: User.all, value_method: :id, text_method: :name %>
-      <%= render "components/form_radio_cell", form: f, main_method: :route_id, collection: Route.all, value_method: :id, text_method: :name %>
+      <%= render "components/form_select",
+                 form: f,
+                 attribute: :train_id,
+                 model: Train,
+                 value: :number %>
+      <%= render "components/form_select",
+                 form: f,
+                 attribute: :user_id,
+                 model: User,
+                 value: :name %>
+      <%= render "components/form_select",
+                 form: f,
+                 attribute: :route_id,
+                 model: Route,
+                 value: :name %>
       <%= table_cell f.text_field(:comments, class: "tutu-field") %>
-      <%= render "components/form_radio_cell", form: f, main_method: :station_first_id, collection: Station.all, value_method: :id, text_method: :name %>
-      <%= render "components/form_radio_cell", form: f, main_method: :station_last_id, collection: Station.all, value_method: :id, text_method: :name %>
+      <%= render "components/form_select",
+                 form: f,
+                 attribute: :station_first_id,
+                 model: Station,
+                 value: :name %>
+      <%= render "components/form_select",
+                 form: f,
+                 attribute: :station_last_id,
+                 model: Station,
+                 value: :name %>
     </div>
   <% end %>
 
-  <%= content_tag :div do %>
-    <%= f.submit form_button, class: "tutu-button" %>
-  <% end %>
+  <%= render "components/buttons",
+             f: f,
+             form_button: form_naming("tickets.form.submit", @ticket) %>
 <% end %>

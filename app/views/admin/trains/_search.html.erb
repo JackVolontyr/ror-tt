@@ -1,20 +1,20 @@
 <% if flash[:seats_count] %>
   <% message = flash[:seats_count] %>
-  В вагонах типа: "<%= inline_info message["carriages_type"] %>"
-  доступно: "<%= inline_info message["seats_count"] %>"
-  мест типа: "<%= inline_info message["seats_type"] %>"
+  <%= t ".in_type" %>: "<%= inline_info message["carriages_type"] %>"
+  <%= t ".available" %>: "<%= inline_info message["seats_count"] %>"
+  <%= t ".seats_type" %>: "<%= inline_info message["seats_type"] %>"
   <% carriages_type_selected = message["carriages_type_selected"] %>
   <% seats_type_selected = message["seats_type_selected"] %>
 <% end %>
 
 <%= form_tag admin_train_path, method: :get do %>
-  <%= label_tag :carriages_type, "Тип вагона:" %>
+  <%= label_tag :carriages_type, t(".carriage_type") %>
   <%= select_tag :carriages_type,
                  options_for_select(get_carriage_types, carriages_type_selected || nil),
                  class: "tutu-field" %>
-  <%= label_tag :seats_type, "Тип мест:" %>
+  <%= label_tag :seats_type, t(".seat_type") %>
   <%= select_tag :seats_type,
                  options_for_select(get_seat_types, seats_type_selected || nil),
                  class: "tutu-field" %>
-  <%= submit_tag "Поиск", class: "tutu-button", name: nil %>
+  <%= submit_tag t(".search"), class: "tutu-button", name: nil %>
 <% end %>

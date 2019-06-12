@@ -1,0 +1,191 @@
+ru:
+  # helper
+  h:
+    name: "Имя"
+    number: "Номер"
+    arrival: "Прибытие"
+    departure: "Отбытие"
+    position: "позиция"
+
+    route: "Путь"
+    routes: "Пути"
+    train: "Поезд"
+    trains: "Поезда"
+    station: "Станция"
+    stations: "Станции"
+    ticket: "Билет"
+    tickets: "Билеты"
+    carriage: "Вагон"
+    carriages: "Вагоны"
+    user: "Пользователь"
+    users: "Пользователи"
+
+    # special
+    s:
+      carriage:
+        coupe: "купе"
+        econom: "плацкарт"
+        seat: "сидячие"
+        luxury: "св"
+        bottom_seats: "нижние"
+        top_seats: "верхние"
+        side_bottom_seats: "нижние боковые"
+        side_top_seats: "верхние боковые"
+
+    # model
+    m:
+      carriage:
+        type: "Тип Вагона"
+        bottom_seats: "Н Места"
+        top_seats: "В Места"
+        side_bottom_seats: "НБ Места"
+        side_top_seats: "ВБ Места"
+        seats: "Места"
+        trains: "Поезда"
+
+      ticket:
+        user_name: "ФИО"
+        comments: "Комментарии"
+        station_first: "Станция Отбытия"
+        station_last: "Станция Прибытия"
+
+  common:
+    error: "ошибка"
+    error_message_form: "При выполнении формы возникли ошибка(и)"
+    back: "Назад"
+    create: "Создать"
+    edit: "Настроить"
+
+  # views
+  components:
+    buttons:
+      submit: "Сохранить и остаться"
+    table_options:
+      confirm: "Точно?"
+
+  welcomes:
+    index:
+      title: "Это главная."
+
+  admin:
+    carriages:
+      form:
+        submit: "%{action} Вагон"
+        title: "%{action} Вагон"
+      index:
+        title: "Вагоны"
+      show:
+        title: "Вагон"
+
+    routes:
+      footer:
+        to_new: "К созданию Пути"
+      form:
+        submit: "%{action} Путь"
+        title: "%{action} Путь"
+      show:
+        title: "Путь"
+      index:
+        title: "Пути"
+        no_route: "Не найдено Путей."
+
+    stations:
+      footer:
+        to_new: "К созданию Станции"
+      form:
+        title: "%{action} Станцию"
+        submit: "%{action} Станцию"
+      edit:
+        form_name: "Настроить Станцию"
+      index:
+        title: "Станции"
+      new:
+        form_name: "К созданию Станции"
+      show:
+        title: "Станция"
+
+    trains:
+      footer:
+        to_new: "К созданию  Поезда"
+      form:
+        submit: "%{action} Поезд"
+        title: "%{action} Поезд"
+      search:
+        in_type: "В вагонах типа"
+        available: "доступно"
+        seats_type: "мест типа"
+        carriage_type: "Тип вагона:"
+        seat_type: "Тип места:"
+        search: "Поиск"
+      index:
+        title: "Поезда"
+      show:
+        title: "Поезд"
+        to_add_carriage: "К созданию Вагона"
+
+  devise:
+    confirmations:
+      new:
+        resend: "Повторно отправить инструкции"
+    registrations:
+      new:
+        remember_me: "Запомнить меня"
+        login: "Войти"
+        signup: "Зарегистрироваться"
+        name: "Имя"
+        email: "Почта"
+        password: "Пароль"
+        password_confirmation: "Подтвердите Пароль"
+        characters_minimum: "символов минимум"
+
+    shared:
+      links:
+        login: "Войти"
+        signup: "Зарегистрироваться"
+        forgot: "Забыли свой пароль?"
+        confirmation_instructions: "Не получили подтверждение?"
+        unlock_instructions: "Не получили разблокировку?"
+        sign_in_with: "Войти через"
+    passwords:
+      new:
+        reset: "Отправить инструкции востановления пароля"
+
+  layouts:
+    footer:
+      not_real: "Это не настоящие расписания поездов!"
+    navbar:
+      to_home: "На Стартовую"
+      to_search: "Поиск"
+      to_tickets: "К Билетам"
+      to_carriages: "К Вагонам"
+      to_routes: "К Путям"
+      to_stations: "К Станциям"
+      to_trains: "К Поездам"
+      logout: "Выйти"
+      login: "Войти"
+      account: "Аккаунт"
+    admin:
+      admin: "Администратор"
+
+  searches:
+    show:
+      no_routes: "Не найдено Путей."
+      no_trains_on_routes: "Не найдено Путей с доступными Поездами"
+      passenger_name: "Имя пассажира"
+      comments: "Комментарии"
+      buy: "Купить Билет"
+    search:
+      station_first: "Станция Отбытия"
+      station_last: "Станция Прибытия"
+      submit: "Поиск"
+
+  tickets:
+    footer:
+      to_new: "К созданию Билета"
+    form:
+      title: "%{action} Билет"
+      submit: "%{action} Билет"
+    index:
+      title: "Билеты"
+    show:
+      title: "Билет"

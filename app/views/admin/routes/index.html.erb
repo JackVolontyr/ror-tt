@@ -1,7 +1,11 @@
 <% if @routes.present? %>
-  <%= render "components/index_layout", item_string: "route", notice: notice, title: "Пути", items: @routes %>
+  <%= render "components/index_layout",
+             item_string: "route",
+             notice: notice,
+             title: t(".title"),
+             items: @routes %>
 <% else %>
-  <%= content_tag :div, "Не найдено Путей.", class: "tutu-info" %>
+  <%= content_tag :div, t(".no_route"), class: "tutu-info" %>
 <% end %>
 
 <%= render "footer" %>

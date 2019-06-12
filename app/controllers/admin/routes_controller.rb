@@ -1,6 +1,4 @@
 class Admin::RoutesController < Admin::BaseController
-  include ChooseRedirectType
-
   before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,16 +17,16 @@ class Admin::RoutesController < Admin::BaseController
 
   def create
     @route = Route.new(route_params)
-    @route.save ? choose_redirect : render(:new)
+    @route.save ? redirect_to(admin_routes_path) : render(:new)
   end
 
   def update
-    @route.update(route_params) ? choose_redirect : render(:edit)
+    @route.update(route_params) ? redirect_to(admin_routes_path) : render(:edit)
   end
 
   def destroy
     @route.destroy
-    redirect_to admin_routes_url
+    redirect_to(admin_routes_path)
   end
 
   private
@@ -39,10 +37,5 @@ class Admin::RoutesController < Admin::BaseController
 
   def route_params
     params.require(:route).permit(:name, {train_ids: []}, {station_ids: []})
-  end
-
-  def choose_redirect
-    redirect_to [:admin, @route] if end_changes?
-    redirect_to edit_admin_route_path(@route) if continue_changes?
   end
 end
