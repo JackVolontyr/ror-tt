@@ -1,4 +1,4 @@
-<%# TODO: maybe first string is redundant, but I use it for understanding and clear %>
+<%# TODO: (show_layout needs it) maybe first string is redundant, but I use it for understanding and clear %>
 <% station = item %>
 
 <%= table_cell station.name %>
@@ -15,4 +15,6 @@
   <% end %>
 <% end %>
 
-<%= render 'components/table_options', item: [:admin, station], edit_item_path: edit_admin_station_path(station) %>
+<%= render 'components/table_options',
+           item: [:admin, station],
+           edit_item_path: edit_admin_station_path(station) %>
