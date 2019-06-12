@@ -1,6 +1,4 @@
 class Admin::CarriagesController < Admin::BaseController
-  include ChooseRedirectType
-
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
   before_action :set_train
 
@@ -25,16 +23,16 @@ class Admin::CarriagesController < Admin::BaseController
 
   def create
     @carriage = @train.carriages.new(carriage_params)
-    @carriage.save ? choose_redirect : render(:new)
+    @carriage.save ? redirect_to(admin_train_carriages_path(@train)) : render(:new)
   end
 
   def update
-    @carriage.update(carriage_params) ? choose_redirect : render(:edit)
+    @carriage.update(carriage_params) ? redirect_to(admin_train_carriages_path(@train)) : render(:edit)
   end
 
   def destroy
     @carriage.destroy
-    choose_redirect
+    redirect_to(admin_train_carriages_path(@train))
   end
 
   private
@@ -53,10 +51,5 @@ class Admin::CarriagesController < Admin::BaseController
         :type, :bottom_seats, :top_seats, :side_bottom_seats, :side_top_seats,
         :train_id, :position
     )
-  end
-
-  def choose_redirect
-    # TODO: maybe it's not best solution
-    redirect_to admin_train_carriages_url
   end
 end

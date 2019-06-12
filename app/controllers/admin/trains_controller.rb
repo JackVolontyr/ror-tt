@@ -1,6 +1,5 @@
 class Admin::TrainsController < Admin::BaseController
   include ApplicationHelper
-  include ChooseRedirectType
 
   before_action :set_train, only: [:show, :edit, :update, :destroy]
 
@@ -36,16 +35,16 @@ class Admin::TrainsController < Admin::BaseController
 
   def create
     @train = Train.new(train_params)
-    @train.save ? choose_redirect : render(:new)
+    @train.save ? redirect_to(admin_trains_path) : render(:new)
   end
 
   def update
-    @train.update(train_params) ? choose_redirect : render(:edit)
+    @train.update(train_params) ? redirect_to(admin_trains_path) : render(:edit)
   end
 
   def destroy
     @train.destroy
-    redirect_to admin_trains_url
+    redirect_to(admin_trains_path)
   end
 
   private
@@ -56,10 +55,5 @@ class Admin::TrainsController < Admin::BaseController
 
   def train_params
     params.require(:train).permit(:number, :route_id, {carriage_ids: []})
-  end
-
-  def choose_redirect
-    redirect_to [:admin, @train] if end_changes?
-    redirect_to edit_admin_train_path(@train) if continue_changes?
   end
 end

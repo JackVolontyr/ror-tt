@@ -1,6 +1,4 @@
 class Admin::StationsController < Admin::BaseController
-  include ChooseRedirectType
-
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,11 +17,11 @@ class Admin::StationsController < Admin::BaseController
 
   def create
     @station = Station.new(station_params)
-    @station.save ? choose_redirect : render(:new)
+    @station.save ? redirect_to(admin_stations_path) : render(:new)
   end
 
   def update
-    @station.update(station_params) ? choose_redirect : render(:edit)
+    @station.update(station_params) ? redirect_to(admin_stations_path) : render(:edit)
   end
 
   def destroy
@@ -57,10 +55,5 @@ class Admin::StationsController < Admin::BaseController
 
   def station_params
     params.require(:station).permit(:name, {route_ids: []}, {ticket_ids: []})
-  end
-
-  def choose_redirect
-    redirect_to [:admin, @station] if end_changes?
-    redirect_to edit_admin_station_path(@station) if continue_changes?
   end
 end
