@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tutu</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag asset_path('favicon.ico') %>
-  </head>
+  <%= render "layouts/head" %>
 
   <body>
     <p id="notice" class="notice"><%= notice %></p>
@@ -18,33 +10,7 @@
       <%= yield %>
     <% end %>
 
-    <div class="tutu-menu tutu-menu--fixed">
-      <% if user_signed_in? %>
-        <%= link_to "На Стартовую", welcomes_path, class: "tutu-button" %>
-        <%= link_to "Поиск", search_path, class: "tutu-button" %>
-
-        <%= link_to "К Билетам", "/users/#{current_user.id}/tickets", class: "tutu-button" %>
-
-        <% if current_user.admin? %>
-          <%= link_to "К Вагонам", admin_train_carriages_path(Train.first), class: "tutu-button" %>
-          <%= link_to "К Путям", admin_routes_path, class: "tutu-button" %>
-          <%= link_to "К Станциям", admin_stations_path, class: "tutu-button" %>
-          <%= link_to "К Поездам", admin_trains_path, class: "tutu-button" %>
-        <% end %>
-
-        Аккаунт: <%= current_user.email %>
-        <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: "tutu-button" %>
-
-      <% else %>
-        <%= link_to "Войти", new_user_session_path, class: "tutu-button" %>
-      <% end %>
-    </div>
-
-    <footer class="tutu-footer">
-      <div>
-        Это не настоящие расписания поездов!
-        This is not a real train schedule!
-      </div>
-    </footer>
+    <%= render "layouts/navbar" %>
+    <%= render "layouts/footer" %>
   </body>
 </html>

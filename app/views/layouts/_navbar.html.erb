@@ -1,0 +1,40 @@
+<div class="tutu-menu tutu-menu--fixed">
+  <% if user_signed_in? %>
+    <%= link_to t(".to_home"),
+                welcomes_path,
+                class: "tutu-button" %>
+    <%= link_to t(".to_search"),
+                search_path,
+                class: "tutu-button" %>
+
+    <%= link_to t(".to_tickets"),
+                "/users/#{current_user.id}/tickets",
+                class: "tutu-button" %>
+
+    <% if current_user.admin? %>
+      <%= link_to t(".to_carriages"),
+                  admin_train_carriages_path(Train.first),
+                  class: "tutu-button" %>
+      <%= link_to t(".to_routes"),
+                  admin_routes_path,
+                  class: "tutu-button" %>
+      <%= link_to t(".to_stations"),
+                  admin_stations_path,
+                  class: "tutu-button" %>
+      <%= link_to t(".to_trains"),
+                  admin_trains_path,
+                  class: "tutu-button" %>
+    <% end %>
+
+    <%= t(".account") %>: <%= current_user.email %>
+    <%= link_to t(".logout"),
+                destroy_user_session_path,
+                method: :delete,
+                class: "tutu-button" %>
+
+  <% else %>
+    <%= link_to t(".login"),
+                new_user_session_path,
+                class: "tutu-button" %>
+  <% end %>
+</div>
