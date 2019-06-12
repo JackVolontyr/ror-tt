@@ -1,14 +1,22 @@
 <%= render 'search' %>
 
 <% if @routes.present? %>
-  <%= render "components/table", caption: get_caption("search_routes", "form") do %>
+  <%= render "components/table",
+             caption: get_caption("search_routes", "form") do %>
     <% @routes.each do |route| %>
+
       <% if route.trains.present? %>
         <%= render 'search_output', route: route %>
+      <% else %>
+        <%= content_tag :div, class: "tutu-info" do %>
+          <%= t "searches.show.no_trains_on_routes" %>:
+          <%= link_to route.name, [:admin, route] %>
+        <% end %>
       <% end %>
+
     <% end %>
   <% end %>
 
 <% else %>
-  <%= content_tag :div, "Не найдено Путей.", class: "tutu-info" %>
+  <%= content_tag :div, t(".no_routes"), class: "tutu-info" %>
 <% end %>

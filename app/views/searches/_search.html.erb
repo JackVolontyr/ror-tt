@@ -1,13 +1,19 @@
-<%= form_tag search_path, method: "get" do %>
-  <%= label_tag "Станция отбытия:" %>
+<%= form_tag search_path, method: :get do %>
+  <%= label_tag "#{t(".station_first")}:" %>
   <%= select_tag :station_first,
-                 options_from_collection_for_select(Station.all, "name", "name", params[:station_first]),
+                 options_from_collection_for_select(@stations,
+                                                    "name",
+                                                    "name",
+                                                    params[:station_first]),
                  class: "tutu-field" %>
 
-  <%= label_tag "Станция конечная:" %>
+  <%= label_tag "#{t(".station_last")}:" %>
   <%= select_tag :station_last,
-                 options_from_collection_for_select(Station.all, "name", "name", params[:station_last]),
+                 options_from_collection_for_select(@stations,
+                                                    "name",
+                                                    "name",
+                                                    params[:station_last]),
                  class: "tutu-field" %>
 
-  <%= submit_tag "Поиск", class: "tutu-button", name: nil %>
+  <%= submit_tag t(".submit"), class: "tutu-button", name: nil %>
 <% end %>
