@@ -3,8 +3,13 @@
   <%= render "layouts/head" %>
 
   <body>
-    <p id="notice" class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <p id="notice" class="notice"><%= notice %></p>
+    <% end %>
+
+    <% if alert %>
+      <p id="alert" class="alert"><%= alert %></p>
+    <% end %>
 
     <%= content_tag :div, class: "tutu-container" do %>
       <%= yield %>

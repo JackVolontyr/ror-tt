@@ -1,0 +1,7 @@
+<%# TODO: locale %>
+<p>Hi! Привет! <%= @user.name %></p>
+
+<p>Билет по маршруту: <%= @ticket.name %> удален.</p>
+<p>Ticket on route: <%= @ticket.name %> was delete.</p>
+
+<%= link_to "Все билеты. All tickets.", user_tickets_url(@user, @ticket), class: "tutu-button" %>

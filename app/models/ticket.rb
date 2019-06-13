@@ -11,6 +11,9 @@ class Ticket < ApplicationRecord
 
   before_validation :auto_naming
 
+  after_create :send_buy_notification
+  after_destroy :send_delete_notification
+
   def auto_naming
     self[:name] = "#{get_train_number} #{get_station_first_name} -> #{get_station_last_name}"
   end
@@ -25,5 +28,13 @@ class Ticket < ApplicationRecord
 
   def get_train_number
     train_number_by_id(self[:train_id])
+  end
+
+  def send_buy_notification
+    TicketsMailer.buy_ticket(self.user, self).deliver_now
+  end
+
+  def send_delete_notification
+    TicketsMailer.delete_ticket(self.user, self).deliver_now
   end
 end

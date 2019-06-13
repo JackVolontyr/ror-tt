@@ -14,8 +14,6 @@
                    station_name_by_id(ticket.station_last_id) :
                    nothing %>
 
-<% if current_user.admin? %>
-  <%= render 'components/table_options',
-             item: [current_user, ticket],
-             edit_item_path: [:edit, current_user, ticket] %>
-<% end %>
+<%= render 'components/table_options',
+           item: [current_user, ticket],
+           edit_item_path: [:edit, current_user, ticket] %>
