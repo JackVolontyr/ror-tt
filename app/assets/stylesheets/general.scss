@@ -29,6 +29,8 @@ $color-warning: #a90000;
 $color-warning-backgroung: #ffbaba;
 $color-notice: #31821f;
 $color-notice-backgroung: #c5ffba;
+$color-alert: #c78100;
+$color-alert-backgroung: #fff1d9;
 $color-info: #1f43ff;
 $color-main: #ffd942;
 $color-main-disabled: #feff70;
@@ -233,7 +235,13 @@ $time: .3s;
   font-size: 16px;
 }
 
-#error_explanation, #notice {
+#alert {
+  background-color: $color-alert-backgroung;
+  color: $color-alert;
+  font-size: 16px;
+}
+
+#error_explanation, #notice, #alert {
   display: flex;
   justify-content: start;
   align-items: baseline;
