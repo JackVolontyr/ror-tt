@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2019_06_06_133224) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "carriages", force: :cascade do |t|
     t.integer "number"
     t.string "carriage_type"
     t.string "seats"
-    t.integer "train_id"
+    t.bigint "train_id"
     t.integer "top_seats"
     t.integer "bottom_seats"
     t.integer "side_top_seats"
@@ -27,8 +30,8 @@ ActiveRecord::Schema.define(version: 2019_06_06_133224) do
   end
 
   create_table "orders", id: false, force: :cascade do |t|
-    t.integer "station_id"
-    t.integer "ticket_id"
+    t.bigint "station_id"
+    t.bigint "ticket_id"
     t.index ["station_id"], name: "index_orders_on_station_id"
     t.index ["ticket_id"], name: "index_orders_on_ticket_id"
   end
@@ -42,8 +45,8 @@ ActiveRecord::Schema.define(version: 2019_06_06_133224) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "train_id"
-    t.integer "user_id"
+    t.bigint "train_id"
+    t.bigint "user_id"
     t.integer "station_first_id"
     t.integer "station_last_id"
     t.string "name"
@@ -58,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_133224) do
 
   create_table "trains", force: :cascade do |t|
     t.string "number"
-    t.integer "route_id"
+    t.bigint "route_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
   end
 
@@ -79,8 +82,8 @@ ActiveRecord::Schema.define(version: 2019_06_06_133224) do
   end
 
   create_table "ways", force: :cascade do |t|
-    t.integer "station_id"
-    t.integer "route_id"
+    t.bigint "station_id"
+    t.bigint "route_id"
     t.integer "position", default: 1, null: false
     t.string "arrival", default: "2x:xx"
     t.string "departure", default: "2x:xx"
