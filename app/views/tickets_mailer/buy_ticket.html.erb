@@ -1,0 +1,9 @@
+<%# TODO: locale %>
+<p>Hi! Привет! <%= @user.name %></p>
+
+<p>Вы купили билет по маршруту: <%= @ticket.name %></p>
+<p>You bought a ticket on route: <%= @ticket.name %></p>
+
+<%= link_to "Билет здесь. Ticket here.", [@user, @ticket], class: "tutu-button" %>
+<br>
+<%= link_to "Все билеты. All tickets.", user_tickets_url(@user, @ticket), class: "tutu-button" %>
