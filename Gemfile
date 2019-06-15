@@ -49,7 +49,6 @@ gem 'devise'
 
 # Heroku
 gem 'rails_12factor'
-gem 'real_email', git: 'https://github.com/mbuckbee/Real-Email-Gem.git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
