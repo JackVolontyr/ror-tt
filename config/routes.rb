@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :incoming_mails, only: [:create]
-
   resources :users do
     resources :tickets
   end

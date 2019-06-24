@@ -93,5 +93,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Heroku
-  config.action_mailer.default_url_options = {host: "tutu-just.herokuapp.com"}
+  # config.action_mailer.default_url_options = {host: "shrouded-waters-69156.herokuapp.com"}
 end
