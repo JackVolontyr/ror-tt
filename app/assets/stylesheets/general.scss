@@ -84,6 +84,10 @@ $time: .3s;
     grid-gap: 20px;
     grid-template: "a b" / 1fr 1fr;
 
+    @media screen and (max-width: 980px) {
+      grid-template: "a" / 1fr;
+    }
+
     &__cell {
       //width: 50%;
     }
