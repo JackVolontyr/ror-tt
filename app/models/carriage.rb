@@ -8,8 +8,8 @@ class Carriage < ApplicationRecord
   before_create :set_position
   before_update :set_position
 
-  scope :ordered_by_head, -> { group(:position).order("position") }
-  scope :ordered_by_tail, -> { group(:position).order("position DESC") }
+  scope :ordered_by_head, -> { group(:position, :id).order("position") }
+  scope :ordered_by_tail, -> { group(:position, :id).order("position DESC") }
 
   protected
 
@@ -31,7 +31,7 @@ class Carriage < ApplicationRecord
   end
 
   def position_uniq?(new_position)
-    Carriage.group(:position).where(train: train_id).map(&:position).exclude? new_position
+    Carriage.group(:position, :id).where(train: train_id).map(&:position).exclude? new_position
   end
 
   def luxury_or_seat?

@@ -11,13 +11,13 @@
       <%= render "components/form_checkbox_cell",
                  form: f,
                  main_method: :train_ids,
-                 collection: get_all_trains,
+                 collection: @trains,
                  value_method: :id,
                  text_method: :number %>
       <%= render "components/form_checkbox_cell",
                  form: f,
                  main_method: :station_ids,
-                 collection: get_all_stations("ordered"),
+                 collection: @stations,
                  value_method: :id,
                  text_method: :name %>
     </div>

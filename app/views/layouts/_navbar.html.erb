@@ -14,7 +14,7 @@
     <% if current_user.admin? %>
       <%= link_to t(".to_carriages"),
                   admin_train_carriages_path(Train.first),
-                  class: "tutu-button" %>
+                  class: "tutu-button" if Train.first %>
       <%= link_to t(".to_routes"),
                   admin_routes_path,
                   class: "tutu-button" %>

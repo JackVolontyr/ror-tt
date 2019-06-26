@@ -1,5 +1,7 @@
 class Admin::RoutesController < Admin::BaseController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :set_trains, only: [:new, :edit]
+  before_action :set_stations, only: [:new, :edit]
 
   def index
     @routes = Route.all
@@ -33,6 +35,14 @@ class Admin::RoutesController < Admin::BaseController
 
   def set_route
     @route = Route.find(params[:id])
+  end
+
+  def set_trains
+    @trains = Train.all
+  end
+
+  def set_stations
+    @stations = Station.all
   end
 
   def route_params
