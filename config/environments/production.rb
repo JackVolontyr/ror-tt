@@ -94,8 +94,5 @@ Rails.application.configure do
 
   # Heroku Host
   config.action_mailer.default_url_options = { host: "tutu-just.herokuapp.com" }
-
-  config.action_mailer.delivery_method = :letter_opener
-  ActionMailer::Base.perform_deliveries = true
-  ActionMailer::Base.raise_delivery_errors = false
+  # config.action_mailer.delivery_method = :send_grid
 end
