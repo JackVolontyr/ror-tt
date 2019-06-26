@@ -11,7 +11,7 @@ class Route < ApplicationRecord
   protected
 
   def auto_naming
-    if stations.present?
+    if get_station_first.present?
       self[:name] = "#{get_station_first.name} -> #{get_station_last.name}"
     else
       self[:name] = "Станции не выбраны"
