@@ -149,6 +149,11 @@ ru:
     passwords:
       new:
         reset: "Отправить инструкции востановления пароля"
+      edit:
+        change: "Изменить пароль"
+        new_password: "Новый пароль"
+        confirm_new_password: "Подтвердите новый пароль"
+        submit: "Изменить пароль"
 
   layouts:
     footer:
