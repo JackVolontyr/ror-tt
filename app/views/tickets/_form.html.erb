@@ -10,28 +10,28 @@
       <%= render "components/form_select",
                  form: f,
                  attribute: :train_id,
-                 model: Train,
+                 model: Train.all,
                  value: :number %>
       <%= render "components/form_select",
                  form: f,
                  attribute: :user_id,
-                 model: User,
+                 model: User.all,
                  value: :name %>
       <%= render "components/form_select",
                  form: f,
                  attribute: :route_id,
-                 model: Route,
+                 model: Route.all,
                  value: :name %>
       <%= table_cell f.text_field(:comments, class: "tutu-field") %>
       <%= render "components/form_select",
                  form: f,
                  attribute: :station_first_id,
-                 model: Station,
+                 model: Station.all,
                  value: :name %>
       <%= render "components/form_select",
                  form: f,
                  attribute: :station_last_id,
-                 model: Station,
+                 model: Station.all,
                  value: :name %>
     </div>
   <% end %>
