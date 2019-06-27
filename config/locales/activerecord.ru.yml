@@ -53,6 +53,7 @@ ru:
     errors:
       messages:
         blank: "не может быть пустым"
+        present: "должен быть пустым"
 
       models:
         station:
