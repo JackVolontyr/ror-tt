@@ -6,9 +6,18 @@
            title: title,
            caption: get_caption("#{item_string}s", "index") do %>
   <% items.each_with_index do |item, index| %>
-    <%= render "components/table_row" do %>
+    <%= content_tag :div,
+                    class: "tutu-table__row tutu-table__row--body",
+                    data: { vissible: true, row_index: item.id } do %>
       <%= table_cell index + 1 %>
       <%= render "#{"admin" unless no_admin}/#{item_string}s/#{item_string}_cells", item: item %>
     <% end %>
+
+    <%= render "components/form_inline",
+               item: item,
+               index: index,
+               no_admin: no_admin,
+               item_string: item_string,
+               edit_item_path: (no_admin ? [:edit, item] : [:edit, :admin, item]) %>
   <% end %>
 <% end %>

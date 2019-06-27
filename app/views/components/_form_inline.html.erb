@@ -1,0 +1,23 @@
+<%= form_with model: (no_admin ? item : [:admin, item]),
+              local: true,
+              class: "tutu-table__row tutu-table__row--body",
+              data: { vissible: false, form_index: item.id } do |f| %>
+  <%= table_cell index + 1 %>
+
+  <%= render "#{"admin" unless no_admin}/#{item_string}s/form_cells", f: f %>
+
+  <%= table_cell link_to "🔍", (no_admin ? item : [:admin, item]) %>
+
+  <div class="tutu-table__cell">
+    <%= render "components/buttons",
+               f: f,
+               form_button: form_naming("admin.stations.form.submit", item) %>
+    <%= link_to t("common.to_edit"),
+                edit_item_path,
+                class: "tutu-button" %>
+  </div>
+
+  <%= table_cell link_to "✖",
+                         "",
+                         data: { cancel: "" } %>
+<% end %>
