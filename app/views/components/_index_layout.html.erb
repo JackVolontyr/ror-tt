@@ -1,5 +1,6 @@
 <% no_admin = no_admin || false %>
-<% notice = notice || "" %>
+<% notice = notice || nil %>
+<% form_inline = form_inline || false %>
 
 <%= render "components/main",
            notice: notice,
@@ -8,7 +9,7 @@
   <% items.each_with_index do |item, index| %>
     <%= content_tag :div,
                     class: "tutu-table__row tutu-table__row--body",
-                    data: { vissible: true, row_index: item.id } do %>
+                    data: { vissible: true, row: true, index: item.id } do %>
       <%= table_cell index + 1 %>
       <%= render "#{"admin" unless no_admin}/#{item_string}s/#{item_string}_cells", item: item %>
     <% end %>
@@ -18,6 +19,6 @@
                index: index,
                no_admin: no_admin,
                item_string: item_string,
-               edit_item_path: (no_admin ? [:edit, item] : [:edit, :admin, item]) %>
+               edit_item_path: (no_admin ? [:edit, item] : [:edit, :admin, item]) if form_inline %>
   <% end %>
 <% end %>

@@ -1,7 +1,7 @@
 <%= form_with model: (no_admin ? item : [:admin, item]),
               local: true,
               class: "tutu-table__row tutu-table__row--body",
-              data: { vissible: false, form_index: item.id } do |f| %>
+              data: { vissible: false, form: true, index: item.id } do |f| %>
   <%= table_cell index + 1 %>
 
   <%= render "#{"admin" unless no_admin}/#{item_string}s/form_cells", f: f %>
