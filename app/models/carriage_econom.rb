@@ -1,5 +1,5 @@
 class CarriageEconom < Carriage
-  validates :side_top_seats, :side_bottom_seats, presence: true
+  validates :side_bottom_seats, :side_top_seats, presence: true
 
   def self.model_name
     Carriage.model_name
