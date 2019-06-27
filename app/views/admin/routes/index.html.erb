@@ -3,9 +3,12 @@
              item_string: "route",
              notice: notice,
              title: t(".title"),
-             items: @routes %>
+             items: @routes,
+             form_inline: true %>
 <% else %>
   <%= content_tag :div, t(".no_route"), class: "tutu-info" %>
 <% end %>
 
 <%= render "footer" %>
+
+<p><%= t ".help" %></p>
