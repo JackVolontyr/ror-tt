@@ -2,5 +2,8 @@
            item_string: "train",
            notice: notice,
            title: t(".title"),
-           items: @trains %>
+           items: @trains,
+           form_inline: true %>
 <%= render "footer" %>
+
+<p><%= t ".help" %></p>

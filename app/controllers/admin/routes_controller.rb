@@ -1,7 +1,7 @@
 class Admin::RoutesController < Admin::BaseController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
-  before_action :set_trains, only: [:new, :edit]
-  before_action :set_stations, only: [:new, :edit]
+  before_action :set_trains, only: [:new, :edit, :index]
+  before_action :set_stations, only: [:new, :edit, :index]
 
   def index
     @routes = Route.all

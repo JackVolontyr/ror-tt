@@ -1,0 +1,12 @@
+<%= table_cell f.text_field(:number, class: "tutu-field") %>
+<%= render "components/form_select",
+           form: f,
+           attribute: :route_id,
+           model: @routes,
+           value: :name %>
+<%= render "components/form_checkbox_cell",
+           form: f,
+           main_method: :carriage_ids,
+           collection: @carriages,
+           value_method: :id,
+           text_method: :number %>

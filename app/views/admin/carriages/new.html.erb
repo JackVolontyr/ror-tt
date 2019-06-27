@@ -1,1 +1,32 @@
 <%= render "form" %>
+
+<p><%= t ".help" %></p>
+<p>
+  <%= t ".for" %>
+  <%= inline_info t("h.s.carriage.coupe") %>
+  <%= t ".need" %>
+  <%= inline_info t("h.s.carriage.bottom_seats") %>,
+  <%= inline_info t("h.s.carriage.top_seats") %>.
+</p>
+<p>
+  <%= t ".for" %>
+  <%= inline_info t("h.s.carriage.econom") %>
+  <%= t ".need" %>
+  <%= inline_info t("h.s.carriage.bottom_seats") %>,
+  <%= inline_info t("h.s.carriage.top_seats") %>,
+  <%= inline_info t("h.s.carriage.side_bottom_seats") %>,
+  <%= inline_info t("h.s.carriage.side_top_seats") %>.
+</p>
+<p>
+  <%= t ".for" %>
+  <%= inline_info t("h.s.carriage.seat") %>
+  <%= t ".need" %>
+  <%= inline_info t("h.s.carriage.bottom_seats") %>,
+  <%= inline_info t("h.m.carriage.seats") %>.
+</p>
+<p>
+  <%= t ".for" %>
+  <%= inline_info t("h.s.carriage.luxury") %>
+  <%= t ".need" %>
+  <%= inline_info t("h.s.carriage.bottom_seats") %>.
+</p>

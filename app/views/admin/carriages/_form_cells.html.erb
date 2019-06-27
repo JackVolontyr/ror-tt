@@ -1,0 +1,14 @@
+<%= table_cell f.text_field(:number, class: "tutu-field") %>
+<%= table_cell f.select(:type, get_carriage_types,
+                        {selected: @carriage.type},
+                        {class: "tutu-field"}) %>
+<%= table_cell f.text_field(:bottom_seats,
+                            class: "tutu-field tutu-field--number") %>
+<%= table_cell f.text_field(:top_seats,
+                            class: "tutu-field tutu-field--number") %>
+<%= table_cell f.text_field(:side_bottom_seats,
+                            class: "tutu-field tutu-field--number") %>
+<%= table_cell f.text_field(:side_top_seats,
+                            class: "tutu-field tutu-field--number") %>
+<%= table_cell f.text_field(:seats, class: "tutu-field") %>
+<%= table_cell t(".auto_adding") %>

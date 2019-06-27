@@ -4,21 +4,9 @@
   <%= render "components/error_block", item: @station %>
 
   <%= render "components/table", caption: get_caption("stations", "form") do %>
-    <div class="tutu-table__row tutu-table__row--body">
-      <%= table_cell f.text_field(:name, class: "tutu-field") %>
-      <%= render "components/form_checkbox_cell",
-                 form: f,
-                 main_method: :route_ids,
-                 collection: Route.all,
-                 value_method: :id,
-                 text_method: :name %>
-      <%= render "components/form_checkbox_cell",
-                 form: f,
-                 main_method: :ticket_ids,
-                 collection: Ticket.all,
-                 value_method: :id,
-                 text_method: :name %>
-    </div>
+    <%= render "components/table_row" do %>
+      <%= render "form_cells", f: f %>
+    <% end %>
   <% end %>
 
   <%= render "components/buttons",

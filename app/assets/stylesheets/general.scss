@@ -101,6 +101,10 @@ $time: .3s;
     &__row {
       display: table-row;
 
+      &[data-vissible=false] {
+        display: none;
+      }
+
       &--caption {
         background-color: $color-grey;
       }
@@ -123,6 +127,10 @@ $time: .3s;
         border-right: 0;
       }
 
+      .tutu-button__wrapper {
+        display: inline-flex;
+      }
+
       a {
         display: block;
         text-align: center;
@@ -132,6 +140,13 @@ $time: .3s;
         &:hover {
           background: none;
           color: $color-black !important;
+        }
+
+        &.tutu-button {
+          @include input_theme;
+          @include hover;
+
+          display: inline-flex;
         }
       }
     }

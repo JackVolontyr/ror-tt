@@ -1,4 +1,4 @@
 <%= table_cell form.select(attribute,
-                           model.all.collect { |u| [ u[value], u.id ] },
+                           model.collect {|u| [ u[value], u.id ]},
                            {},
                            { class: "tutu-field" } ) %>

@@ -2,6 +2,8 @@ class Admin::TrainsController < Admin::BaseController
   include ApplicationHelper
 
   before_action :set_train, only: [:show, :edit, :update, :destroy]
+  before_action :set_carriages, only: [:index, :new, :edit]
+  before_action :set_routes, only: [:index, :new, :edit]
 
   def index
     @trains = Train.all
@@ -51,6 +53,14 @@ class Admin::TrainsController < Admin::BaseController
 
   def set_train
     @train = Train.find(params[:id])
+  end
+
+  def set_routes
+    @routes = Route.all
+  end
+
+  def set_carriages
+    @carriages = Carriage.all
   end
 
   def train_params
