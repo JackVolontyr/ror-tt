@@ -7,15 +7,20 @@ class Ticket < ApplicationRecord
   has_many :orders
   has_many :stations, through: :orders
 
-  validates_presence_of :name, :user, :user_name
+  validates_presence_of :name, :user, :user_name, :date
 
   before_validation :auto_naming
+  before_create :add_id_to_name
 
   after_create :send_buy_notification
   after_destroy :send_delete_notification
 
   def auto_naming
-    self[:name] = "#{get_train_number} #{get_station_first_name} -> #{get_station_last_name}"
+    self[:name] = "#{get_train_number} #{get_station_first_name} -> #{get_station_last_name} (##{self[:id]})"
+  end
+
+  def add_id_to_name
+    self[:name] = "#{get_train_number} #{get_station_first_name} -> #{get_station_last_name} (##{Ticket.maximum("id") + 1})"
   end
 
   def get_station_first_name

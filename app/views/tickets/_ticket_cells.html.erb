@@ -6,6 +6,7 @@
 <%= table_cell present_or_string(ticket.train, :number, nothing) %>
 <%= table_cell present_or_string(ticket.user, :name, nothing) %>
 <%= table_cell present_or_string(ticket.route, :name, nothing) %>
+<%= table_cell l(ticket.date, format: :long) %>
 <%= table_cell present_or_string(ticket.comments, nothing) %>
 <%= table_cell ticket.station_first_id ?
                    station_name_by_id(ticket.station_first_id) :
