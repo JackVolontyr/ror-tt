@@ -73,6 +73,7 @@ module ApplicationHelper
                   I18n.t("h.train"),
                   I18n.t("h.user"),
                   I18n.t("h.route"),
+                  I18n.t("h.m.ticket.date"),
                   I18n.t("h.m.ticket.comments"),
                   I18n.t("h.m.ticket.station_first"),
                   I18n.t("h.m.ticket.station_last")]

@@ -22,6 +22,13 @@
                  attribute: :route_id,
                  model: Route.all,
                  value: :name %>
+      <%= table_cell f.text_field(:date,
+                                  type: "date",
+                                  value: Date.today,
+                                  min: Date.today,
+                                  max: Date.today + 1.year,
+                                  class: "tutu-field") %>
+
       <%= table_cell f.text_field(:comments, class: "tutu-field") %>
       <%= render "components/form_select",
                  form: f,
