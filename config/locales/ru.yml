@@ -189,6 +189,7 @@ ru:
       no_trains_on_routes: "Не найдено Путей с доступными Поездами"
       passenger_name: "Имя пассажира"
       comments: "Комментарии"
+      date: "Дата поездки"
       buy: "Купить Билет"
     search:
       station_first: "Станция Отбытия"

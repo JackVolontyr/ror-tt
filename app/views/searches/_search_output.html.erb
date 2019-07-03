@@ -16,14 +16,22 @@
                  f: f,
                  trains: route.trains %>
 
-      <%= t("searches.show.passenger_name") %>:
+      <%= t "searches.show.passenger_name" %>:
       <%= f.text_field :user_name,
                        required: true,
                        value: current_user.name,
                        class: "tutu-field" %>
 
-      <%= t("searches.show.comments") %>:
+      <%= t "searches.show.comments" %>:
       <%= f.text_field :comments, class: "tutu-field" %>
+
+      <%= t "searches.show.date" %>:
+      <%= f.text_field :date,
+                       type: "date",
+                       value: Date.today,
+                       min: Date.today,
+                       max: Date.today + 1.year,
+                       class: "tutu-field" %>
 
       <%= f.hidden_field :name,
                          value: "#{stations.first.name} - #{stations.last.name}" %>
