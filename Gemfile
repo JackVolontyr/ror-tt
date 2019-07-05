@@ -67,6 +67,7 @@ group :development, :test do
   # Test env
   gem 'rspec-rails'
   gem 'factory_bot'
+  gem 'rails-controller-testing'
 
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
