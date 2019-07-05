@@ -68,6 +68,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot'
   gem 'rails-controller-testing'
+  gem 'ffaker'
 
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
@@ -93,6 +94,9 @@ group :test do
 
   # Macros
   gem 'shoulda-matchers'
+
+  # Cleaner
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
