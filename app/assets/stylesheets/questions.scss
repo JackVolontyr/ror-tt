@@ -12,6 +12,14 @@
     margin: $l auto;
   }
 
+  &__title {
+    word-break: break-word;
+  }
+
+  &__description {
+    word-break: break-word;
+  }
+
   &__content {
     padding: 38px $l 53px;
   }
