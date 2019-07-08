@@ -19,5 +19,16 @@ module Tutu
     # the framework and any gems in your application.
 
     config.i18n.default_locale = :ru
+
+    config.generators do |g|
+      g.test_framework :rspec,
+                       fixtures: true,
+                       view_spec: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       request_specs: false,
+                       controller_spec: true
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+    end
   end
 end
