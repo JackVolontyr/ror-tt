@@ -34,6 +34,7 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'GET #new' do
+    sign_in_user
     before { get :new }
 
     it 'assigns a new Question to @question' do
@@ -46,6 +47,7 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'GET #edit' do
+    sign_in_user
     before { get :edit, params: { id: question.id } }
 
     it 'assigns the requested question to @question' do
@@ -58,17 +60,18 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'POST #create' do
-    context 'with valid attributes' do
-      # TODO: nested :questions to user
-      # it 'save the new question' do
-      #   expect { post :create, params: { question: attributes_for(:question) } }
-      #       .to change(Question, :count).by(1)
-      # end
+    sign_in_user
 
-      # it 'redirect to show view' do
-      #   post :create, params: { question: attributes_for(:question) }
-      #   expect(response).to redirect_to question_path(assigns(:question))
-      # end
+    context 'with valid attributes' do
+      it 'save the new question' do
+        expect { post :create, params: { question: attributes_for(:question) } }
+            .to change(Question, :count).by(1)
+      end
+
+      it 'redirect to show view' do
+        post :create, params: { question: attributes_for(:question) }
+        expect(response).to redirect_to question_path(assigns(:question))
+      end
     end
 
     context 'with invalid attributes' do
@@ -85,6 +88,8 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'PATCH #update' do
+    sign_in_user
+
     context 'valid attributes' do
       it 'assigns the requested question to @question' do
         patch :update, params: { id: question, question: attributes_for(:question) }
@@ -93,12 +98,11 @@ RSpec.describe QuestionsController, type: :controller do
 
       it 'change question attributes' do
         patch :update, params: {
-            id: question, question: { title: "newtitle", body: "newbody", user: User.first } }
+            id: question, question: { title: "newtitle", body: "newbody" } }
 
         question.reload
         expect(question.title).to eq "newtitle"
         expect(question.body).to eq "newbody"
-        expect(question.user).to eq User.first
       end
 
       it 'redirect to the update question' do
@@ -107,26 +111,26 @@ RSpec.describe QuestionsController, type: :controller do
         expect(response).to redirect_to question
       end
     end
-  end
 
-  context 'invalid attributes' do
-    before { patch :update, params: {
-        id: question, question: { title: "newtitle", body: nil } } }
-    # , user: nil
+    context 'invalid attributes' do
+      before { patch :update, params: {
+          id: question, question: { title: "newtitle", body: nil } } }
 
-    it 'does not change question attributes' do
-      question.reload
-      expect(question.title).to eq "MyString"
-      expect(question.body).to eq "MyText"
-      # expect(question.user).to eq user
+      it 'does not change question attributes' do
+        question.reload
+        expect(question.title).to eq "MyString"
+        expect(question.body).to eq "MyText"
+      end
+
+      it 're-renders edit view' do
+        expect(response).to render_template :edit
+      end
     end
 
-    it 're-renders edit view' do
-      expect(response).to render_template :edit
-    end
   end
 
   describe 'DELETE #destroy' do
+    sign_in_user
     before { question }
 
     it 'deletes question' do
@@ -138,5 +142,4 @@ RSpec.describe QuestionsController, type: :controller do
       expect(response).to redirect_to question_path
     end
   end
-
 end
