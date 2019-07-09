@@ -11,6 +11,7 @@ ru:
       already_authenticated: "Вы уже вошли в систему."
       inactive: "Ваша учётная запись ещё не активирована."
       invalid: "Неверный %{authentication_keys} или пароль."
+      invalid_email: "Неверный Почта или пароль."
       locked: "Ваша учётная запись заблокирована."
       last_attempt: "У Вас осталась еще одна попытка ввести пароль до блокировки."
       not_found_in_database: "Неверный %{authentication_keys} или пароль."

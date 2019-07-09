@@ -208,6 +208,17 @@ ru:
     show:
       title: "Билет"
 
+  questions:
+    new:
+      title: "Тема"
+      body: "Ваш вопрос"
+      submit: "Создать Вопрос"
+      success: "Вопрос создан успешно."
+
+    form:
+      title: "%{action} Билет"
+      submit: "%{action} Билет"
+
   date:
     abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
     abbr_month_names: [~, янв., февр., марта, апр., мая, июня, июля, авг., сент., окт., нояб., дек.]

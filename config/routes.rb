@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
-  # TODO: nested :questions to user
   resources :welcomes, :questions
 
   resource :search, only: %i[new show edit]
