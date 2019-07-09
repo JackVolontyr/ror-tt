@@ -1,3 +1,13 @@
 .tutu-question__list data-grid="masonry"
-  - @questions.each do |item|
-    = render "questions/show", item: item
+  - @questions.each do |question|
+    = render "questions/show", question: question
+
+  = render "questions/grid_masonry_block"
+    = form_for :question,
+            url: questions_path,
+            html: { id: "new_question", class: "tutu-question" } do |f|
+      = f.label :title, t("questions.new.title")
+      = f.text_field :title, class: "tutu-field"
+      = f.label :body, t("questions.new.body")
+      = f.text_field :body, class: "tutu-field"
+      = render "components/buttons", f: f, form_button: t("questions.new.submit")

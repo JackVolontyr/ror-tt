@@ -1,13 +1,10 @@
-- item = item || @question
+- @question = question || question
 
-section.tutu-question data-grid="item"
+= render "questions/grid_masonry_block"
+  h2.tutu-question__title = @question.title
 
-  .tutu-question__content data-grid="content"
-
-    h2.tutu-question__title = item.title
-
-    p.tutu-question__description
-      span.tutu-question__user.tutu-question__user--author data-random="color"
-        = item.user.name
-      ':
-      = item.body
+  p.tutu-question__description
+    span.tutu-question__user.tutu-question__user--author data-random="color"
+      = @question.user.name
+    ':
+    = @question.body
