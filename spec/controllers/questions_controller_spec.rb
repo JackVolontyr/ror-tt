@@ -68,9 +68,9 @@ RSpec.describe QuestionsController, type: :controller do
             .to change(Question, :count).by(1)
       end
 
-      it 'redirect to show view' do
+      it 'redirect to welcomes path' do
         post :create, params: { question: attributes_for(:question) }
-        expect(response).to redirect_to question_path(assigns(:question))
+        expect(response).to redirect_to welcomes_path
       end
     end
 
