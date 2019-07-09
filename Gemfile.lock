@@ -261,6 +261,7 @@ DEPENDENCIES
   ffaker
   jbuilder (~> 2.5)
   jquery-rails
+  launchy
   letter_opener
   listen (>= 3.0.5, < 3.2)
   loofah (>= 2.2.3)

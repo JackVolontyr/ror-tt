@@ -97,6 +97,9 @@ group :test do
 
   # Cleaner
   gem 'database_cleaner'
+
+  # Open page while testing
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
