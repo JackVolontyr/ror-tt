@@ -136,6 +136,14 @@ h1, h2, h3, h4, p {
     &--number {
       width: 60px;
     }
+
+    &--left {
+      margin-left: 0;
+    }
+
+    &--bottom-offset {
+      margin-bottom: 15px;
+    }
   }
 
   &-button {
@@ -151,6 +159,14 @@ h1, h2, h3, h4, p {
 
     &:disabled {
       @include hover_disabled
+    }
+
+    &--left {
+      margin-left: 0;
+    }
+
+    &--bottom-offset {
+      margin-bottom: 15px;
     }
   }
 
@@ -233,4 +249,8 @@ h1, h2, h3, h4, p {
   margin: $m $l;
   padding: $m;
   border-radius: 10px;
+
+  li {
+    text-align: left;
+  }
 }
