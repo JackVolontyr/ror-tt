@@ -24,6 +24,17 @@ feature 'User create Question', %q{
     expect(current_path).to eq welcomes_path
   end
 
+  scenario 'Registered user try to create question with invalid params' do
+    sign_in user
+
+    fill_in t_from(:new_question, 'title'), with: ''
+    fill_in t_from(:new_question, 'body'), with: 'Body body.'
+    find(@submit_button_selector).click
+
+    expect(page).to have_content t_from(:errors, 'blank')
+    expect(current_path).to eq welcomes_path
+  end
+
   scenario 'Non-registered user try to sign in' do
     visit welcomes_path
 

@@ -82,7 +82,7 @@ RSpec.describe QuestionsController, type: :controller do
 
       it 're-renders new view' do
         post :create, params: { question: attributes_for(:invalid_question) }
-        expect(response).to render_template :new
+        expect(response).to redirect_to welcomes_path
       end
     end
   end
