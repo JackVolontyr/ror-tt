@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  def theme(themes, component_class_name)
+    themes = Array(themes)
+    themes.map { |t| "#{component_class_name}--#{t}" }.join(' ')
+  end
+
   def form_naming(text, item)
     I18n.t(text, action: item.new_record? ? t("common.create") : t("common.edit"))
   end

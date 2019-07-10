@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to welcomes_path, flash: { notice: t(".new.success") }
     else
-      render(:new)
+      redirect_to welcomes_path, flash: { errors: @question.errors }
     end
   end
 
