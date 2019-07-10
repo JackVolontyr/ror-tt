@@ -8,3 +8,6 @@
       = @question.user.name
     ':
     = @question.body
+
+  p.tutu-question__date
+    b = l(@question.created_at, format: :long_with_time)
