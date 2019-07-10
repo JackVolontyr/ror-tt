@@ -6,5 +6,6 @@ class WelcomesController < ApplicationController
     @stations = Station.all
     @carriages = Carriage.all
     @tickets = Ticket.all
+    @questions = Question.all
   end
 end

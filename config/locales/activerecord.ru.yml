@@ -50,10 +50,15 @@ ru:
         arrival: "Прибытие"
         departure: "Отправление"
 
+      question:
+        title: "Тема"
+        body: "Ваш вопрос"
+
     errors:
       messages:
         blank: "не может быть пустым"
         present: "должен быть пустым"
+        record_invalid: "запись невалидна"
 
       models:
         station:

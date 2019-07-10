@@ -51,6 +51,7 @@ ru:
         date: "Дата поездки"
 
   common:
+    field: "Поле"
     error: "ошибка"
     error_message_form: "При выполнении формы возникли ошибка(и)"
     back: "Назад"
@@ -207,6 +208,17 @@ ru:
       title: "Билеты"
     show:
       title: "Билет"
+
+  questions:
+    new:
+      title: "Тема"
+      body: "Ваш вопрос"
+      submit: "Создать Вопрос"
+      success: "Вопрос создан успешно."
+
+    form:
+      title: "%{action} Билет"
+      submit: "%{action} Билет"
 
   date:
     abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]

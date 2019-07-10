@@ -1,0 +1,51 @@
+$color-warning: #a90000;
+$color-warning-backgroung: #ffbaba;
+$color-notice: #31821f;
+$color-notice-backgroung: #c5ffba;
+$color-alert: #c78100;
+$color-alert-backgroung: #fff1d9;
+$color-info: #1f43ff;
+$color-main: #ffd942;
+$color-main-disabled: #feff70;
+$color-second: #cc331f;
+$color-black: #000;
+$color-grey: #ccc;
+$color-grey-background: #f1f2f2;
+$color-white: #fff;
+
+$table-border: 1px solid $color-grey;
+$time: .3s;
+
+$outer-radius: 10px;
+$inner-radius: 5px;
+
+$l: 40px;
+$m: 20px;
+$s: 10px;
+
+/* ----------------- */
+
+@mixin input_theme {
+  box-sizing: border-box;
+  min-width: 50px;
+  min-height: 30px;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+@mixin hover {
+  color: $color-black !important;
+  background-color: $color-main;
+  transition: background-color $time, color $time;
+
+  &:hover {
+    background-color: $color-second;
+    color: $color-white !important;
+  }
+}
+
+@mixin hover_disabled {
+  color: $color-black !important;
+  background-color: $color-main-disabled;
+}

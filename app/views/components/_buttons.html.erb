@@ -1,3 +1,4 @@
+<% modifier = modifier || "" %>
 <%= content_tag :div, class: "tutu-button__wrapper" do %>
-  <%= f.submit form_button, class: "tutu-button" %>
+  <%= f.submit form_button, class: "tutu-button #{theme(modifier, 'tutu-button')}" %>
 <% end %>

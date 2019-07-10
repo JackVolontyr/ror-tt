@@ -1,0 +1,8 @@
+= form_with model: @question, local: true do |f|
+  = render "components/error_block", item: @question
+  = f.label :title, t(".title")
+  = f.text_field :title, class: "tutu-field"
+  = f.label :body, t(".body")
+  = f.text_field :body, class: "tutu-field"
+
+  = render "components/buttons", f: f, form_button: t(".submit")

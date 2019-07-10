@@ -1,0 +1,31 @@
+@import "utils.scss";
+
+.tutu-question {
+  background-color: $color-white;
+  border-radius: $outer-radius;
+  text-align: left;
+  margin-bottom: 20px;
+
+  &__list {
+    display: grid;
+    margin: $l auto;
+  }
+
+  &__title {
+    word-break: break-word;
+  }
+
+  &__description {
+    word-break: break-word;
+  }
+
+  &__content {
+    padding: 38px $l 53px;
+  }
+
+  &__user {
+    &--author {
+      color: brown;
+    }
+  }
+}
