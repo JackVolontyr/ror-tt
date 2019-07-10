@@ -51,6 +51,7 @@ ru:
         date: "Дата поездки"
 
   common:
+    field: "Поле"
     error: "ошибка"
     error_message_form: "При выполнении формы возникли ошибка(и)"
     back: "Назад"
