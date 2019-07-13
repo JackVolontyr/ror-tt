@@ -212,13 +212,21 @@ ru:
   questions:
     new:
       title: "Тема"
-      body: "Ваш вопрос"
+      body: "Ваш Вопрос"
       submit: "Создать Вопрос"
       success: "Вопрос создан успешно."
 
     form:
-      title: "%{action} Билет"
-      submit: "%{action} Билет"
+      title: "%{action} Вопрос"
+      submit: "%{action} Вопрос"
+
+  answers:
+    show_answer_form: "Показать форму ответа"
+    new:
+      body: "Ваш Ответ"
+      submit: "Создать Ответ"
+      success: "Ответ создан успешно."
+
 
   date:
     abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
