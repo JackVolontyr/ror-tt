@@ -1,5 +1,9 @@
 @import "utils.scss";
 
+[data-answer="form"] {
+  display: none;
+}
+
 .tutu-answer {
   padding: 6px $s;
   margin-left: auto;

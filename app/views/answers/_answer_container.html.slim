@@ -1,4 +1,4 @@
-.tutu-answer__container data-spec="answer_container"
+.tutu-answer__container data-spec="answer_container" data-answer="container"
   - question.answers.each do |a|
     .tutu-answer
       .tutu-answer__date = l(a.created_at, format: :short_with_time)
@@ -9,10 +9,11 @@
 
   = button_tag "Show",
           type: "button",
-          data: { spec: "answer_show_form"},
+          data: { spec: "answer_show_form", answer: "show" },
           class: "tutu-button tutu-button--left tutu-button--full"
 
-  = form_for [question, question.answers.build] do |f|
+  = form_for [question, question.answers.build],
+          data: { answer: "form" } do |f|
     = f.label :body, t("answers.new.body")
     = f.text_area :body,
             class: "tutu-textarea tutu-field tutu-field--left"

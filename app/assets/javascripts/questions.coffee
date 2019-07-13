@@ -1,6 +1,7 @@
 $(document).on 'turbolinks:load', () ->
   $ ->
     hashCode = (str) ->
+      hash = 0
       for x in [0..(str.length - 1)]
         hash = str.charCodeAt(x) + ((hash << 5) - hash)
       return hash
