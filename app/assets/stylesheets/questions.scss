@@ -4,7 +4,7 @@
   background-color: $color-white;
   border-radius: $outer-radius;
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: $l;
 
   &__list {
     display: grid;
@@ -12,18 +12,28 @@
   }
 
   &__title {
+    margin: 0 0 14px;
+    font-size: 18px;
     word-break: break-word;
   }
 
+  &__date {
+    float: right;
+  }
+
   &__description {
+    margin-top: 1px;
     word-break: break-word;
   }
 
   &__content {
-    padding: 38px $l 53px;
+    padding: 18px $m 53px;
   }
 
   &__user {
+    display: block;
+    word-break: break-word;
+
     &--author {
       color: brown;
     }

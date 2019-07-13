@@ -172,6 +172,10 @@ h1, h2, h3, h4, p {
     &--bottom-offset {
       margin-bottom: 15px;
     }
+
+    &--full {
+      width: 100%;
+    }
   }
 
   &-textarea {
