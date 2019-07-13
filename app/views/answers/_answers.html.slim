@@ -1,0 +1,10 @@
+- question = question || @question
+
+- question.answers.each do |a|
+  .tutu-answer
+    .tutu-answer__date
+      = localize(a.created_at, format: :short_with_time, default: '-')
+    b.tutu-answer__user data-random="color"
+      = a.user.name
+    p.tutu-answer__body
+      = a.body

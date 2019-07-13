@@ -20,6 +20,8 @@ module AcceptanceHelper
       path = 'devise.failure.'
     when :new_question
       path = 'questions.new.'
+    when :new_answer
+      path = 'answers.new.'
     when :errors
       path = 'activerecord.errors.messages.'
     else

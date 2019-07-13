@@ -1,0 +1,10 @@
+ajaxOutputForAnswer = window.ajaxOutputForAnswer;
+setRandomColor = window.setRandomColor;
+resizeAllGridItems = window.resizeAllGridItems;
+bodyForAnswer = window.bodyForAnswer;
+
+ajaxOutputForAnswer.html('<%= j render 'answers/answers' %>');
+bodyForAnswer.val('');
+
+setRandomColor();
+resizeAllGridItems();

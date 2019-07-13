@@ -1,0 +1,31 @@
+@import "utils.scss";
+
+[data-answer="form"] {
+  display: none;
+}
+
+.tutu-answer {
+  padding: 6px $s;
+  margin-left: auto;
+  margin-bottom: $s;
+  border: 1px dashed $color-grey;
+  border-radius: 5px;
+
+  &__container {
+    text-align: right;
+  }
+  
+  &__user {
+    display: block;
+    word-break: break-word;
+  }
+
+  &__date {
+    float: left;
+  }
+  
+  &__body {
+    margin-top: 1px;
+    word-break: break-word;
+  }
+}

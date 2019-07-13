@@ -10,7 +10,10 @@
       = f.text_area :body,
               class: "tutu-textarea tutu-field tutu-field--bottom-offset tutu-field--left"
       = render "components/buttons",
-              f: f, form_button: t("questions.new.submit"), modifier: "left"
+              f: f,
+              form_button: t("questions.new.submit"),
+              modifier: "left",
+              data: { spec: "question_submit" }
 
   - @questions.ordered_by_new.each do |question|
     = render "questions/show", question: question

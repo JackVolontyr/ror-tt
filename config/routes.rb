@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
-  resources :welcomes, :questions
+  resources :questions do
+    resources :answers
+  end
+
+  resources :welcomes
 
   resource :search, only: %i[new show edit]
 
