@@ -29,22 +29,20 @@ feature 'User create answer', %q{
     find(@answer_show_button_selector).click
   }
 
-  scenario 'User create answer for the question' do
+  scenario 'User create answer for the question', js: true do
     fill_in t_from(:new_answer, 'body'), with: @new_answer
     find(@answer_submit_button_selector).click
 
     expect(current_path).to eq welcomes_path
-    expect(page).to have_content t_from(:new_answer, 'success')
     within @answer_container_selector do
       expect(page).to have_content @new_answer
     end
   end
 
-  scenario 'User try create answer with invalid params' do
+  scenario 'User try create answer with invalid params', js: true do
     fill_in t_from(:new_answer, 'body'), with: @invalid_answer_title
     find(@answer_submit_button_selector).click
 
-    expect(page).to have_content t_from(:errors, 'blank')
     expect(current_path).to eq welcomes_path
   end
 end
