@@ -10,8 +10,13 @@ $(document).on 'turbolinks:load', () ->
       c = (hash & 0x00FFFFFF).toString(16).toUpperCase()
       return "00000".substring(0, 6 - c.length) + c
 
-    allRandomColor = document.querySelectorAll '[data-random="color"]'
-    allRandomColor.forEach((item) ->
-      color = '#' + intToRGB(hashCode(item.innerHTML))
-      item.style.color = color
-    )
+    setRandomColor = () ->
+      allRandomColor = document.querySelectorAll '[data-random="color"]'
+      allRandomColor.forEach((item) ->
+        color = '#' + intToRGB(hashCode(item.innerHTML))
+        item.style.color = color
+      )
+
+    setRandomColor()
+
+    window.setRandomColor = setRandomColor
