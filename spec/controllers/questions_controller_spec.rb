@@ -31,6 +31,10 @@ RSpec.describe QuestionsController, type: :controller do
     it 'renders show view' do
       expect(response).to render_template :show
     end
+
+    it 'assigns new answer for question' do
+      expect(assigns(:answer)).to be_a_new Answer
+    end
   end
 
   describe 'GET #new' do
@@ -63,7 +67,7 @@ RSpec.describe QuestionsController, type: :controller do
     sign_in_user
 
     context 'with valid attributes' do
-      it 'save the new question' do
+      it 'save new question' do
         expect { post :create, params: { question: attributes_for(:question) } }
             .to change(Question, :count).by(1)
       end
@@ -75,12 +79,12 @@ RSpec.describe QuestionsController, type: :controller do
     end
 
     context 'with invalid attributes' do
-      it 'does not save the new question' do
+      it 'does not save new question' do
         expect { post :create, params: { question: attributes_for(:invalid_question) } }
             .to_not change(Question, :count)
       end
 
-      it 're-renders new view' do
+      it 'redirect to welcomes path' do
         post :create, params: { question: attributes_for(:invalid_question) }
         expect(response).to redirect_to welcomes_path
       end
