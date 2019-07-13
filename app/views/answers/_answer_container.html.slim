@@ -1,22 +1,19 @@
 .tutu-answer__container data-spec="answer_container" data-answer="container"
-  - question.answers.each do |a|
-    .tutu-answer
-      .tutu-answer__date = l(a.created_at, format: :short_with_time)
-      b.tutu-answer__user data-random="color"
-        = a.user.name
-      p.tutu-answer__body
-        = a.body
+  div data-answer="ajax-output"
+    = render "answers/answers", question: question
 
-  = button_tag "Show",
+  = button_tag t("answers.show_answer_form"),
           type: "button",
           data: { spec: "answer_show_form", answer: "show" },
           class: "tutu-button tutu-button--left tutu-button--full"
 
   = form_for [question, question.answers.build],
+          remote: true,
           data: { answer: "form" } do |f|
     = f.label :body, t("answers.new.body")
     = f.text_area :body,
-            class: "tutu-textarea tutu-field tutu-field--left"
+            class: "tutu-textarea tutu-field tutu-field--left",
+            data: { answer: "body" }
     = render "components/buttons",
             f: f,
             form_button: t("answers.new.submit"),
