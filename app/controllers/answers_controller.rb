@@ -5,12 +5,7 @@ class AnswersController < ApplicationController
   def create
     @answer = @question.answers.build answer_params
     @answer.user = current_user
-
-    if @answer.save
-      redirect_to welcomes_path, flash: { notice: t(".new.success") }
-    else
-      redirect_to welcomes_path, flash: { errors: @answer.errors }
-    end
+    @answer.save
   end
 
   private
