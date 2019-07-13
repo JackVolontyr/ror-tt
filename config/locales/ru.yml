@@ -242,5 +242,5 @@ ru:
     formats:
       default: "%d.%m.%Y"
       long: "%-d %B %Y"
-      long_with_time: "%-d %B %Y %H:%M"
+      short_with_time: "%H:%M %d.%m.%y"
       short: "%-d %b"

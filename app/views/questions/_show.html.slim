@@ -2,12 +2,11 @@
 
 = render "questions/grid_masonry_block"
   h2.tutu-question__title = @question.title
+  .tutu-question__date = l(@question.created_at, format: :short_with_time)
 
   p.tutu-question__description
     span.tutu-question__user.tutu-question__user--author data-random="color"
       = @question.user.name
-    ':
     = @question.body
 
-  p.tutu-question__date
-    b = l(@question.created_at, format: :long_with_time)
+  = render "answers/answer_container", question: @question

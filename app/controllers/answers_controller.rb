@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build answer_params
     @answer.user = current_user
     @answer.save
-    redirect_to welcomes_path
+    redirect_to welcomes_path, flash: { notice: t(".new.success") }
   end
 
   private

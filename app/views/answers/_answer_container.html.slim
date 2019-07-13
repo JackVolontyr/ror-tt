@@ -1,0 +1,23 @@
+.tutu-answer__container data-spec="answer_container"
+  - question.answers.each do |a|
+    .tutu-answer
+      .tutu-answer__date = l(a.created_at, format: :short_with_time)
+      b.tutu-answer__user data-random="color"
+        = a.user.name
+      p.tutu-answer__body
+        = a.body
+
+  = button_tag "Show",
+          type: "button",
+          data: { spec: "answer_show_form"},
+          class: "tutu-button tutu-button--left tutu-button--full"
+
+  = form_for [question, question.answers.build] do |f|
+    = f.label :body, t("answers.new.body")
+    = f.text_area :body,
+            class: "tutu-textarea tutu-field tutu-field--left"
+    = render "components/buttons",
+            f: f,
+            form_button: t("answers.new.submit"),
+            modifier: ["left", "full"],
+            data: { spec: "answer_submit" }
