@@ -4,7 +4,7 @@
   background-color: $color-white;
   border-radius: $outer-radius;
   text-align: left;
-  margin-bottom: $l;
+  margin-bottom: $s;
 
   &__list {
     display: grid;
@@ -27,7 +27,7 @@
   }
 
   &__content {
-    padding: 18px $m 53px;
+    padding: 18px $m 13px;
   }
 
   &__user {
