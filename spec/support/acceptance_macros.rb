@@ -1,13 +1,15 @@
-module AcceptanceHelper
-  def sign_in(user, correct = true)
+module AcceptanceMacros
+  def log_in(user, correct = true)
     correct ? (wrong_email = nil) : (wrong_email = 'wrong@test.com')
-    @sign_in_button_selector =
-        "input[type='submit'][value='#{t_from :new_user, 'login'}']"
+    @sign_in_selector = '[data-spec="login"]'
+    @email_selector = '[data-spec="email"]'
+    @password_selector = '[data-spec="password"]'
 
     visit new_user_session_path
-    fill_in t_from(:new_user, 'email'), with: wrong_email || user.email
-    fill_in t_from(:new_user, 'password'), with: user.password
-    find(@sign_in_button_selector).click
+
+    find(@email_selector).set wrong_email || user.email
+    find(@password_selector).set wrong_email || user.password
+    find(@sign_in_selector).click
   end
 
   def t_from(from, string)
@@ -28,5 +30,13 @@ module AcceptanceHelper
       path = ''
     end
     I18n.t "#{path}#{string}"
+  end
+
+  def saop
+    save_and_open_page
+  end
+
+  def bb
+    byebug
   end
 end
