@@ -8,6 +8,7 @@ $(document).on 'turbolinks:load', () ->
       form = parent.children('[data-answer="form"]')
       body = form.children('[data-answer="body"]')
       ajaxOutputForAnswer = parent.children('[data-answer="ajax-output"]')
+      ajaxOutputForError = parent.children('[data-answer="ajax-error-output"]')
 
       show.hide()
       form.show()
@@ -15,4 +16,5 @@ $(document).on 'turbolinks:load', () ->
       window.resizeAllGridItems()
 
       window.ajaxOutputForAnswer = ajaxOutputForAnswer
+      window.ajaxOutputForError = ajaxOutputForError
       window.bodyForAnswer = body

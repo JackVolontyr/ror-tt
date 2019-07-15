@@ -54,6 +54,9 @@ ru:
         title: "Тема"
         body: "Ваш вопрос"
 
+      answer:
+        body: "Тело ответа"
+
     errors:
       messages:
         blank: "не может быть пустым"
