@@ -10,16 +10,17 @@ feature 'User create Question', %q{
 
   before {
     @question_submit_selector = '[data-spec="question_submit"]'
-    @new_question_title = 'Title'
-    @new_question_body = 'Body body.'
+    @question_title = 'Title'
+    @question_body = 'Body body.'
     @invalid_question_title = ''
   }
 
   scenario 'Registered user try to create question' do
     log_in user
 
-    fill_in t_from(:new_question, 'title'), with: @new_question_title
-    fill_in t_from(:new_question, 'body'), with: @new_question_body
+    fill_in t_from(:new_question, 'title'), with: @question_title
+    fill_in t_from(:new_question, 'body'), with: @question_body
+
     find(@question_submit_selector).click
 
     expect(page).to have_content t_from(:new_question, 'success')
@@ -30,18 +31,18 @@ feature 'User create Question', %q{
     log_in user
 
     fill_in t_from(:new_question, 'title'), with: @invalid_question_title
-    fill_in t_from(:new_question, 'body'), with: @new_question_body
+    fill_in t_from(:new_question, 'body'), with: @question_body
     find(@question_submit_selector).click
 
     expect(page).to have_content t_from(:errors, 'blank')
     expect(current_path).to eq welcomes_path
   end
 
-  scenario 'Non-registered user try to sign in' do
+  scenario 'Non-registered user try to create question' do
     visit welcomes_path
 
-    fill_in t_from(:new_question, 'title'), with: @new_question_title
-    fill_in t_from(:new_question, 'body'), with: @new_question_body
+    fill_in t_from(:new_question, 'title'), with: @question_title
+    fill_in t_from(:new_question, 'body'), with: @question_body
     find(@question_submit_selector).click
 
     expect(page).to have_content t_from(:failure, 'unauthenticated')

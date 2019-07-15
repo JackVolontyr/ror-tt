@@ -72,6 +72,7 @@ group :development, :test do
 
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
+  gem "capybara-webkit"
 end
 
 group :development do
