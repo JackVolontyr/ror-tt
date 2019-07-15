@@ -20,6 +20,8 @@ feature 'User create answer', %q{
     @question_title = 'Title'
     @question_body = 'Body body.'
 
+    @error_message = "#{t_from :answer, 'body'} #{ (t_from :errors, 'blank')}"
+
     log_in user
 
     find(@answer_show_selector).click
@@ -32,6 +34,7 @@ feature 'User create answer', %q{
     expect(current_path).to eq welcomes_path
     within @answer_container_selector do
       expect(page).to have_content @answer
+      expect(page).to_not have_content @error_message
     end
   end
 
@@ -39,6 +42,7 @@ feature 'User create answer', %q{
     fill_in t_from(:new_answer, 'body'), with: @invalid_answer_title
     find(@answer_submit_selector).click
 
+    expect(page).to have_content @error_message
     expect(current_path).to eq welcomes_path
   end
 end

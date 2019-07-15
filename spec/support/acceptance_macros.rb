@@ -24,6 +24,8 @@ module AcceptanceMacros
       path = 'questions.new.'
     when :new_answer
       path = 'answers.new.'
+    when :answer
+      path = 'activerecord.attributes.answer.'
     when :errors
       path = 'activerecord.errors.messages.'
     else

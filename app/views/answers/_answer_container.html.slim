@@ -7,6 +7,8 @@
           data: { spec: "answer_show_form", answer: "show" },
           class: "tutu-button tutu-button--left tutu-button--full"
 
+  div data-answer="ajax-error-output"
+
   = form_for [question, question.answers.build],
           remote: true,
           data: { answer: "form" } do |f|

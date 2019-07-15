@@ -1,10 +1,21 @@
 ajaxOutputForAnswer = window.ajaxOutputForAnswer;
+ajaxOutputForError = window.ajaxOutputForError;
 setRandomColor = window.setRandomColor;
 resizeAllGridItems = window.resizeAllGridItems;
 bodyForAnswer = window.bodyForAnswer;
 
-ajaxOutputForAnswer.html('<%= j render 'answers/answers' %>');
-bodyForAnswer.val('');
+ajaxOutputForError.html('');
+
+<% if @answer.errors.present? %>
+  <% @answer.errors.full_messages.each do |m| %>
+    ajaxOutputForError.html(
+      '<%= j content_tag :div, m, id: 'error_explanation', class: 'no-margin--lr' %>'
+    );
+  <% end %>
+<% else %>
+  ajaxOutputForAnswer.html('<%= j render 'answers/answers' %>');
+  bodyForAnswer.val('');
+<% end %>
 
 setRandomColor();
 resizeAllGridItems();
