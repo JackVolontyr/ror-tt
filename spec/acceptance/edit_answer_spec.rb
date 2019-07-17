@@ -18,6 +18,10 @@ feature 'User edit Answer', %q{
   end
 
   describe 'Unauthenticated User' do
+    given!(:answer) { create :answer, question: question }
+
+    before { visit welcomes_path }
+
     scenario 'does not see the edit button' do
       expect(page).to_not have_selector @answer_edit_selector
     end
@@ -42,9 +46,7 @@ feature 'User edit Answer', %q{
   describe 'User is author' do
     given!(:answer) { create :answer, question: question, user: user }
 
-    before do
-      log_in user
-    end
+    before { log_in user }
 
     scenario 'see the edit button' do
       expect(page).to have_selector @answer_edit_selector
