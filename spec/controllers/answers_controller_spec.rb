@@ -48,8 +48,14 @@ RSpec.describe AnswersController, type: :controller do
     let!(:answer) { create :answer, question: question }
 
     it 'delete answer' do
-      expect { delete :destroy, params: {id: answer, question_id: question, format: :js } }
+      expect { delete :destroy, params: { id: answer, question_id: question, format: :js } }
           .to change(Answer, :count).by(-1)
+    end
+
+    it 'render answers' do
+      delete :destroy, params: { id: answer, question_id: question, format: :js }
+      expect(response).to render_template('answers/destroy')
+      # TODO: expect(response).to render_template('answers/answers')
     end
   end
 end
