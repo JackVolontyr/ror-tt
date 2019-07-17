@@ -57,6 +57,7 @@ feature 'User delete Answer', %q{
       expect(page).to have_selector @answer_alert_selector
       find(@answer_alert_submit_selector).click
       expect(page).to_not have_content answer.body
+      expect(page).to_not have_selector @answer_alert_selector
     end
   end
 end
