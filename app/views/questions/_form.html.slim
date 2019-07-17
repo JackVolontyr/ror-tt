@@ -1,0 +1,14 @@
+= form_for model, url: path, remote: true, data: data_form do |f|
+  = f.label :title, t("questions.new.title")
+  = f.text_field :title,
+          class: "tutu-field tutu-field--full tutu-field--bottom-offset tutu-field--left",
+          data: data_title
+  = f.label :body, t("questions.new.body")
+  = f.text_area :body,
+          class: "tutu-textarea tutu-textarea--no-margin-b tutu-field tutu-field--bottom-offset tutu-field--left",
+          data: data_body
+  = render "components/buttons",
+          f: f,
+          form_button: t("h.done"),
+          modifier: ["left", "full"],
+          data: data_submit
