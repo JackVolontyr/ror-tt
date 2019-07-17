@@ -1,5 +1,7 @@
 ajaxOutputForAnswer = window.ajaxOutputForAnswer;
 ajaxOutputForError = window.ajaxOutputForError;
+showForAnswer = window.showForAnswer;
+formForAnswer = window.formForAnswer;
 bodyForAnswer = window.bodyForAnswer;
 
 ajaxOutputForError.html('');
@@ -12,8 +14,10 @@ ajaxOutputForError.html('');
   <% end %>
 <% else %>
   ajaxOutputForAnswer.html('<%= j render 'answers/answers' %>');
+  showForAnswer.show();
+  formForAnswer.hide();
   bodyForAnswer.val('');
 <% end %>
 
 window.setRandomColor();
-window.resizeAllGridItems()
+window.resizeAllGridItems();
