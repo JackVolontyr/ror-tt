@@ -1,10 +1,25 @@
 - question = question || @question
 
 - question.answers.each do |a|
-  .tutu-answer
+  .tutu-answer data-answer="edit-container"
     .tutu-answer__date
       = localize(a.created_at, format: :short_with_time, default: '-')
+
+    - if current_user == a.user
+      button.tutu-button.tutu-button--mini data-spec="edit-answer__edit" data-answer="edit" ✎
+
     b.tutu-answer__user data-random="color"
       = a.user.name
+
     p.tutu-answer__body
-      = a.body
+      div data-answer="ajax-edit-output"
+        = a.body
+
+    - if current_user == a.user
+      div data-answer="ajax-edit-error-output"
+      = render "answers/form",
+              model: [question, a],
+              data_form: { answer: "edit-form", spec: "edit-answer__form" },
+              data_body: { answer: "edit-body", spec: "edit-answer__body" },
+              data_submit: { answer: "edit-submit", spec: "edit-answer__submit" },
+              item: a

@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_action :set_answer, only: [:update]
   before_action :answer_params
   before_action :set_question
 
@@ -8,6 +9,10 @@ class AnswersController < ApplicationController
     @answer.save
   end
 
+  def update
+    @answer.update(answer_params)
+  end
+
   private
   def answer_params
     params.require(:answer).permit(:body)
@@ -15,5 +20,9 @@ class AnswersController < ApplicationController
 
   def set_question
     @question = Question.find params[:question_id]
+  end
+
+  def set_answer
+    @answer = Answer.find params[:id]
   end
 end

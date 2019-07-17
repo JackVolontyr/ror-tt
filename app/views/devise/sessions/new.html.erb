@@ -10,7 +10,7 @@
                       autofocus: true,
                       autocomplete: "email",
                       class: "tutu-field",
-                      data: { spec: "email" } %>
+                      data: { spec: "sign-in__email" } %>
   </div>
 
   <div class="field">
@@ -19,7 +19,7 @@
     <%= f.password_field :password,
                          autocomplete: "current-password",
                          class: "tutu-field",
-                         data: { spec: "password" } %>
+                         data: { spec: "sign-in__password" } %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -32,7 +32,7 @@
   <div class="actions">
     <%= f.submit t("devise.shared.links.login"),
                  class: "tutu-button",
-                 data: { spec: "login" } %>
+                 data: { spec: "sign-in__login" } %>
   </div>
 <% end %>
 

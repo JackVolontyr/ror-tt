@@ -1,23 +1,18 @@
-.tutu-answer__container data-spec="answer_container" data-answer="container"
+.tutu-answer__container data-spec="answer__container" data-answer="container"
   div data-answer="ajax-output"
     = render "answers/answers", question: question
 
   = button_tag t("answers.show_answer_form"),
           type: "button",
-          data: { spec: "answer_show_form", answer: "show" },
+          data: { spec: "answer__show-form", answer: "show" },
           class: "tutu-button tutu-button--left tutu-button--full"
 
   div data-answer="ajax-error-output"
 
-  = form_for [question, question.answers.build],
-          remote: true,
-          data: { answer: "form" } do |f|
-    = f.label :body, t("answers.new.body")
-    = f.text_area :body,
-            class: "tutu-textarea tutu-field tutu-field--left",
-            data: { answer: "body" }
-    = render "components/buttons",
-            f: f,
-            form_button: t("answers.new.submit"),
-            modifier: ["left", "full"],
-            data: { spec: "answer_submit" }
+  - answer = question.answers.build
+  = render "answers/form",
+          model: [question, answer],
+          data_form: { answer: "form" },
+          data_body: { answer: "body", spec: "answer__body" },
+          data_submit: { answer: "submit", spec: "answer__submit" },
+          item: answer

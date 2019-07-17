@@ -1,0 +1,20 @@
+ajaxEditOutputForAnswer = window.ajaxEditOutputForAnswer;
+ajaxEditOutputForError = window.ajaxEditOutputForError
+editBodyForAnswer = window.editBodyForAnswer;
+editFormForAnswer = window.editFormForAnswer;
+
+ajaxEditOutputForError.html('');
+
+<% if @answer.errors.present? %>
+  <% @answer.errors.full_messages.each do |m| %>
+    ajaxEditOutputForError.html(
+      '<%= j content_tag :div, m, id: 'error_explanation', class: 'no-margin--lr inner' %>'
+    );
+  <% end %>
+<% else %>
+  ajaxEditOutputForAnswer.html('<%= j @answer.body %>');
+  editFormForAnswer.toggle();
+  editBodyForAnswer.val('');
+<% end %>
+
+window.resizeAllGridItems()

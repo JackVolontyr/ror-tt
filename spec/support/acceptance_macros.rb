@@ -1,9 +1,9 @@
 module AcceptanceMacros
   def log_in(user, correct = true)
     correct ? (wrong_email = nil) : (wrong_email = 'wrong@test.com')
-    @sign_in_selector = '[data-spec="login"]'
-    @email_selector = '[data-spec="email"]'
-    @password_selector = '[data-spec="password"]'
+    @sign_in_selector = '[data-spec="sign-in__login"]'
+    @email_selector = '[data-spec="sign-in__email"]'
+    @password_selector = '[data-spec="sign-in__password"]'
 
     visit new_user_session_path
 

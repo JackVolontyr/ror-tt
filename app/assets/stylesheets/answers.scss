@@ -1,10 +1,12 @@
 @import "utils.scss";
 
-[data-answer="form"] {
+[data-answer="form"],
+[data-answer="edit-form"] {
   display: none;
 }
 
 .tutu-answer {
+  word-break: break-all;
   padding: 6px $s;
   margin-left: auto;
   margin-bottom: $s;

@@ -1,7 +1,5 @@
 ajaxOutputForAnswer = window.ajaxOutputForAnswer;
 ajaxOutputForError = window.ajaxOutputForError;
-setRandomColor = window.setRandomColor;
-resizeAllGridItems = window.resizeAllGridItems;
 bodyForAnswer = window.bodyForAnswer;
 
 ajaxOutputForError.html('');
@@ -9,7 +7,7 @@ ajaxOutputForError.html('');
 <% if @answer.errors.present? %>
   <% @answer.errors.full_messages.each do |m| %>
     ajaxOutputForError.html(
-      '<%= j content_tag :div, m, id: 'error_explanation', class: 'no-margin--lr' %>'
+      '<%= j content_tag :div, m, id: 'error_explanation', class: 'no-margin--lr inner' %>'
     );
   <% end %>
 <% else %>
@@ -17,5 +15,5 @@ ajaxOutputForError.html('');
   bodyForAnswer.val('');
 <% end %>
 
-setRandomColor();
-resizeAllGridItems();
+window.setRandomColor();
+window.resizeAllGridItems()
