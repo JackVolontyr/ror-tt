@@ -122,15 +122,14 @@ RSpec.describe QuestionsController, type: :controller do
 
       it 'does not change question attributes' do
         question.reload
-        expect(question.title).to eq "MyString"
-        expect(question.body).to eq "MyText"
+        expect(question.title).to eq "MyQTitle"
+        expect(question.body).to eq "MyQBody"
       end
 
       it 're-renders edit view' do
         expect(response).to render_template :edit
       end
     end
-
   end
 
   describe 'DELETE #destroy' do
