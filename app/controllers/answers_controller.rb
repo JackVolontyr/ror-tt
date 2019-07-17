@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: [:update]
-  before_action :answer_params
-  before_action :set_question
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_answer, except: [:create]
+  before_action :set_question, only: [:create]
 
   def create
     @answer = @question.answers.build answer_params
@@ -11,6 +11,10 @@ class AnswersController < ApplicationController
 
   def update
     @answer.update(answer_params)
+  end
+
+  def destroy
+    @answer.destroy
   end
 
   private
