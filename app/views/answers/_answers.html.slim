@@ -6,7 +6,10 @@
       = localize(a.created_at, format: :short_with_time, default: '-')
 
     - if current_user == a.user
-      button.tutu-button.tutu-button--mini data-spec="edit-answer__edit" data-answer="edit" ✎
+      = button_tag "✎", class: "tutu-button tutu-button--mini",
+              data: { spec: "edit-answer__edit", answer: "edit" }
+      = button_tag "✖", class: "tutu-button tutu-button--mini",
+              data: { spec: "delete-answer__delete-open", answer: "delete" }
 
     b.tutu-answer__user data-random="color"
       = a.user.name
@@ -23,3 +26,14 @@
               data_body: { answer: "edit-body", spec: "edit-answer__body" },
               data_submit: { answer: "edit-submit", spec: "edit-answer__submit" },
               item: a
+
+    - if current_user == a.user
+      = content_tag :div, class: "tutu-answer__alert",
+              data: { answer: "delete-alert", spec: "delete-answer__alert" } do
+        p.tutu-answer__delete-question = t ".delete_question"
+        = link_to t(".delete"), [question, a], method: :delete, remove: true,
+                class: "tutu-button",
+                data: { spec: "delete-answer__alert-submit", answer: "delete-submit" }
+        = button_tag t(".dont"),
+                class: "tutu-button",
+                data: { spec: "delete-answer__delete-close", answer: "delete" }

@@ -229,6 +229,10 @@ ru:
       submit: "%{action} Ответ"
     update:
       success: "Ответ отредактирован успешно."
+    answers:
+      delete_question: "Хотите удалить ответ?"
+      delete: "Удалить"
+      dont: "Нет"
 
   date:
     abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
