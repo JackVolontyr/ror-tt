@@ -43,7 +43,6 @@ $(document).on 'turbolinks:load', () ->
       parent = $(this).parents(da('edit-container'))
       window.ajaxEditOutputForAnswer = parent.children(da('ajax-edit-output'))
       window.ajaxEditOutputForError = parent.children(da('ajax-edit-error-output'))
-      window.editBodyForAnswer = parent.children(da('edit-body'));
       window.editFormForAnswer = parent.children(da('edit-form'));
       # go to answers/update.js.erb
 

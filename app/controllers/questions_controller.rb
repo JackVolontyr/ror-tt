@@ -28,8 +28,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question.update(question_params) ?
-        redirect_to(@question) : render(:edit)
+    @question.update question_params
   end
 
   def destroy

@@ -1,21 +1,13 @@
 .tutu-question__list data-grid="masonry"
   = render "questions/grid_masonry_block"
-    = form_for :question,
-            url: questions_path,
-            html: { id: "new_question" } do |f|
-      = f.label :title, t("questions.new.title")
-      = f.text_field :title,
-              class: "tutu-field tutu-field--full tutu-field--bottom-offset tutu-field--left",
-              data: { spec: "question__title" }
-      = f.label :body, t("questions.new.body")
-      = f.text_area :body,
-              class: "tutu-textarea tutu-field tutu-field--bottom-offset tutu-field--left",
-              data: { spec: "question__body" }
-      = render "components/buttons",
-              f: f,
-              form_button: t("questions.new.submit"),
-              modifier: "left",
-              data: { spec: "question__submit" }
+    = render "questions/form",
+            path: questions_path,
+            model: :question,
+            data_form: {spec: "question__form"},
+            data_title: {spec: "question__title"},
+            data_body: {spec: "question__body"},
+            data_submit: {spec: "question__submit"}
 
   - @questions.ordered_by_new.each do |question|
-    = render "questions/show", question: question
+    = render "questions/grid_masonry_block"
+      = render "questions/question", question: question

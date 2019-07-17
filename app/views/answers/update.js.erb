@@ -1,7 +1,6 @@
 ajaxEditOutputForAnswer = window.ajaxEditOutputForAnswer;
 ajaxEditOutputForError = window.ajaxEditOutputForError
 editFormForAnswer = window.editFormForAnswer;
-editBodyForAnswer = window.editBodyForAnswer;
 
 ajaxEditOutputForError.html('');
 
@@ -14,7 +13,6 @@ ajaxEditOutputForError.html('');
 <% else %>
   ajaxEditOutputForAnswer.html('<%= j @answer.body %>');
   editFormForAnswer.toggle();
-  editBodyForAnswer.val('');
 <% end %>
 
 window.resizeAllGridItems()

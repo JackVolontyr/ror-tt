@@ -1,0 +1,20 @@
+editQuestionTitleOutput = window.editQuestionTitleOutput;
+editQuestionBodyOutput = window.editQuestionBodyOutput;
+editQuestionError = window.editQuestionError
+editQuestionForm = window.editQuestionForm;
+
+editQuestionError.html('');
+
+<% if @question.errors.present? %>
+  <% @question.errors.full_messages.each do |m| %>
+    editQuestionError.html(
+      '<%= j content_tag :div, m, id: 'error_explanation', class: 'no-margin--lr inner' %>'
+    );
+  <% end %>
+<% else %>
+  editQuestionTitleOutput.html('<%= j @question.title %>');
+  editQuestionBodyOutput.html('<%= j @question.body %>');
+  editQuestionForm.toggle();
+<% end %>
+
+window.resizeAllGridItems()

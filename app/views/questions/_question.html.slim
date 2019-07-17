@@ -1,0 +1,26 @@
+- @question = question || @question
+
+div data-question="edit-container"
+  - if user_is_author_or_admin?(@question)
+    = button_tag "✎", class: "tutu-button tutu-button--mini tutu-button--mini-right",
+            data: {spec: "edit-question__edit", question: "edit"}
+    / = button_tag "✖", class: "tutu-button tutu-button--mini",
+            /         data: {spec: "delete-answer__delete-open", answer: "delete"}
+
+  h2.tutu-question__title data-question="edit-title" = @question.title
+  .tutu-question__date = l(@question.created_at, format: :short_with_time)
+
+  .tutu-question__user.tutu-question__user--author data-random="color" = @question.user.name
+  p.tutu-question__description data-question="edit-body" = @question.body
+
+  - if user_is_author_or_admin?(@question)
+    div data-question="edit-error"
+    = render "questions/form",
+            path: nil,
+            model: @question,
+            data_form: {spec: "edit-question__form", question: "edit-form"},
+            data_title: {spec: "edit-question__title"},
+            data_body: {spec: "edit-question__body", question: "edit-body"},
+            data_submit: {spec: "edit-question__submit", question: "edit-submit"}
+
+  = render "answers/answer_container", question: @question
