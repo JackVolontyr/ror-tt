@@ -113,4 +113,8 @@ module ApplicationHelper
      I18n.t("h.s.carriage.side_bottom_seats") => "side_bottom_seats",
      I18n.t("h.s.carriage.side_top_seats") => "side_top_seats"}
   end
+
+  def user_is_author_or_admin?(item)
+    current_user == item.user || (current_user.present? && current_user.admin?)
+  end
 end
