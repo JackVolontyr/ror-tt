@@ -1,0 +1,10 @@
+= form_for model, remote: true, data: data_form do |f|
+  = f.label :body, t("answers.new.body")
+  = f.text_area :body,
+          class: "tutu-textarea tutu-field tutu-field--left",
+          data: data_body
+  = render "components/buttons",
+          f: f,
+          form_button: form_naming("answers.form.submit", item),
+          modifier: ["left", "full"],
+          data: data_submit
