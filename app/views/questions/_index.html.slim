@@ -5,15 +5,17 @@
             html: { id: "new_question" } do |f|
       = f.label :title, t("questions.new.title")
       = f.text_field :title,
-              class: "tutu-field tutu-field--full tutu-field--bottom-offset tutu-field--left"
+              class: "tutu-field tutu-field--full tutu-field--bottom-offset tutu-field--left",
+              data: { spec: "question__title" }
       = f.label :body, t("questions.new.body")
       = f.text_area :body,
-              class: "tutu-textarea tutu-field tutu-field--bottom-offset tutu-field--left"
+              class: "tutu-textarea tutu-field tutu-field--bottom-offset tutu-field--left",
+              data: { spec: "question__body" }
       = render "components/buttons",
               f: f,
               form_button: t("questions.new.submit"),
               modifier: "left",
-              data: { spec: "question_submit" }
+              data: { spec: "question__submit" }
 
   - @questions.ordered_by_new.each do |question|
     = render "questions/show", question: question
