@@ -6,6 +6,7 @@ ru:
     arrival: "Прибытие"
     departure: "Отбытие"
     position: "позиция"
+    done: "Готово"
 
     route: "Путь"
     routes: "Пути"
