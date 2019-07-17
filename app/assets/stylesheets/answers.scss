@@ -1,7 +1,8 @@
 @import "utils.scss";
 
 [data-answer="form"],
-[data-answer="edit-form"] {
+[data-answer="edit-form"],
+[data-answer="delete-alert"] {
   display: none;
 }
 
@@ -29,5 +30,16 @@
   &__body {
     margin-top: 1px;
     word-break: break-word;
+  }
+
+  &__alert {
+    padding-top: 5px;
+    text-align: center;
+    border: 1px dashed $color-grey;
+    border-radius: 5px;
+  }
+
+  &__delete-question {
+    margin: 0;
   }
 }
