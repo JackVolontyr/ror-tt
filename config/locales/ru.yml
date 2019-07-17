@@ -224,9 +224,11 @@ ru:
     show_answer_form: "Показать форму ответа"
     new:
       body: "Ваш Ответ"
-      submit: "Создать Ответ"
       success: "Ответ создан успешно."
-
+    form:
+      submit: "%{action} Ответ"
+    update:
+      success: "Ответ отредактирован успешно."
 
   date:
     abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
