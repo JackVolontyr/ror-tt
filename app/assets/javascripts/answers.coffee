@@ -55,7 +55,7 @@ $(document).on 'turbolinks:load', () ->
       window.resizeAllGridItems()
 
     # DESTROY when submit clicked
-    $(document).on "click", fs('delete-submit', true), (e) ->
+    $(fs('delete-submit', true)).on "click", (e) ->
       parent = $(this).parents(da('container'))
       window.ajaxOutputForAnswer = parent.children(da('ajax-output'))
       # go to answers/destroy.js.erb
