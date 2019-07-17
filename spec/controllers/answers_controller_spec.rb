@@ -12,11 +12,6 @@ RSpec.describe AnswersController, type: :controller do
             answer: attributes_for(:answer), question_id: question, format: :js }
         }.to change(question.answers, :count).by(1)
       end
-
-      it 'redirect to welcomes path' do
-        post :create, params: {
-            answer: attributes_for(:answer), question_id: question, format: :js }
-      end
     end
 
     context 'with invalid attributes' do
@@ -24,11 +19,6 @@ RSpec.describe AnswersController, type: :controller do
         expect { post :create, params: {
             answer: attributes_for(:invalid_answer), question_id: question, format: :js }
         }.to_not change(Answer, :count)
-      end
-
-      it 'redirect to welcomes path' do
-        post :create, params: {
-            answer: attributes_for(:invalid_answer), question_id: question, format: :js }
       end
     end
   end
@@ -49,6 +39,23 @@ RSpec.describe AnswersController, type: :controller do
           id: answer, answer: { body: "newbody" }, question_id: question, format: :js }
       answer.reload
       expect(answer.body).to eq "newbody"
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    sign_in_user
+
+    let!(:answer) { create :answer, question: question }
+
+    it 'delete answer' do
+      expect { delete :destroy, params: { id: answer, question_id: question, format: :js } }
+          .to change(Answer, :count).by(-1)
+    end
+
+    it 'render answers' do
+      delete :destroy, params: { id: answer, question_id: question, format: :js }
+      expect(response).to render_template('answers/destroy')
+      # TODO: expect(response).to render_template('answers/answers')
     end
   end
 end
