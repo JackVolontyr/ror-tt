@@ -15,11 +15,11 @@
       = a.user.name
 
     p.tutu-answer__body
-      div data-answer="ajax-edit-output"
+      div data-answer="edit-output"
         = a.body
 
     - if user_is_author_or_admin?(a)
-      div data-answer="ajax-edit-error-output"
+      div data-answer="edit-error"
       = render "answers/form",
               model: [question, a],
               data_form: { answer: "edit-form", spec: "edit-answer__form" },
@@ -30,7 +30,7 @@
     - if user_is_author_or_admin?(a)
       = content_tag :div, class: "tutu-answer__alert",
               data: { answer: "delete-alert", spec: "delete-answer__alert" } do
-        p.tutu-answer__delete-question = t ".delete_question"
+        p.tutu-answer__delete-text = t ".delete_text"
         = link_to t(".delete"), [question, a], method: :delete, remote: true,
                 class: "tutu-button",
                 data: { spec: "delete-answer__alert-submit", answer: "delete-submit" }
