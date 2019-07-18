@@ -31,8 +31,5 @@ div data-question="edit-container"
       = link_to t(".delete"), @question, method: :delete, # remote: true,
               class: "tutu-button",
               data: {spec: "delete-question__alert-submit", question: "delete-submit"}
-      = button_tag t(".dont"),
-              class: "tutu-button",
-              data: {spec: "delete-question__delete-close", question: "delete"}
 
   = render "answers/answer_container", question: @question

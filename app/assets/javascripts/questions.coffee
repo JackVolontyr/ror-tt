@@ -14,7 +14,7 @@ $(document).on 'turbolinks:load', () ->
     $(document).on "click", fs('edit', true), (e) ->
       e.preventDefault()
       editForm = $(this).parents(da('edit-container')).children(da('edit-form'))
-      editForm.toggle()
+      editForm.show()
       editForm.children(da('edit-body')).focus()
       window.resizeAllGridItems()
 
@@ -33,7 +33,7 @@ $(document).on 'turbolinks:load', () ->
     $(document).on "click", fs('delete', true), (e) ->
       e.preventDefault()
       deleteAlert = $(this).parents(da('edit-container')).children(da('delete-alert'))
-      deleteAlert.toggle()
+      deleteAlert.show()
       window.resizeAllGridItems()
 
     # TODO: js: true
