@@ -33,7 +33,10 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to question_path
+    redirect_to welcomes_path
+
+    # TODO: js: true
+    # @questions = Question.all
   end
 
   private
