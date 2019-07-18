@@ -1,5 +1,5 @@
 .tutu-answer__container data-spec="answer__container" data-answer="container"
-  div data-answer="ajax-output"
+  div data-answer="output"
     = render "answers/answers", question: question
 
   = button_tag t("answers.show_answer_form"),
@@ -7,7 +7,7 @@
           data: { spec: "answer__show-form", answer: "show" },
           class: "tutu-button tutu-button--left tutu-button--full"
 
-  div data-answer="ajax-error-output"
+  div data-answer="error-output"
 
   - answer = question.answers.build
   = render "answers/form",

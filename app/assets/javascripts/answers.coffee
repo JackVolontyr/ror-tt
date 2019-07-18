@@ -23,8 +23,8 @@ $(document).on 'turbolinks:load', () ->
     $(document).on "click", fs('submit'), (e) ->
       parent = $(this).parents(da('container'))
       form = parent.children(da('form'))
-      window.ajaxOutputForAnswer = parent.children(da('ajax-output'))
-      window.ajaxOutputForError = parent.children(da('ajax-error-output'))
+      window.ajaxOutputForAnswer = parent.children(da('output'))
+      window.ajaxOutputForError = parent.children(da('error-output'))
       window.showForAnswer = parent.children(fs('show'))
       window.formForAnswer = form
       window.bodyForAnswer = form.children(da('body'))
@@ -34,15 +34,15 @@ $(document).on 'turbolinks:load', () ->
     $(document).on "click", fs('edit', true), (e) ->
       e.preventDefault()
       editForm = $(this).parents(da('edit-container')).children(da('edit-form'))
-      editForm.toggle()
+      editForm.show()
       editForm.children(da('edit-body')).focus()
       window.resizeAllGridItems()
 
     # UPDATE when submit clicked
     $(document).on "click", fs('edit-submit', true), (e) ->
       parent = $(this).parents(da('edit-container'))
-      window.ajaxEditOutputForAnswer = parent.children(da('ajax-edit-output'))
-      window.ajaxEditOutputForError = parent.children(da('ajax-edit-error-output'))
+      window.ajaxEditOutputForAnswer = parent.children(da('edit-output'))
+      window.ajaxEditOutputForError = parent.children(da('edit-error'))
       window.editFormForAnswer = parent.children(da('edit-form'));
       # go to answers/update.js.erb
 
@@ -50,11 +50,11 @@ $(document).on 'turbolinks:load', () ->
     $(document).on "click", fs('delete', true), (e) ->
       e.preventDefault()
       deleteAlert = $(this).parents(da('edit-container')).children(da('delete-alert'))
-      deleteAlert.toggle()
+      deleteAlert.show()
       window.resizeAllGridItems()
 
     # DESTROY when submit clicked
     $(fs('delete-submit', true)).on "click", (e) ->
       parent = $(this).parents(da('container'))
-      window.ajaxOutputForAnswer = parent.children(da('ajax-output'))
+      window.ajaxOutputForAnswer = parent.children(da('output'))
       # go to answers/destroy.js.erb

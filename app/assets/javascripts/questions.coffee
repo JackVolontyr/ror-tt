@@ -14,7 +14,7 @@ $(document).on 'turbolinks:load', () ->
     $(document).on "click", fs('edit', true), (e) ->
       e.preventDefault()
       editForm = $(this).parents(da('edit-container')).children(da('edit-form'))
-      editForm.toggle()
+      editForm.show()
       editForm.children(da('edit-body')).focus()
       window.resizeAllGridItems()
 
@@ -27,3 +27,17 @@ $(document).on 'turbolinks:load', () ->
       window.editQuestionError = parent.children(da('edit-error'))
       window.editQuestionForm = parent.children(da('edit-form'));
       # go to answers/update.js.erb
+
+
+    # DESTROY toggle form
+    $(document).on "click", fs('delete', true), (e) ->
+      e.preventDefault()
+      deleteAlert = $(this).parents(da('edit-container')).children(da('delete-alert'))
+      deleteAlert.show()
+      window.resizeAllGridItems()
+
+    # TODO: js: true
+    # DESTROY when submit clicked
+    # $(fs('delete-submit', true)).on "click", (e) ->
+      # window.questionsOutput = $(this).parents(da('output'))
+      # go to answers/destroy.js.erb

@@ -12,7 +12,7 @@ ajaxEditOutputForError.html('');
   <% end %>
 <% else %>
   ajaxEditOutputForAnswer.html('<%= j @answer.body %>');
-  editFormForAnswer.toggle();
+  editFormForAnswer.hide();
 <% end %>
 
 window.resizeAllGridItems()

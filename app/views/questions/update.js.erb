@@ -14,7 +14,7 @@ editQuestionError.html('');
 <% else %>
   editQuestionTitleOutput.html('<%= j @question.title %>');
   editQuestionBodyOutput.html('<%= j @question.body %>');
-  editQuestionForm.toggle();
+  editQuestionForm.hide();
 <% end %>
 
 window.resizeAllGridItems()

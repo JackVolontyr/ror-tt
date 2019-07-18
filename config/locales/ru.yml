@@ -221,6 +221,11 @@ ru:
       title: "%{action} Вопрос"
       submit: "%{action} Вопрос"
 
+    question:
+      delete_text: "Хотите удалить вопрос?"
+      delete: "Удалить"
+      dont: "Нет"
+
   answers:
     show_answer_form: "Показать форму ответа"
     new:
@@ -231,7 +236,7 @@ ru:
     update:
       success: "Ответ отредактирован успешно."
     answers:
-      delete_question: "Хотите удалить ответ?"
+      delete_text: "Хотите удалить ответ?"
       delete: "Удалить"
       dont: "Нет"
 

@@ -98,6 +98,8 @@ RSpec.describe QuestionsController, type: :controller do
     before { question }
 
     it 'deletes question' do
+      # TODO: js: true
+      # format: :js
       expect { delete :destroy, params: { id: question } }.to change(Question, :count).by(-1)
     end
   end
