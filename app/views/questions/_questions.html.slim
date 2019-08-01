@@ -1,11 +1,12 @@
 = render "questions/grid_masonry_block"
   = render "questions/form",
-          path: questions_path,
-          model: :question,
+          model: @question,
+          remote: false,
           data_form: {spec: "question__form"},
           data_title: {spec: "question__title"},
           data_body: {spec: "question__body"},
-          data_submit: {spec: "question__submit"}
+          data_submit: {spec: "question__submit"},
+          data_file: {spec: "question__file"}
 
 - @questions.ordered_by_new.each do |question|
   = render "questions/grid_masonry_block"
