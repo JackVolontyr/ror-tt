@@ -1,0 +1,9 @@
+div data-question="edit-error"
+= render "questions/form",
+        model: question,
+        remote: true,
+        data_form: {spec: "edit-question__form", question: "edit-form"},
+        data_title: {spec: "edit-question__title"},
+        data_body: {spec: "edit-question__body", question: "edit-body"},
+        data_submit: {spec: "edit-question__submit", question: "edit-submit"},
+        data_file: {spec: "_edit-question__file"}

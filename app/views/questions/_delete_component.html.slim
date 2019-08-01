@@ -1,0 +1,8 @@
+= content_tag :div, class: "tutu-answer__alert",
+        data: {question: "delete-alert", spec: "delete-question__alert"} do
+  p.tutu-answer__delete-text = t "questions.question.delete_text"
+  / TODO: js: true
+  = link_to t("questions.question.delete"), question, method: :delete,
+          # remote: true,
+          class: "tutu-button",
+          data: {spec: "delete-question__alert-submit", question: "delete-submit"}
