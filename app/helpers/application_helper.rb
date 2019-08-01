@@ -1,5 +1,11 @@
 module ApplicationHelper
 
+  def is_image?(url)
+    true if url.include?('jpg') ||
+        url.include?('jpeg') ||
+        url.include?('png')
+  end
+
   def theme(themes, component_class_name)
     themes = Array(themes)
     themes.map { |t| "#{component_class_name}--#{t}" }.join(' ')
