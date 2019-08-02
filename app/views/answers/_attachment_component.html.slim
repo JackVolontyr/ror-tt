@@ -1,0 +1,10 @@
+.tutu-question__attachment
+  - a.attachments.each do |attachment|
+    - if attachment.present?
+      - @url = attachment.file.url
+      - @name = attachment.file.identifier
+
+      = link_to (is_image?(@url) ? '' : @name), @url
+
+      - if is_image? @url
+        = image_tag @url, class: "tutu-question__pic", alt: @name
