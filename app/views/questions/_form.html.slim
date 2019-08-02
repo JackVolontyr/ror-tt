@@ -10,8 +10,8 @@
           data: data_body
 
   = f.fields_for :attachments do |a|
-    = a.label :file
-    = a.file_field :file,
+    = a.label :file, t(".file")
+    = a.file_field :file, class: "tutu-answer__file",
             data: data_file
 
   = render "components/buttons",

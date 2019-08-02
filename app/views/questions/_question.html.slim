@@ -2,12 +2,7 @@
 
 div data-question="edit-container"
   = render "questions/edit_delete_buttons" if user_is_author_or_admin?(@question)
-
   = render "questions/question_main", question: @question
-
-  = render "questions/edit_component",
-          question: @question if user_is_author_or_admin?(@question)
-  = render "questions/delete_component",
-          question: @question if user_is_author_or_admin?(@question)
-
+  = render "questions/edit_component", { question: @question } if user_is_author_or_admin?(@question)
+  = render "questions/delete_component", { question: @question } if user_is_author_or_admin?(@question)
   = render "answers/answer_container", question: @question
