@@ -35,3 +35,5 @@ confug/database.yml
 /config/master.key
 
 .idea
+
+/public/uploads
