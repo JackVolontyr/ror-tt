@@ -1,35 +1,8 @@
 - @question = question || @question
 
 div data-question="edit-container"
-  - if user_is_author_or_admin?(@question)
-    = button_tag "✖", class: "tutu-button tutu-button--mini tutu-button--mini-right",
-            data: {spec: "delete-question__delete-open", question: "delete"}
-    = button_tag "✎", class: "tutu-button tutu-button--mini tutu-button--mini-right",
-            data: {spec: "edit-question__edit", question: "edit"}
-
-  h2.tutu-question__title data-question="edit-title" = @question.title
-  .tutu-question__date = l(@question.created_at, format: :short_with_time)
-
-  .tutu-question__user.tutu-question__user--author data-random="color" = @question.user.name
-  p.tutu-question__description data-question="edit-body" = @question.body
-
-  - if user_is_author_or_admin?(@question)
-    div data-question="edit-error"
-    = render "questions/form",
-            path: nil,
-            model: @question,
-            data_form: {spec: "edit-question__form", question: "edit-form"},
-            data_title: {spec: "edit-question__title"},
-            data_body: {spec: "edit-question__body", question: "edit-body"},
-            data_submit: {spec: "edit-question__submit", question: "edit-submit"}
-
-  - if user_is_author_or_admin?(@question)
-    = content_tag :div, class: "tutu-answer__alert",
-            data: {question: "delete-alert", spec: "delete-question__alert"} do
-      p.tutu-answer__delete-text = t ".delete_text"
-      / TODO: js: true
-      = link_to t(".delete"), @question, method: :delete, # remote: true,
-              class: "tutu-button",
-              data: {spec: "delete-question__alert-submit", question: "delete-submit"}
-
+  = render "questions/edit_delete_buttons" if user_is_author_or_admin?(@question)
+  = render "questions/question_main", question: @question
+  = render "questions/edit_component", { question: @question } if user_is_author_or_admin?(@question)
+  = render "questions/delete_component", { question: @question } if user_is_author_or_admin?(@question)
   = render "answers/answer_container", question: @question

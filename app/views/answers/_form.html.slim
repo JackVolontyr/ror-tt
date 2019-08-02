@@ -3,6 +3,12 @@
   = f.text_area :body,
           class: "tutu-textarea tutu-field tutu-field--left",
           data: data_body
+
+  = f.fields_for :attachments do |a|
+    = a.label :file, t(".file")
+    = a.file_field :file, class: "tutu-answer__file",
+            data: data_file
+
   = render "components/buttons",
           f: f,
           form_button: form_naming("answers.form.submit", item),

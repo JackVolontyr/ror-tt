@@ -1,0 +1,8 @@
+div data-answer="edit-error"
+= render "answers/form",
+        model: [question, a],
+        data_form: { answer: "edit-form", spec: "edit-answer__form" },
+        data_body: { answer: "edit-body", spec: "edit-answer__body" },
+        data_file: {spec: "answer__file"},
+        data_submit: { answer: "edit-submit", spec: "edit-answer__submit" },
+        item: a

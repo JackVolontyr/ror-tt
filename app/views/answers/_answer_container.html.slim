@@ -9,10 +9,13 @@
 
   div data-answer="error-output"
 
+  / TODO: move `answer = question.answers.build`
   - answer = question.answers.build
+  - attachment = answer.attachments.build
   = render "answers/form",
           model: [question, answer],
           data_form: { answer: "form" },
           data_body: { answer: "body", spec: "answer__body" },
+          data_file: { spec: "answer__file" },
           data_submit: { answer: "submit", spec: "answer__submit" },
           item: answer

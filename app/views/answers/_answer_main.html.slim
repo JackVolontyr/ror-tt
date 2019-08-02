@@ -1,0 +1,12 @@
+.tutu-answer__date
+  = localize(a.created_at, format: :short_with_time, default: '-')
+
+- if user_is_author_or_admin?(a)
+  = render "answers/edit_delete_buttons"
+
+b.tutu-answer__user data-random="color"
+  = a.user.name
+
+p.tutu-answer__body
+  div data-answer="edit-output"
+    = a.body

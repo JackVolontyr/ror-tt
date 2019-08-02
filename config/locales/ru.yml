@@ -220,6 +220,7 @@ ru:
     form:
       title: "%{action} Вопрос"
       submit: "%{action} Вопрос"
+      file: "Файл"
 
     question:
       delete_text: "Хотите удалить вопрос?"
@@ -233,6 +234,7 @@ ru:
       success: "Ответ создан успешно."
     form:
       submit: "%{action} Ответ"
+      file: "Файл"
     update:
       success: "Ответ отредактирован успешно."
     answers:

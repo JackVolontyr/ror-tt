@@ -1,0 +1,16 @@
+h2.tutu-question__title data-question="edit-title" = question.title
+.tutu-question__date = l(question.created_at, format: :short_with_time)
+
+.tutu-question__user.tutu-question__user--author data-random="color" = question.user.name
+p.tutu-question__description data-question="edit-body" = question.body
+
+.tutu-question__attachment
+  - question.attachments.each do |a|
+    - if a.present?
+      - @url = a.file.url
+      - @name = a.file.identifier
+
+      = link_to (is_image?(@url) ? '' : @name), @url
+
+      - if is_image? @url
+        = image_tag @url, class: "tutu-question__pic", alt: @name
