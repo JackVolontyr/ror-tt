@@ -20,4 +20,6 @@ ajaxOutputForError.html('');
 <% end %>
 
 window.setRandomColor();
-window.resizeAllGridItems();
+$('img').on('load', function() {
+  window.resizeAllGridItems();
+});
