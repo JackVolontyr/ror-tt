@@ -24,6 +24,10 @@ RSpec.describe QuestionsController, type: :controller do
     it 'assigns new answer for question' do
       expect(assigns(:answer)).to be_a_new Answer
     end
+
+    it 'build new Attachment for answer' do
+      expect(assigns(:answer).attachments.last).to be_a_new Attachment
+    end
   end
 
   describe 'GET #new' do
@@ -34,7 +38,7 @@ RSpec.describe QuestionsController, type: :controller do
       expect(assigns(:question)).to be_a_new Question
     end
 
-    it 'build new Attachment to @question' do
+    it 'build new Attachment for question' do
       expect(assigns(:question).attachments.last).to be_a_new Attachment
     end
   end
@@ -47,7 +51,7 @@ RSpec.describe QuestionsController, type: :controller do
       expect(assigns(:question)).to eq question
     end
 
-    it 'build new Attachment to @question' do
+    it 'build new Attachment for question' do
       expect(assigns(:question).attachments.last).to be_a_new Attachment
     end
   end

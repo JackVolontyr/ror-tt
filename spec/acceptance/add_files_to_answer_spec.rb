@@ -10,6 +10,7 @@ feature 'Add files to answer', %q{
   given!(:question) { create :question }
 
   before do
+    @answer_show_selector ='[data-spec="answer__show-form"]'
     @answer_body_selector = '[data-spec="answer__body"]'
     @answer_file_selector = '[data-spec="answer__file"]'
     @answer_submit_selector = '[data-spec="answer__submit"]'
@@ -26,16 +27,17 @@ feature 'Add files to answer', %q{
     log_in user
     visit welcomes_path
 
+    find(@answer_show_selector).click
     find(@answer_body_selector).set @answer_body
   end
 
-  scenario 'User adds file to answer' do
+  scenario 'User adds file to answer', js: true do
     find(@answer_file_selector).set @answer_file
     find(@answer_submit_selector).click
     expect(page).to have_link @answer_file_name, href: @answer_file_href
   end
 
-  scenario 'User adds image file to answer' do
+  scenario 'User adds image file to answer', js: true do
     find(@answer_file_selector).set @answer_image
     find(@answer_submit_selector).click
     expect(page).to have_css("img[src*='#{@answer_image_name}']")
