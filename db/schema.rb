@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_18_153238) do
+ActiveRecord::Schema.define(version: 2019_08_02_111144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 2019_07_18_153238) do
 
   create_table "attachments", force: :cascade do |t|
     t.string "file"
-    t.bigint "question_id"
-    t.bigint "answer_id"
+    t.bigint "attachmentable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["answer_id"], name: "index_attachments_on_answer_id"
-    t.index ["question_id"], name: "index_attachments_on_question_id"
+    t.string "attachmentable_type"
+    t.index ["attachmentable_id"], name: "index_attachments_on_attachmentable_id"
+    t.index ["attachmentable_type"], name: "index_attachments_on_attachmentable_type"
   end
 
   create_table "carriages", force: :cascade do |t|
@@ -123,7 +123,5 @@ ActiveRecord::Schema.define(version: 2019_07_18_153238) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "attachments", "answers"
-  add_foreign_key "attachments", "questions"
   add_foreign_key "questions", "users"
 end
