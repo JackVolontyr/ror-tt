@@ -21,9 +21,6 @@ $(document).on 'turbolinks:load', () ->
     # answer form reset with grid reset
     answer_form_reset = () ->
       W.ajaxOutputForError.html('')
-      W.showForAnswer.show()
-      W.formForAnswer.hide()
-      W.bodyForAnswer.val('')
       grid_reset()
 
     # CREATE hide show button and open form with focus
@@ -38,27 +35,10 @@ $(document).on 'turbolinks:load', () ->
     # CREATE when submit clicked
     $(document).on "click", fs('submit'), (e) ->
       parent = $(this).parents(da('container'))
-      form = parent.children(da('form'))
+      # need for delete action
       W.ajaxOutputForAnswer = parent.children(da('output'))
       W.ajaxOutputForError = parent.children(da('error-output'))
-      W.showForAnswer = parent.children(fs('show'))
-      W.formForAnswer = form
-      W.bodyForAnswer = form.children(da('body'))
       # go to answers/create.js.erb
-
-      ###
-      form.bind 'ajax:success', (e) ->
-        xhr = e.detail[2]
-        answer = $.parseJSON(xhr.responseText)
-        W.ajaxOutputForAnswer.append(answer.body)
-        answer_form_reset()
-
-      form.bind 'ajax:error', (e) ->
-        xhr = e.detail[2]
-        answer = $.parseJSON(xhr.responseText)
-        W.ajaxOutputForError.append(answer.body)
-        grid_reset()
-      ###
 
     # UPDATE toggle form with focus
     $(document).on "click", fs('edit', true), (e) ->

@@ -1,4 +1,8 @@
-.tutu-answer__container data-spec="answer__container" data-answer="container"
+= content_tag :div,
+        class: "tutu-answer__container",
+        data: { spec: "answer__container",
+                answer: "container",
+                question_id: @question.id }
   div data-answer="output"
     = render "answers/answers", question: question
 

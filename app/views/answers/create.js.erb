@@ -1,20 +1,22 @@
-var W = window;
-
-W.ajaxOutputForError.html('');
-
 <% if @answer.errors.present? %>
+  var W = window;
+  W.ajaxOutputForError.html('');
   W.ajaxOutputForError.html('<%= j render 'error_explanation' %>');
+  W.setRandomColor();
+  W.resizeAllGridItems();
+  $('img').on('load', function() { W.resizeAllGridItems(); });
+
 <% else %>
   <% publish_to "/questions/#{@question.id}/answers" do %>
-    window.ajaxOutputForAnswer.html('<%= j render 'answers' %>');
-  <% end %>
-  W.showForAnswer.show();
-  W.formForAnswer.hide();
-  W.bodyForAnswer.val('');
-<% end %>
+    function elem(element) { return $('[data-question-id="<%= @question.id %>"]').children('[data-answer="' + element + '"]'); }
 
-W.setRandomColor();
-W.resizeAllGridItems();
-$('img').on('load', function() {
-  W.resizeAllGridItems();
-});
+    elem('output-error').html('');
+    elem('output').html('<%= j render 'answers' %>');
+    elem('show').show();
+    elem('form').hide();
+    elem('body').val('');
+    window.setRandomColor();
+    window.resizeAllGridItems();
+    $('img').on('load', function() { W.resizeAllGridItems(); });
+  <% end %>
+<% end %>
