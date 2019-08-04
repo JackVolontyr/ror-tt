@@ -1,6 +1,6 @@
-ajaxOutputForAnswer = window.ajaxOutputForAnswer;
+var W = window;
 
-ajaxOutputForAnswer.html('<%= j render 'answers/answers' %>');
+W.ajaxOutputForAnswer.html('<%= j render 'answers' %>');
 
-window.setRandomColor();
-window.resizeAllGridItems();
+W.setRandomColor();
+W.resizeAllGridItems();

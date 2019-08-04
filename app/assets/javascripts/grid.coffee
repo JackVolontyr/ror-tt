@@ -25,6 +25,7 @@ $(document).on 'turbolinks:load', () ->
       resizeGridItem item
 
     window.onload = resizeAllGridItems()
+    $('img').on 'load', () -> resizeAllGridItems()
     window.addEventListener 'resize', resizeAllGridItems
 
     window.resizeAllGridItems = resizeAllGridItems

@@ -1,5 +1,7 @@
 $(document).on 'turbolinks:load', () ->
   $ ->
+    W = window
+
     # data-question
     da = (selector) -> return "[data-question='#{selector}']"
 
@@ -16,16 +18,15 @@ $(document).on 'turbolinks:load', () ->
       editForm = $(this).parents(da('edit-container')).children(da('edit-form'))
       editForm.show()
       editForm.children(da('edit-body')).focus()
-      window.resizeAllGridItems()
+      W.resizeAllGridItems()
 
     # UPDATE when submit clicked
     $(document).on "click", fs('edit-submit', true), (e) ->
       parent = $(this).parents(da('edit-container'))
-      console.log(parent.children(da('edit-title')))
-      window.editQuestionTitleOutput = parent.children(da('edit-title'))
-      window.editQuestionBodyOutput = parent.children(da('edit-body'))
-      window.editQuestionError = parent.children(da('edit-error'))
-      window.editQuestionForm = parent.children(da('edit-form'));
+      W.editQuestionTitleOutput = parent.children(da('edit-title'))
+      W.editQuestionBodyOutput = parent.children(da('edit-body'))
+      W.editQuestionError = parent.children(da('edit-error'))
+      W.editQuestionForm = parent.children(da('edit-form'));
       # go to answers/update.js.erb
 
 
@@ -34,10 +35,10 @@ $(document).on 'turbolinks:load', () ->
       e.preventDefault()
       deleteAlert = $(this).parents(da('edit-container')).children(da('delete-alert'))
       deleteAlert.show()
-      window.resizeAllGridItems()
+      W.resizeAllGridItems()
 
     # TODO: js: true
     # DESTROY when submit clicked
     # $(fs('delete-submit', true)).on "click", (e) ->
-      # window.questionsOutput = $(this).parents(da('output'))
+      # W.questionsOutput = $(this).parents(da('output'))
       # go to answers/destroy.js.erb

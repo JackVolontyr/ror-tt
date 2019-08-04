@@ -1,9 +1,13 @@
+/ - data_form[:type] = :html
+/ - data_form[:type] = :json
 = form_for model, remote: true, data: data_form do |f|
   = f.label :body, t("answers.new.body")
   = f.text_area :body,
           class: "tutu-textarea tutu-field tutu-field--left",
           data: data_body
 
+  / TODO: edit form hasn't file_field       if answer hasn't file
+  / TODO: edit form has to much file_field  if answer has two or many files
   = f.fields_for :attachments do |a|
     = a.label :file, t(".file")
     = a.file_field :file, class: "tutu-answer__file",

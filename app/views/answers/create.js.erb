@@ -1,25 +1,18 @@
-ajaxOutputForAnswer = window.ajaxOutputForAnswer;
-ajaxOutputForError = window.ajaxOutputForError;
-showForAnswer = window.showForAnswer;
-formForAnswer = window.formForAnswer;
-bodyForAnswer = window.bodyForAnswer;
+var W = window;
 
-ajaxOutputForError.html('');
+W.ajaxOutputForError.html('');
 
 <% if @answer.errors.present? %>
-  <% @answer.errors.full_messages.each do |m| %>
-    ajaxOutputForError.html(
-      '<%= j content_tag :div, m, id: 'error_explanation', class: 'no-margin--lr inner' %>'
-    );
-  <% end %>
+  W.ajaxOutputForError.html('<%= j render 'error_explanation' %>');
 <% else %>
-  ajaxOutputForAnswer.html('<%= j render 'answers/answers' %>');
-  showForAnswer.show();
-  formForAnswer.hide();
-  bodyForAnswer.val('');
+  W.ajaxOutputForAnswer.html('<%= j render 'answers' %>');
+  W.showForAnswer.show();
+  W.formForAnswer.hide();
+  W.bodyForAnswer.val('');
 <% end %>
 
-window.setRandomColor();
+W.setRandomColor();
+W.resizeAllGridItems();
 $('img').on('load', function() {
-  window.resizeAllGridItems();
+  W.resizeAllGridItems();
 });

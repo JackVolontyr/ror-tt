@@ -9,6 +9,8 @@
           class: "tutu-textarea tutu-textarea--no-margin-b tutu-field tutu-field--bottom-offset tutu-field--left",
           data: data_body
 
+  / TODO: edit form hasn't file_field       if answer hasn't file
+  / TODO: edit form has to much file_field  if answer has two or many files
   = f.fields_for :attachments do |a|
     = a.label :file, t(".file")
     = a.file_field :file, class: "tutu-answer__file",

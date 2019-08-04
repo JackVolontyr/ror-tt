@@ -1,20 +1,13 @@
-editQuestionTitleOutput = window.editQuestionTitleOutput;
-editQuestionBodyOutput = window.editQuestionBodyOutput;
-editQuestionError = window.editQuestionError
-editQuestionForm = window.editQuestionForm;
+var W = window;
 
-editQuestionError.html('');
+W.editQuestionError.html('');
 
 <% if @question.errors.present? %>
-  <% @question.errors.full_messages.each do |m| %>
-    editQuestionError.html(
-      '<%= j content_tag :div, m, id: 'error_explanation', class: 'no-margin--lr inner' %>'
-    );
-  <% end %>
+  W.editQuestionError.html('<%= j render 'error_explanation' %>');
 <% else %>
-  editQuestionTitleOutput.html('<%= j @question.title %>');
-  editQuestionBodyOutput.html('<%= j @question.body %>');
-  editQuestionForm.hide();
+  W.editQuestionTitleOutput.html('<%= j @question.title %>');
+  W.editQuestionBodyOutput.html('<%= j @question.body %>');
+  W.editQuestionForm.hide();
 <% end %>
 
-window.resizeAllGridItems()
+W.resizeAllGridItems();
