@@ -48,12 +48,14 @@ $(document).on 'turbolinks:load', () ->
 
       form.bind 'ajax:success', (e) ->
         xhr = e.detail[2]
-        W.ajaxOutputForAnswer.html(xhr.responseText)
+        answer = $.parseJSON(xhr.responseText)
+        W.ajaxOutputForAnswer.append(answer.body)
         answer_form_reset()
 
       form.bind 'ajax:error', (e) ->
         xhr = e.detail[2]
-        W.ajaxOutputForError.html(xhr.responseText)
+        answer = $.parseJSON(xhr.responseText)
+        W.ajaxOutputForError.append(answer.body)
         grid_reset()
 
     # UPDATE toggle form with focus
