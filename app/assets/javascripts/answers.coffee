@@ -1,7 +1,11 @@
 $(document).on 'turbolinks:load', () ->
   $ ->
     W = window
-    
+
+    # get element
+    W.gEQ = (element, questionId) -> return $("[data-question-id='#{questionId}']").find("[data-answer='#{element}']")
+    W.gEA = (element, questionId, answerId) -> return $("[data-question-id='#{questionId}']").find("[data-answer-id='#{answerId}']").find("[data-answer='#{element}']")
+
     # data-answer
     da = (selector) -> return "[data-answer='#{selector}']"
 
@@ -26,45 +30,44 @@ $(document).on 'turbolinks:load', () ->
     # CREATE hide show button and open form with focus
     $(document).on "click", fs('show'), (e) ->
       e.preventDefault()
-      form = $(this).parents(da('container')).children(da('form'))
+      form = $(this).parents(da('container')).find(da('form'))
       $(this).hide()
       form.show()
-      form.children(da('body')).focus()
+      form.find(da('body')).focus()
       W.resizeAllGridItems()
 
     # CREATE when submit clicked
     $(document).on "click", fs('submit'), (e) ->
       parent = $(this).parents(da('container'))
       # need for delete action
-      W.ajaxOutputForAnswer = parent.children(da('output'))
-      W.ajaxOutputForError = parent.children(da('error-output'))
+      W.ajaxOutputForAnswer = parent.find(da('output'))
+      W.ajaxOutputForError = parent.find(da('error-output'))
       # go to answers/create.js.erb
 
     # UPDATE toggle form with focus
     $(document).on "click", fs('edit', true), (e) ->
       e.preventDefault()
-      editForm = $(this).parents(da('edit-container')).children(da('edit-form'))
+      editForm = $(this).parents(da('edit-container')).find(da('edit-form'))
       editForm.show()
-      editForm.children(da('edit-body')).focus()
+      editForm.find(da('edit-body')).focus()
       W.resizeAllGridItems()
 
     # UPDATE when submit clicked
     $(document).on "click", fs('edit-submit', true), (e) ->
       parent = $(this).parents(da('edit-container'))
-      W.ajaxEditOutputForAnswer = parent.children(da('edit-output'))
-      W.ajaxEditOutputForError = parent.children(da('edit-error'))
-      W.editFormForAnswer = parent.children(da('edit-form'));
+      W.ajaxEditOutputForAnswer = parent.find(da('edit-output'))
+      W.ajaxEditOutputForError = parent.find(da('edit-error'))
       # go to answers/update.js.erb
 
     # DESTROY toggle form
     $(document).on "click", fs('delete', true), (e) ->
       e.preventDefault()
-      deleteAlert = $(this).parents(da('edit-container')).children(da('delete-alert'))
+      deleteAlert = $(this).parents(da('edit-container')).find(da('delete-alert'))
       deleteAlert.show()
       W.resizeAllGridItems()
 
     # DESTROY when submit clicked
     $(fs('delete-submit', true)).on "click", (e) ->
       parent = $(this).parents(da('container'))
-      W.ajaxOutputForAnswer = parent.children(da('output'))
+      W.ajaxOutputForAnswer = parent.find(da('output'))
       # go to answers/destroy.js.erb
