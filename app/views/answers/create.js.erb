@@ -5,7 +5,9 @@ W.ajaxOutputForError.html('');
 <% if @answer.errors.present? %>
   W.ajaxOutputForError.html('<%= j render 'error_explanation' %>');
 <% else %>
-  W.ajaxOutputForAnswer.html('<%= j render 'answers' %>');
+  <% publish_to "/questions/#{@question.id}/answers" do %>
+    window.ajaxOutputForAnswer.html('<%= j render 'answers' %>');
+  <% end %>
   W.showForAnswer.show();
   W.formForAnswer.hide();
   W.bodyForAnswer.val('');
