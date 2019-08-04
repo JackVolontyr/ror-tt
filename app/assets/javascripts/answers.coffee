@@ -46,6 +46,7 @@ $(document).on 'turbolinks:load', () ->
       W.bodyForAnswer = form.children(da('body'))
       # go to answers/create.js.erb
 
+      ###
       form.bind 'ajax:success', (e) ->
         xhr = e.detail[2]
         answer = $.parseJSON(xhr.responseText)
@@ -57,6 +58,7 @@ $(document).on 'turbolinks:load', () ->
         answer = $.parseJSON(xhr.responseText)
         W.ajaxOutputForError.append(answer.body)
         grid_reset()
+      ###
 
     # UPDATE toggle form with focus
     $(document).on "click", fs('edit', true), (e) ->
