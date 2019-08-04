@@ -11,9 +11,6 @@
     var W = window, id = <%= @question.id %>;
     W.gEQ('output-error', id).html('');
     W.gEQ('output', id).html('<%= j render 'answers' %>');
-    W.gEQ('show', id).show();
-    W.gEQ('form', id).hide();
-    W.gEQ('body', id).val('');
     W.setRandomColor();
     W.resizeAllGridItems();
     $('img').on('load', function() { W.resizeAllGridItems(); });
