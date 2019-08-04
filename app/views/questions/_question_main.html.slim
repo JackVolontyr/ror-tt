@@ -1,4 +1,5 @@
 h2.tutu-question__title data-question="edit-title" = question.title
+= render "questions/delete_component", {question: @question} if user_is_author_or_admin?(@question)
 .tutu-question__date = l(question.created_at, format: :short_with_time)
 
 .tutu-question__user.tutu-question__user--author data-random="color" = question.user.name

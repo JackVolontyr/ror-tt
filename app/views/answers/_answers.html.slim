@@ -2,7 +2,6 @@
 
 - question.answers.each do |a|
   .tutu-answer data-answer="edit-container"
-    = render "answers/answer_main", a: a
+    = render "answers/answer_main", question: question, a: a
     = render "answers/attachment_component", a: a
     = render "answers/edit_component", { question: question, a: a } if user_is_author_or_admin?(a)
-    = render "answers/delete_component", { question: question, a: a } if user_is_author_or_admin?(a)
