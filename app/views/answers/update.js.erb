@@ -1,12 +1,15 @@
-var W = window;
-
-W.ajaxEditOutputForError.html('');
-
 <% if @answer.errors.present? %>
+  var W = window;
+  W.ajaxEditOutputForError.html('');
   W.ajaxEditOutputForError.html('<%= j render 'error_explanation' %>');
-<% else %>
-  W.ajaxEditOutputForAnswer.html('<%= j @answer.body %>');
-  W.editFormForAnswer.hide();
-<% end %>
+  W.resizeAllGridItems();
 
-W.resizeAllGridItems();
+<% else %>
+  <% publish_to "/questions/#{@question.id}/answers" do %>
+    var W = window, idQ = <%= @question.id %>, idA = <%= @answer.id %>;
+    W.gEA('edit-error', idQ, idA).html('');
+    W.gEA('edit-output', idQ, idA).html('<%= j @answer.body %>');
+    W.gEA('edit-form', idQ, idA).hide();
+    W.resizeAllGridItems();
+  <% end %>
+<% end %>

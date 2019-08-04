@@ -1,6 +1,5 @@
-var W = window;
-
-W.ajaxOutputForAnswer.html('<%= j render 'answers' %>');
-
-W.setRandomColor();
-W.resizeAllGridItems();
+<% publish_to "/questions/#{@question.id}/answers" do %>
+  window.gEQ('output', <%= @question.id %>).html('<%= j render 'answers' %>');
+  window.setRandomColor();
+  window.resizeAllGridItems();
+<% end %>

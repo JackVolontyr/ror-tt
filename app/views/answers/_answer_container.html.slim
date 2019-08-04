@@ -1,4 +1,8 @@
-.tutu-answer__container data-spec="answer__container" data-answer="container"
+= content_tag :div,
+        class: "tutu-answer__container",
+        data: { spec: "answer__container",
+                answer: "container",
+                question_id: @question.id }
   div data-answer="output"
     = render "answers/answers", question: question
 
@@ -19,3 +23,5 @@
           data_file: { spec: "answer__file" },
           data_submit: { answer: "submit", spec: "answer__submit" },
           item: answer
+
+= subscribe_to "/questions/#{@question.id}/answers"

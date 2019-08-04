@@ -1,7 +1,10 @@
 - question = question || @question
 
 - question.answers.each do |a|
-  .tutu-answer data-answer="edit-container"
+  = content_tag :div,
+          class: "tutu-answer",
+          data: { answer: "edit-container",
+                  answer_id: a.id }
     = render "answers/answer_main", question: question, a: a
     = render "answers/attachment_component", a: a
     = render "answers/edit_component", { question: question, a: a } if user_is_author_or_admin?(a)
