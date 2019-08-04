@@ -1,18 +1,12 @@
-ajaxEditOutputForAnswer = window.ajaxEditOutputForAnswer;
-ajaxEditOutputForError = window.ajaxEditOutputForError
-editFormForAnswer = window.editFormForAnswer;
+var W = window;
 
-ajaxEditOutputForError.html('');
+W.ajaxEditOutputForError.html('');
 
 <% if @answer.errors.present? %>
-  <% @answer.errors.full_messages.each do |m| %>
-    ajaxEditOutputForError.html(
-      '<%= j content_tag :div, m, id: 'error_explanation', class: 'no-margin--lr inner' %>'
-    );
-  <% end %>
+  W.ajaxEditOutputForError.html('<%= j render 'error_explanation' %>');
 <% else %>
-  ajaxEditOutputForAnswer.html('<%= j @answer.body %>');
-  editFormForAnswer.hide();
+  W.ajaxEditOutputForAnswer.html('<%= j @answer.body %>');
+  W.editFormForAnswer.hide();
 <% end %>
 
-window.resizeAllGridItems()
+W.resizeAllGridItems();
