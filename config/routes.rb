@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  # For Reading the Letter on Production
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+
   resources :users do
     resources :tickets
   end
