@@ -4,7 +4,6 @@ require_relative 'application'
 # Initialize the Rails application.
 Rails.application.initialize!
 
-=begin
 ActionMailer::Base.smtp_settings = {
     :user_name => 'app136830725@heroku.com',
     :password => '5aasjxab3869',
@@ -14,4 +13,3 @@ ActionMailer::Base.smtp_settings = {
     :authentication => :plain,
     :enable_starttls_auto => true
 }
-=end
